@@ -1,0 +1,12 @@
+{
+  "name": "thubx",
+  "version": "4.0.0",
+  "description": "THubX (WindUI)",
+  "repository": "https://github.com/wjm13206/THub",
+  "license": "MIT",
+  "main": "./dist/THubX.lua",
+  "scripts": {
+    "build": "bash build/build.sh",
+    "build:win": "powershell -ExecutionPolicy Bypass -File build/build.ps1"
+  }
+}

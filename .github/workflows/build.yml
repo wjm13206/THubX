@@ -1,0 +1,47 @@
+name: Build THubX (dist)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/**"
+      - "build/**"
+      - "package.json"
+      - "aftman.toml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup Aftman
+        uses: ok-nick/setup-aftman@v0.3.0
+
+      - name: Install DarkLua
+        run: aftman install
+
+      - name: Run build
+        run: npm run build
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: THubX-dist
+          path: dist/THubX.lua
+
+      - name: Commit dist/THubX.lua back to repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/THubX.lua
+          git commit -m "[AUTO] Upload built THubX.lua" || exit 0
+          git push
