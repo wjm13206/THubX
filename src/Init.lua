@@ -29,22 +29,43 @@ local ctx = {
 	Services = Services,
 	Utils = Utils,
 }
-for _, mod in Registry do
-	local okMod, err = pcall(function()
-		mod.Init(Tabs, ctx)
-	end)
-	if not okMod then
-		warn("[THubX] 模块注册失败: " .. tostring(mod.Title) .. " " .. tostring(err))
+local failed = {}
+for _, item in Registry do
+	local okLoad, mod = pcall(item.Load)
+	if not okLoad then
+		table.insert(failed, item.Name)
+		warn("[THubX] 模块加载失败: " .. item.Name .. " " .. tostring(mod))
+	else
+		if type(mod) ~= "table" or type(mod.Init) ~= "function" then
+			table.insert(failed, item.Name)
+			warn("[THubX] 模块无效: " .. item.Name .. " (" .. type(mod) .. ")")
+		else
+			local okMod, err = pcall(function()
+				mod.Init(Tabs, ctx)
+			end)
+			if not okMod then
+				table.insert(failed, item.Name)
+				warn("[THubX] 模块注册失败: " .. item.Name .. " " .. tostring(err))
+			end
+		end
 	end
 	task.wait()
 end
 
 local cost = string.format("%.2f", tick() - startTime)
-WindUI:Notify({
-	Title = "THubX",
-	Content = "启动成功，用时 " .. cost .. "s",
-	Duration = 5,
-})
+if #failed > 0 then
+	WindUI:Notify({
+		Title = "THubX",
+		Content = "启动完成，用时 " .. cost .. "s，" .. #failed .. " 个模块失败:" .. table.concat(failed, ","),
+		Duration = 10,
+	})
+else
+	WindUI:Notify({
+		Title = "THubX",
+		Content = "启动成功，用时 " .. cost .. "s",
+		Duration = 5,
+	})
+end
 Utils.Info("加载成功，用时 " .. cost .. "s")
 _G.THUbXLoaded = true
 _G.THUbXLoading = false
