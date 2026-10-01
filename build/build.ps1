@@ -28,9 +28,7 @@ if (-not $darklua) {
   exit 1
 }
 
-# 2. 读版本
-$pkg = Get-Content (Join-Path $Root "package.json") -Raw | ConvertFrom-Json
-$ver = $pkg.version
+# 2. 构建日期
 $date = Get-Date -Format "yyyy-MM-dd"
 
 # 3. 打包
@@ -40,7 +38,7 @@ if ($LASTEXITCODE -ne 0) { Write-Host "[ x ] DarkLua failed" -ForegroundColor Re
 $sw.Stop()
 
 # 4. 加头
-$header = "--[[" + "`r`n" + "  THubX v$ver | build $date" + "`r`n" + "  入口: loadstring(game:HttpGet(.../dist/THubX.lua))()" + "`r`n" + "  源码: src/ 多文件，产物: dist/ 单文件 (darklua bundle path mode)" + "`r`n" + "]]"
+$header = "--[[" + "`r`n" + "  THubX | build $date" + "`r`n" + "  入口: loadstring(game:HttpGet(.../dist/THubX.lua))()" + "`r`n" + "  源码: src/ 多文件，产物: dist/ 单文件 (darklua bundle path mode)" + "`r`n" + "]]"
 $body = Get-Content $TempOut -Raw
 Set-Content -LiteralPath $Output -Value ($header + "`r`n" + $body) -NoNewline
 Remove-Item -LiteralPath $TempOut -Force -ErrorAction SilentlyContinue
@@ -48,7 +46,6 @@ Remove-Item -LiteralPath $TempOut -Force -ErrorAction SilentlyContinue
 $kb = [math]::Round((Get-Item $Output).Length / 1KB, 1)
 Write-Host ""
 Write-Host "[ v ] THubX Build 完成" -ForegroundColor Green
-Write-Host "[ > ] Version: $ver"
 Write-Host "[ > ] Time: $($sw.ElapsedMilliseconds)ms"
 Write-Host "[ > ] Size: ${kb}KB"
 Write-Host "[ > ] Output: dist/THubX.lua"

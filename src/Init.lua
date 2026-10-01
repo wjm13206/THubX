@@ -11,7 +11,7 @@ if not Utils.EnsureSingleRun("THubXLoaded") then
 end
 
 local startTime = tick()
-Utils.Info("开始初始化 v" .. Config.Version)
+Utils.Info("开始初始化")
 
 local WindowLoader = require("./UI/Window")
 local ok, WindUI, Window, Tabs = pcall(WindowLoader.Create)

@@ -22,7 +22,7 @@ function WindowLoader.Create()
 	local WindUI = WindowLoader.LoadWindUI()
 
 	local Window = WindUI:CreateWindow({
-		Title = Config.Title .. " v" .. Config.Version,
+		Title = Config.Title,
 		Author = Config.Author,
 		Folder = Config.Folder,
 		Theme = Config.Theme,
@@ -42,6 +42,7 @@ function WindowLoader.Create()
 
 	Tabs.Settings:Button({
 		Title = "卸载 THubX",
+		Icon = "trash-2",
 		Callback = function()
 			local Unload = require("../Core/Unload")
 			pcall(function()
