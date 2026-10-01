@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local AntiFling = {}
-AntiFling.Title = "反甩飞"
+AntiFling.Title = "反甩�?
 
 local Players = Services.Players
 local RunService = Services.RunService
@@ -103,11 +103,11 @@ Unload.OnUnload(function()
 end)
 
 function AntiFling.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "反甩飞" })
+	local section = Tabs.Utility:Section({ Title = "反甩�? })
 	section:Toggle({
 		Title = "他端碰撞关闭",
 		Icon = "shield-off",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,

@@ -268,11 +268,11 @@ local M = {}
 M.Title = "飞行"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Movement:Section({ Title = "飞行类" })
+    local section = Tabs.Movement:Section({ Title = "飞行�? })
     section:Toggle({
         Title = "启用飞行",
         Icon = "plane",
-        Default = false,
+        Value = false,
         Callback = function(state)
             if state then
                 Engine.enable()
@@ -290,7 +290,7 @@ function M.Init(Tabs, ctx)
         end,
     })
     section:Keybind({
-        Title = "飞行开关",
+        Title = "飞行开�?,
         Icon = "keyboard",
         Value = "F",
         Callback = function(v)

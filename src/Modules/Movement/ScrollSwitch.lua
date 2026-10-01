@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local ScrollSwitch = {}
-ScrollSwitch.Title = "滚轮切道具"
+ScrollSwitch.Title = "滚轮切道�?
 
 local Players = Services.Players
 local UserInputService = Services.UserInputService
@@ -204,11 +204,11 @@ Unload.OnUnload(function()
 end)
 
 function ScrollSwitch.Init(Tabs, ctx)
-	local section = Tabs.Movement:Section({Title = "滚轮切道具"})
+	local section = Tabs.Movement:Section({Title = "滚轮切道�?})
 	section:Toggle({
-		Title = "启用滚轮切道具 (按住V+滚轮)",
+		Title = "启用滚轮切道�?(按住V+滚轮)",
 		Icon = "repeat",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,

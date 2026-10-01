@@ -107,7 +107,7 @@ function PlayerLight.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "跟随光源",
 		Icon = "lightbulb",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,

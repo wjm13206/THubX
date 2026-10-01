@@ -96,7 +96,7 @@ local function onMessageReceived(message, channel)
 	local rawText = message.Text
 	pcall(function()
 		if message.WasRewritten then
-			rawText = "(已编辑) " .. message.RewrittenText
+			rawText = "(已编�? " .. message.RewrittenText
 		end
 	end)
 	local cleanedMessage = rawText:gsub("[\n\r]", ""):gsub("\t", " "):gsub("[ ]+", " ")
@@ -157,14 +157,14 @@ local function setEnabled(state)
 			return
 		end
 		setupNewChatListener()
-		notify("已启用")
+		notify("已启�?)
 	else
 		if not enabled then
 			return
 		end
 		enabled = false
 		clearAllConnections()
-		notify("已停用")
+		notify("已停�?)
 	end
 end
 
@@ -178,15 +178,15 @@ function ChatSpy.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用聊天偷听",
 		Icon = "eye",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,
 	})
 	section:Toggle({
-		Title = "偷听自己的消息",
+		Title = "偷听自己的消�?,
 		Icon = "user",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			spyOnSelf = state
 		end,
@@ -194,7 +194,7 @@ function ChatSpy.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "公开广播",
 		Icon = "megaphone",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			publicMode = state
 		end,

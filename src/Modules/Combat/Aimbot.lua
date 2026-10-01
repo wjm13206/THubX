@@ -330,7 +330,7 @@ function Aimbot.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用自瞄",
 		Icon = "crosshair",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				enable()
@@ -340,25 +340,25 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "队伍检查",
+		Title = "队伍检�?,
 		Icon = "users",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			_teamCheck = state
 		end,
 	})
 	section:Toggle({
-		Title = "穿墙检查",
+		Title = "穿墙检�?,
 		Icon = "brick-wall",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			_wallCheck = state
 		end,
 	})
 	section:Toggle({
-		Title = "显示范围圈",
+		Title = "显示范围�?,
 		Icon = "circle",
-		Default = true,
+		Value = true,
 		Callback = function(state)
 			_showFov = state
 		end,
@@ -373,7 +373,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "平滑度",
+		Title = "平滑�?,
 		Icon = "waves",
 		Step = 1,
 		Value = { Min = 0, Max = 50, Default = 30 },
@@ -391,9 +391,9 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "粘性瞄准",
+		Title = "粘性瞄�?,
 		Icon = "magnet",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			_stickyAim = state
 		end,
@@ -401,13 +401,13 @@ function Aimbot.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "子弹预测",
 		Icon = "zap",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			_prediction = state
 		end,
 	})
 	section:Slider({
-		Title = "预测量",
+		Title = "预测�?,
 		Icon = "gauge",
 		Step = 10,
 		Value = { Min = 0, Max = 300, Default = 100 },
@@ -420,7 +420,10 @@ function Aimbot.Init(Tabs, ctx)
 		Icon = "keyboard",
 		Value = "E",
 		Callback = function(v)
-			_keybind = v
+			local code = Enum.KeyCode[v]
+			if code then
+				_keybind = code
+			end
 			_useMouse = false
 		end,
 	})

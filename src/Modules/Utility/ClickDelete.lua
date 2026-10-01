@@ -56,7 +56,7 @@ function ClickDelete.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "Ctrl+点击删除部件",
 		Icon = "eraser",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,

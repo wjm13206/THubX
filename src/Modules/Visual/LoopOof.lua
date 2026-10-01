@@ -108,7 +108,7 @@ function LoopOof.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "全员循环惨叫",
 		Icon = "volume-2",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,

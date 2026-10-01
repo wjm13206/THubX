@@ -477,7 +477,7 @@ function Orbit.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用环绕",
 		Icon = "orbit",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				enable()
@@ -526,7 +526,7 @@ function Orbit.Init(Tabs, ctx)
 		Title = "环绕目标",
 		Icon = "user",
 		Value = "",
-		Placeholder = "玩家名，空=自己",
+		Placeholder = "玩家名，�?自己",
 		Callback = function(v)
 			targetName = v
 		end,

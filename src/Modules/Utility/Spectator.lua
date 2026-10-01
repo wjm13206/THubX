@@ -121,7 +121,7 @@ function Spectator.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用旁观",
 		Icon = "eye",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				startSpectate(ctx)

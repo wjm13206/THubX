@@ -52,13 +52,13 @@ function TPJump.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用跳跃增强",
 		Icon = "chevrons-up",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,
 	})
 	section:Slider({
-		Title = "跳跃爆发力",
+		Title = "跳跃爆发�?,
 		Icon = "gauge",
 		Step = 5,
 		Value = {Min = 0, Max = 200, Default = 40},

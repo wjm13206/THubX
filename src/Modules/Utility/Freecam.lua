@@ -285,26 +285,30 @@ table.insert(eventConnections, LocalPlayer.CharacterRemoving:Connect(onCharacter
 Unload.OnUnload(fullUnload)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "自由相机", Icon = "video" })
+	local section = Tabs.Utility:Section({ Title = "自由相机" })
 	section:Toggle({
 		Title = "启用自由相机模块",
 		Icon = "video",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setModuleEnabled(state)
 		end,
 	})
 	section:Keybind({
-		Title = "自由相机开关按键",
+		Title = "自由相机开关按�?,
 		Icon = "keyboard",
-		Default = Enum.KeyCode.F,
-		Callback = function(key)
-			currentKeybind = key
+		Value = "F",
+		Callback = function(v)
+			local code = Enum.KeyCode[v]
+			if code then
+				currentKeybind = code
+			end
 		end,
 	})
 	section:Slider({
 		Title = "相机速度",
 		Icon = "gauge",
+		Step = 1,
 		Value = { Min = 0, Max = 5, Default = 1 },
 		Callback = function(v)
 			cameraSpeed = math.max(0, v)

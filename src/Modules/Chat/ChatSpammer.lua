@@ -81,13 +81,13 @@ function ChatSpammer.Init(Tabs, ctx)
 	local section = Tabs.Chat:Section({Title = "自动喊话"})
 	local spamToggle = nil
 	spamToggle = section:Toggle({
-		Title = "开始自动喊话",
+		Title = "开始自动喊�?,
 		Icon = "megaphone",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				if #messages == 0 then
-					WindUI:Notify({Title = "喊话器", Content = "请先填写喊话内容", Duration = 5})
+					WindUI:Notify({Title = "喊话�?, Content = "请先填写喊话内容", Duration = 5})
 					pcall(function()
 						spamToggle:Set(false)
 					end)
@@ -107,13 +107,13 @@ function ChatSpammer.Init(Tabs, ctx)
 	section:Input({
 		Title = "喊话内容",
 		Icon = "message-square",
-		Placeholder = "多条用 | 分隔",
+		Placeholder = "多条�?| 分隔",
 		Callback = function(v)
 			parseMessages(v)
 		end,
 	})
 	section:Slider({
-		Title = "发送间隔(秒)",
+		Title = "发送间�?�?",
 		Icon = "timer",
 		Step = 1,
 		Value = {Min = 1, Max = 60, Default = 5},
@@ -126,7 +126,7 @@ function ChatSpammer.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "随机顺序",
 		Icon = "shuffle",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			isRandom = state
 		end,

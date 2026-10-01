@@ -11,8 +11,8 @@ function Unload.Run()
 		pcall(UnloadCallbacks[i])
 	end
 	table.clear(UnloadCallbacks)
-	_G.THUbXLoaded = false
-	_G.THUbXLoading = false
+	_G.THubXLoaded = false
+	_G.THubXLoading = false
 end
 
 return Unload

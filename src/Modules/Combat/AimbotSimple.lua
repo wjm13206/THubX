@@ -108,7 +108,7 @@ function AimbotSimple.Init(Tabs, ctx)
 			Title = "当前执行器不支持 Drawing",
 			Icon = "triangle-alert",
 			Callback = function()
-				ctx.Utils.NotifyFallback("THubX", "当前执行器不支持 Drawing 库")
+				ctx.Utils.NotifyFallback("THubX", "当前执行器不支持 Drawing �?)
 			end,
 		})
 		return
@@ -116,7 +116,7 @@ function AimbotSimple.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用轻量自瞄",
 		Icon = "crosshair",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				if not enable() then

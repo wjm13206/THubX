@@ -59,7 +59,7 @@ function GuiDeleter.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "按键删除指向界面",
 		Icon = "layout-template",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,
@@ -67,7 +67,7 @@ function GuiDeleter.Init(Tabs, ctx)
 	section:Keybind({
 		Title = "删除按键",
 		Icon = "keyboard",
-		Default = "Backspace",
+		Value = "Backspace",
 		Callback = function(v)
 			local code = Enum.KeyCode[v]
 			if code then

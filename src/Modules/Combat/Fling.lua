@@ -860,9 +860,9 @@ end)
 function Fling.Init(Tabs, ctx)
 	local section = Tabs.Combat:Section({ Title = "甩飞" })
 	section:Toggle({
-		Title = "普通甩飞",
+		Title = "普通甩�?,
 		Icon = "send",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				startFling()
@@ -874,7 +874,7 @@ function Fling.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "飞行甩飞",
 		Icon = "plane",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				startFlyFling(flyflingSpeed)
@@ -895,7 +895,7 @@ function Fling.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "走路甩飞",
 		Icon = "footprints",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				startWalkFling()
@@ -907,7 +907,7 @@ function Fling.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "隐身甩飞",
 		Icon = "ghost",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				task.spawn(startInvisFling)
@@ -919,7 +919,7 @@ function Fling.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "Ctrl+G 快捷甩飞",
 		Icon = "keyboard",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setShortcutEnabled(state)
 		end,
@@ -929,7 +929,7 @@ function Fling.Init(Tabs, ctx)
 		Title = "指定甩飞目标",
 		Icon = "user",
 		Value = "",
-		Placeholder = "玩家名 / random / all",
+		Placeholder = "玩家�?/ random / all",
 		Callback = function(v)
 			targetName = v
 		end,

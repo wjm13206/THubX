@@ -138,7 +138,7 @@ function PartCleaner.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用清理",
 		Icon = "eraser",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,
@@ -153,7 +153,7 @@ function PartCleaner.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "扫描间隔(帧)",
+		Title = "扫描间隔(�?",
 		Icon = "timer",
 		Step = 1,
 		Value = { Min = 1, Max = 60, Default = 10 },

@@ -102,11 +102,11 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "缩放视角", Icon = "zoom-in" })
+	local section = Tabs.Utility:Section({ Title = "缩放视角" })
 	section:Toggle({
 		Title = "启用缩放",
 		Icon = "zoom-in",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				enable()
@@ -118,14 +118,18 @@ function M.Init(Tabs, ctx)
 	section:Keybind({
 		Title = "缩放按键",
 		Icon = "keyboard",
-		Default = Enum.KeyCode.C,
-		Callback = function(key)
-			bindKey = key
+		Value = "C",
+		Callback = function(v)
+			local code = Enum.KeyCode[v]
+			if code then
+				bindKey = code
+			end
 		end,
 	})
 	section:Slider({
 		Title = "缩放视野",
 		Icon = "eye",
+		Step = 1,
 		Value = { Min = 5, Max = 70, Default = 30 },
 		Callback = function(v)
 			defaultZoomFOV = math.clamp(v, minZoomFOV, normalFOV)

@@ -222,7 +222,7 @@ function NPCHigh.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用NPC高亮",
 		Icon = "bot",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,
@@ -230,7 +230,7 @@ function NPCHigh.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "显示距离",
 		Icon = "ruler",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			showDistance = v
 		end,

@@ -470,13 +470,13 @@ function M.Init(Tabs, ctx)
     section:Toggle({
         Title = "显示距离",
         Icon = "ruler",
-        Default = false,
+        Value = false,
         Callback = function(state)
             showDistance = state
         end,
     })
     section:Button({
-        Title = "开始标记",
+        Title = "开始标�?,
         Icon = "play",
         Callback = function()
             if currentTarget == "" then return end

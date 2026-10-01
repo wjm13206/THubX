@@ -238,7 +238,7 @@ function Invisible.Init(Tabs, ctx)
 	toggleObj = section:Toggle({
 		Title = "隐身自己",
 		Icon = "ghost",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v, toggleObj)
 		end,

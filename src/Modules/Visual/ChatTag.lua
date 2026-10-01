@@ -108,7 +108,7 @@ function ChatTag.Init(Tabs, ctx)
 	local toggleObj = nil
 
 	section:Input({
-		Title = "目标玩家名",
+		Title = "目标玩家�?,
 		Icon = "user",
 		Placeholder = "留空=自己",
 		Callback = function(v)
@@ -118,7 +118,7 @@ function ChatTag.Init(Tabs, ctx)
 	section:Input({
 		Title = "标签文字",
 		Icon = "tag",
-		Default = "[VIP]",
+		Value = "[VIP]",
 		Callback = function(v)
 			tagText = v
 		end,
@@ -132,9 +132,9 @@ function ChatTag.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "彩虹色",
+		Title = "彩虹�?,
 		Icon = "rainbow",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			rainbow = v
 		end,
@@ -147,7 +147,7 @@ function ChatTag.Init(Tabs, ctx)
 			if targetName ~= "" then
 				player = Players:FindFirstChild(targetName)
 				if not player then
-					ctx.WindUI:Notify({ Title = "聊天标签", Content = "找不到玩家", Duration = 3 })
+					ctx.WindUI:Notify({ Title = "聊天标签", Content = "找不到玩�?, Duration = 3 })
 					return
 				end
 			end
@@ -156,7 +156,7 @@ function ChatTag.Init(Tabs, ctx)
 				color = color3ToHex(tagColor),
 				rainbow = rainbow,
 			})
-			ctx.WindUI:Notify({ Title = "聊天标签", Content = "已应用", Duration = 3 })
+			ctx.WindUI:Notify({ Title = "聊天标签", Content = "已应�?, Duration = 3 })
 		end,
 	})
 	section:Button({

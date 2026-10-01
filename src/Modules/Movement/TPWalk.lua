@@ -49,7 +49,7 @@ function TPWalk.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用瞬移行走",
 		Icon = "zap",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,

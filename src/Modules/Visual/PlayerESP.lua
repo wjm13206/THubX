@@ -248,7 +248,7 @@ function M.Init(Tabs, ctx)
     section:Toggle({
         Title = "玩家透视",
         Icon = "eye",
-        Default = false,
+        Value = false,
         Callback = function(state)
             if state then
                 Engine.enable()

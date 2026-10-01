@@ -69,7 +69,7 @@ function M.Init(Tabs, ctx)
     section:Toggle({
         Title = "相机穿墙",
         Icon = "ghost",
-        Default = false,
+        Value = false,
         Callback = function(state)
             if state then
                 Engine.enable(Services.Players.LocalPlayer)

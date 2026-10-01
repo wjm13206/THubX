@@ -380,7 +380,7 @@ function TCPTrigger.Init(Tabs, ctx)
 		section:Toggle({
 			Title = "自动" .. (TYPE_TITLES[t] or t),
 			Icon = "zap",
-			Default = false,
+			Value = false,
 			Callback = function(state)
 				if state then
 					enableType(t)
@@ -401,9 +401,9 @@ function TCPTrigger.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "显示范围圈",
+		Title = "显示范围�?,
 		Icon = "circle",
-		Default = true,
+		Value = true,
 		Callback = function(state)
 			ShowRing = state
 			if not state then
@@ -414,7 +414,7 @@ function TCPTrigger.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "循环触发模式",
 		Icon = "repeat",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setLoop(state)
 		end,

@@ -4,14 +4,14 @@ local Utils = {}
 
 function Utils.EnsureSingleRun(flag)
 	if _G[flag] then
-		warn("[THubX] 已经加载了，请不要重复执行。")
+		warn("[THubX] 已经加载了，请不要重复执行�?)
 		return false
 	end
-	if _G.THUbXLoading then
-		warn("[THubX] 正在加载中，请勿频繁执行。")
+	if _G.THubXLoading then
+		warn("[THubX] 正在加载中，请勿频繁执行�?)
 		return false
 	end
-	_G.THUbXLoading = true
+	_G.THubXLoading = true
 	return true
 end
 

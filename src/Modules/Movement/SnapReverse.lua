@@ -60,7 +60,7 @@ function SnapReverse.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用视角反转 (按G反转视角)",
 		Icon = "refresh-ccw",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,
@@ -68,7 +68,7 @@ function SnapReverse.Init(Tabs, ctx)
 	section:Input({
 		Title = "反转按键",
 		Icon = "keyboard",
-		Placeholder = "输入按键名，如 G",
+		Placeholder = "输入按键名，�?G",
 		Callback = function(v)
 			if type(v) == "string" and v ~= "" then
 				pendingKey = v

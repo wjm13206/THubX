@@ -136,7 +136,7 @@ function M.Init(Tabs, ctx)
     section:Toggle({
         Title = "空中行走",
         Icon = "footprints",
-        Default = false,
+        Value = false,
         Callback = function(state)
             if state then
                 Engine.enable()

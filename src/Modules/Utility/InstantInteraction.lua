@@ -1,7 +1,7 @@
 local Unload = require("../../Core/Unload")
 
 local M = {}
-M.Title = "秒交互"
+M.Title = "秒交�?
 
 local enabled = false
 local connection = nil
@@ -42,11 +42,11 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "秒交互", Icon = "zap" })
+	local section = Tabs.Utility:Section({ Title = "秒交�? })
 	section:Toggle({
 		Title = "长按交互改为秒按",
 		Icon = "zap",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				enable()

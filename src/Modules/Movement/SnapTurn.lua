@@ -77,7 +77,7 @@ function SnapTurn.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用锁定转向",
 		Icon = "rotate-cw",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setEnabled(state)
 		end,

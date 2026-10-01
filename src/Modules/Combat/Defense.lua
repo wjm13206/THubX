@@ -247,7 +247,7 @@ function Defense.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用力场",
 		Icon = "shield",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				enable()
@@ -271,7 +271,7 @@ function Defense.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "显示力场",
 		Icon = "eye",
-		Default = true,
+		Value = true,
 		Callback = function(state)
 			CONFIG.SHOW_VISUAL = state
 			if not state then

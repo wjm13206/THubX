@@ -209,7 +209,7 @@ function Spin.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用旋转",
 		Icon = "rotate-cw",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				startSpin(currentSpeed)

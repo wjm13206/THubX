@@ -239,7 +239,7 @@ function TriggerESP.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "触碰器透视",
 		Icon = "hand",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setKind("touch", v)
 		end,
@@ -247,7 +247,7 @@ function TriggerESP.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "点击器透视",
 		Icon = "mouse-pointer-click",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setKind("click", v)
 		end,
@@ -255,7 +255,7 @@ function TriggerESP.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "接近提示透视",
 		Icon = "scan",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setKind("prompt", v)
 		end,

@@ -116,15 +116,15 @@ function LockCam.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "按住锁定视角",
 		Icon = "video",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,
 	})
-	section:Input({
-		Title = "锁定按键名",
+	section:Keybind({
+		Title = "锁定按键�?,
 		Icon = "keyboard",
-		Default = "Tab",
+		Value = "Tab",
 		Callback = function(v)
 			local code = Enum.KeyCode[v]
 			if code then

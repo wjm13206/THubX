@@ -193,7 +193,7 @@ function FlyV4.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "启用V4飞行",
 		Icon = "plane",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			setFly(state)
 		end,
@@ -201,6 +201,7 @@ function FlyV4.Init(Tabs, ctx)
 	section:Slider({
 		Title = "移动速度",
 		Icon = "gauge",
+		Step = 1,
 		Value = { Min = 1, Max = 10, Default = 1 },
 		Callback = function(v)
 			speeds = v
@@ -211,13 +212,13 @@ function FlyV4.Init(Tabs, ctx)
 		end,
 	})
 	section:Keybind({
-		Title = "飞行开关",
+		Title = "飞行开�?,
 		Icon = "keyboard",
-		Default = "LeftControl+F",
+		Value = "F",
 		Callback = function()
 			setFly(not enable)
 			if ctx and ctx.WindUI then
-				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开启" or "已关闭", Duration = 3 })
+				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开�? or "已关�?, Duration = 3 })
 			end
 		end,
 	})

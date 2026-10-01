@@ -126,13 +126,13 @@ function Landing.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "落地光环",
 		Icon = "circle-dot",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,
 	})
 	section:Button({
-		Title = "测试一次特效",
+		Title = "测试一次特�?,
 		Icon = "play",
 		Callback = function()
 			local character = Players.LocalPlayer.Character

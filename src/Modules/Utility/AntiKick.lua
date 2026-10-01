@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local M = {}
-M.Title = "反踢出"
+M.Title = "反踢�?
 
 local cloneref = Services.cloneref or clonereference or function(obj) return obj end
 
@@ -69,7 +69,7 @@ local function enable()
 		return false, "当前执行器不支持 hookmetamethod"
 	end
 	if enabled then
-		return true, "反踢出已在运行"
+		return true, "反踢出已在运�?
 	end
 	if not installHooks() then
 		enabled = false
@@ -77,7 +77,7 @@ local function enable()
 	end
 	enabled = true
 	loaded = true
-	return true, "反踢出已开启"
+	return true, "反踢出已开�?
 end
 
 local function disable()
@@ -107,17 +107,17 @@ end
 Unload.OnUnload(fullUnload)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "反踢出", Icon = "shield" })
+	local section = Tabs.Utility:Section({ Title = "反踢�? })
 	local tg
 	tg = section:Toggle({
 		Title = "开启反踢出",
 		Icon = "shield",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				local ok, msg = enable()
 				pcall(function()
-					ctx.WindUI:Notify({ Title = "反踢出", Content = msg, Duration = 3 })
+					ctx.WindUI:Notify({ Title = "反踢�?, Content = msg, Duration = 3 })
 				end)
 				if not ok then
 					pcall(function() tg:Set(false) end)

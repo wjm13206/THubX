@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local AntiLook = {}
-AntiLook.Title = "反视线阻挡"
+AntiLook.Title = "反视线阻�?
 
 local RunService = Services.RunService
 
@@ -68,11 +68,11 @@ Unload.OnUnload(function()
 end)
 
 function AntiLook.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "反视线阻挡" })
+	local section = Tabs.Utility:Section({ Title = "反视线阻�? })
 	section:Toggle({
-		Title = "阻挡视线检测",
+		Title = "阻挡视线检�?,
 		Icon = "eye-off",
-		Default = false,
+		Value = false,
 		Callback = function(v)
 			setEnabled(v)
 		end,

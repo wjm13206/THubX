@@ -140,7 +140,7 @@ function IceCream.Init(Tabs, ctx)
 	section:Toggle({
 		Title = "血量低自动吃冰淇淋",
 		Icon = "ice-cream-cone",
-		Default = false,
+		Value = false,
 		Callback = function(state)
 			if state then
 				enable()
@@ -150,7 +150,7 @@ function IceCream.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "使用冷却(秒)",
+		Title = "使用冷却(�?",
 		Icon = "timer",
 		Step = 1,
 		Value = { Min = 1, Max = 30, Default = 3 },
@@ -159,7 +159,7 @@ function IceCream.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "触发血量(%)",
+		Title = "触发血�?%)",
 		Icon = "heart-pulse",
 		Step = 1,
 		Value = { Min = 10, Max = 99, Default = 95 },
