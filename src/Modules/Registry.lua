@@ -66,6 +66,7 @@ local Registry = {
 	require("./Utility/PlayerControl"),
 	require("./Movement/FlyV4"),
 	require("./Utility/External"),
+	require("./Utility/Console"),
 }
 
 return Registry
