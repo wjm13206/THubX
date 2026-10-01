@@ -218,7 +218,7 @@ function FlyV4.Init(Tabs, ctx)
 		Callback = function()
 			setFly(not enable)
 			if ctx and ctx.WindUI then
-				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开启 or "已关闭, Duration = 3 })
+				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开启" or "已关闭", Duration = 3 })
 			end
 		end,
 	})
