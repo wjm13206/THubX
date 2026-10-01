@@ -1,8 +1,8 @@
-local UnloadCallbacks: { () -> () } = {}
+local UnloadCallbacks = {}
 
 local Unload = {}
 
-function Unload.OnUnload(fn: () -> ())
+function Unload.OnUnload(fn)
 	table.insert(UnloadCallbacks, fn)
 end
 
@@ -11,8 +11,8 @@ function Unload.Run()
 		pcall(UnloadCallbacks[i])
 	end
 	table.clear(UnloadCallbacks)
-	;(_G as any).THubXLoaded = false
-	;(_G as any).THubXLoading = false
+	_G.THUbXLoaded = false
+	_G.THUbXLoading = false
 end
 
 return Unload

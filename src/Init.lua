@@ -17,7 +17,7 @@ local WindowLoader = require("./UI/Window")
 local ok, WindUI, Window, Tabs = pcall(WindowLoader.Create)
 if not ok then
 	Utils.NotifyFallback("THubX", "WindUI 加载失败，请重试")
-	;(_G as any).THubXLoading = false
+	_G.THUbXLoading = false
 	error(tostring(WindUI))
 end
 
@@ -31,10 +31,10 @@ local ctx = {
 }
 for _, mod in Registry do
 	local okMod, err = pcall(function()
-		(mod :: any).Init(Tabs, ctx)
+		mod.Init(Tabs, ctx)
 	end)
 	if not okMod then
-		warn("[THubX] 模块注册失败: " .. tostring((mod :: any).Title) .. " " .. tostring(err))
+		warn("[THubX] 模块注册失败: " .. tostring(mod.Title) .. " " .. tostring(err))
 	end
 	task.wait()
 end
@@ -46,5 +46,5 @@ WindUI:Notify({
 	Duration = 5,
 })
 Utils.Info("加载成功，用时 " .. cost .. "s")
-;(_G as any).THubXLoaded = true
-;(_G as any).THubXLoading = false
+_G.THUbXLoaded = true
+_G.THUbXLoading = false

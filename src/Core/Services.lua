@@ -2,7 +2,7 @@ local cloneref = cloneref or clonereference or function(obj)
 	return obj
 end
 
-local function Get(name: string)
+local function Get(name)
 	return cloneref(game:GetService(name))
 end
 

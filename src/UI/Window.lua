@@ -5,8 +5,8 @@ local Utils = require("../Core/Utils")
 local WindowLoader = {}
 
 function WindowLoader.LoadWindUI()
-	if (_G as any).THubXWindUI then
-		return (_G as any).THubXWindUI
+	if _G.THUbXWindUI then
+		return _G.THUbXWindUI
 	end
 	local src = Utils.HttpGetWithRetry(Config.WindUIUrl, 3)
 	local fn, err = loadstring(src)
@@ -14,11 +14,11 @@ function WindowLoader.LoadWindUI()
 		error("[THubX] WindUI 解析失败: " .. tostring(err))
 	end
 	local WindUI = fn()
-	;(_G as any).THubXWindUI = WindUI
+	_G.THUbXWindUI = WindUI
 	return WindUI
 end
 
-function WindowLoader.Create(): (any, any)
+function WindowLoader.Create()
 	local WindUI = WindowLoader.LoadWindUI()
 
 	local Window = WindUI:CreateWindow({

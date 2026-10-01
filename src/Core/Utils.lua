@@ -2,26 +2,26 @@ local Services = require("./Services")
 
 local Utils = {}
 
-function Utils.EnsureSingleRun(flag: string): boolean
-	if (_G as any)[flag] then
+function Utils.EnsureSingleRun(flag)
+	if _G[flag] then
 		warn("[THubX] 已经加载了，请不要重复执行。")
 		return false
 	end
-	if (_G as any).THubXLoading then
+	if _G.THUbXLoading then
 		warn("[THubX] 正在加载中，请勿频繁执行。")
 		return false
 	end
-	(_G as any).THubXLoading = true
+	_G.THUbXLoading = true
 	return true
 end
 
-function Utils.Info(msg: string)
+function Utils.Info(msg)
 	pcall(function()
 		Services.LogService:Info("[THubX] " .. msg)
 	end)
 end
 
-function Utils.NotifyFallback(title: string, text: string)
+function Utils.NotifyFallback(title, text)
 	pcall(function()
 		Services.StarterGui:SetCore("SendNotification", {
 			Title = title,
@@ -31,7 +31,7 @@ function Utils.NotifyFallback(title: string, text: string)
 	end)
 end
 
-function Utils.HttpGetWithRetry(url: string, retries: number?): string
+function Utils.HttpGetWithRetry(url, retries)
 	local left = retries or 3
 	local lastErr = ""
 	for i = 1, left do

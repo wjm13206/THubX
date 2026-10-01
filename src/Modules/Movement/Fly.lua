@@ -5,16 +5,16 @@ local Fly = {}
 Fly.Title = "飞行 (示例)"
 
 local flying = false
-local conn: RBXScriptConnection? = nil
+local conn = nil
 
-local function SetFlying(on: boolean)
+local function SetFlying(on)
 	flying = on
 	if conn then
 		conn:Disconnect()
 		conn = nil
 	end
 	local char = Services.Players.LocalPlayer.Character
-	local root = char and char:FindFirstChild("HumanoidRootPart") :: BasePart?
+	local root = char and char:FindFirstChild("HumanoidRootPart")
 	if on and root then
 		conn = Services.RunService.Heartbeat:Connect(function()
 			if root and root.Parent then
@@ -33,7 +33,7 @@ function Fly.Init(Tabs, _ctx)
 	section:Toggle({
 		Title = "启用飞行",
 		Default = false,
-		Callback = function(state: boolean)
+		Callback = function(state)
 			SetFlying(state)
 		end,
 	})
@@ -41,7 +41,7 @@ function Fly.Init(Tabs, _ctx)
 		Title = "飞行速度",
 		Step = 1,
 		Value = { Min = 16, Max = 200, Default = 50 },
-		Callback = function(_v: number)
+		Callback = function(_v)
 		end,
 	})
 end
