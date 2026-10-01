@@ -17,4 +17,5 @@ return {
 	CoreGui = Get("CoreGui"),
 	StarterGui = Get("StarterGui"),
 	LogService = Get("LogService"),
+	MarketplaceService = Get("MarketplaceService"),
 }
