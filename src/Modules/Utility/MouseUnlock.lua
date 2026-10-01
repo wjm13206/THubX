@@ -138,10 +138,10 @@ function MouseUnlock.Init(Tabs, ctx)
 		Callback = function()
 			if isUnlocked then
 				doRestore()
-				ctx.WindUI:Notify({ Title = "鼠标解锁", Content = "已恢�?, Duration = 3 })
+				ctx.WindUI:Notify({ Title = "鼠标解锁", Content = "已恢复", Duration = 3 })
 			else
 				doUnlock()
-				ctx.WindUI:Notify({ Title = "鼠标解锁", Content = "已解�?, Duration = 3 })
+				ctx.WindUI:Notify({ Title = "鼠标解锁", Content = "已解锁", Duration = 3 })
 			end
 		end,
 	})

@@ -476,7 +476,7 @@ function M.Init(Tabs, ctx)
         end,
     })
     section:Button({
-        Title = "开始标�?,
+        Title = "开始标记",
         Icon = "play",
         Callback = function()
             if currentTarget == "" then return end
@@ -497,5 +497,7 @@ Unload.OnUnload(function()
         Engine.unload()
     end)
 end)
+
+M.Engine = Engine
 
 return M

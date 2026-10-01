@@ -295,7 +295,7 @@ function M.Init(Tabs, ctx)
 		end,
 	})
 	section:Keybind({
-		Title = "自由相机开关按�?,
+		Title = "自由相机开关按键",
 		Icon = "keyboard",
 		Value = "F",
 		Callback = function(v)

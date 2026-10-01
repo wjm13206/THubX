@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local M = {}
-M.Title = "防甩�?
+M.Title = "防甩飞"
 
 local cloneref = Services.cloneref or clonereference or function(obj) return obj end
 local Players = cloneref(game:GetService("Players"))
@@ -93,7 +93,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "防甩�? })
+	local section = Tabs.Utility:Section({ Title = "防甩飞" })
 	section:Toggle({
 		Title = "开启防甩飞",
 		Icon = "ban",

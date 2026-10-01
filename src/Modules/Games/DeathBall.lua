@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local DeathBall = {}
-DeathBall.Title = "死亡�?
+DeathBall.Title = "死亡球"
 
 local Players = Services.Players
 local Workspace = Services.Get("Workspace")
@@ -45,7 +45,7 @@ local function createUI()
 	statusText.Size = UDim2.new(0, 200, 0, 30)
 	statusText.Position = UDim2.new(0.5, -100, 0.1, 0)
 	statusText.BackgroundTransparency = 1
-	statusText.Text = "游戏未开�?
+	statusText.Text = "游戏未开始"
 	statusText.TextColor3 = Color3.fromRGB(230, 230, 250)
 	statusText.TextSize = 25
 	statusText.Font = Enum.Font.GothamBold
@@ -100,7 +100,7 @@ local function updateUI()
 	local playerPos = playerChar and playerChar:FindFirstChild("HumanoidRootPart")
 	if not ball or not playerPos then
 		if statusText then
-			statusText.Text = "游戏未开�?
+			statusText.Text = "游戏未开始"
 			statusText.TextColor3 = Color3.fromRGB(230, 230, 250)
 		end
 		if distanceText then
@@ -111,7 +111,7 @@ local function updateUI()
 	local isSpectating = playerPos.Position.Z < -767.55 and playerPos.Position.Y > 279.17
 	if isSpectating then
 		if statusText then
-			statusText.Text = "观战�?
+			statusText.Text = "观战中"
 			statusText.TextColor3 = Color3.fromRGB(230, 230, 250)
 		end
 		if distanceText then
@@ -121,10 +121,10 @@ local function updateUI()
 		local locked = ball.Highlight and ball.Highlight.FillColor ~= Color3.new(1, 1, 1)
 		if statusText then
 			if locked then
-				statusText.Text = "已被球锁�?
+				statusText.Text = "已被球锁定"
 				statusText.TextColor3 = Color3.fromRGB(238, 17, 17)
 			else
-				statusText.Text = "未被球锁�?
+				statusText.Text = "未被球锁定"
 				statusText.TextColor3 = Color3.fromRGB(17, 238, 17)
 			end
 		end
@@ -207,9 +207,9 @@ Unload.OnUnload(function()
 end)
 
 function DeathBall.Init(Tabs, ctx)
-	local section = Tabs.Games:Section({ Title = "死亡�? })
+	local section = Tabs.Games:Section({ Title = "死亡球" })
 	section:Toggle({
-		Title = "启用死亡球辅�?,
+		Title = "启用死亡球辅助",
 		Icon = "volleyball",
 		Value = false,
 		Callback = function(state)
@@ -221,7 +221,7 @@ function DeathBall.Init(Tabs, ctx)
 		end,
 	})
 	section:Button({
-		Title = "手动击球 (R�?",
+		Title = "手动击球 (R键",
 		Icon = "zap",
 		Callback = function()
 			teleportToBallAndBack()

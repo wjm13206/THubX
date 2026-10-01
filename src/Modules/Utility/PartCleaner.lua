@@ -153,7 +153,7 @@ function PartCleaner.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "扫描间隔(�?",
+		Title = "扫描间隔(帧",
 		Icon = "timer",
 		Step = 1,
 		Value = { Min = 1, Max = 60, Default = 10 },

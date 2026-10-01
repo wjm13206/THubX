@@ -1,0 +1,239 @@
+local Services = require("../../Core/Services")
+local Unload = require("../../Core/Unload")
+local HighlightMod = require("../Visual/Highlight")
+local NameTagMod = require("../Visual/NameTag")
+
+local M = {}
+M.Title = "游戏专属"
+
+local Players = Services.Players
+local Workspace = Services.Get("Workspace")
+local ReplicatedStorage = Services.Get("ReplicatedStorage")
+
+local LocalPlayer = Players.LocalPlayer
+local HighlightEngine = HighlightMod.Engine
+local NameTagEngine = NameTagMod.Engine
+
+local handles = {}
+
+local function track(key, handle)
+	if handles[key] then
+		pcall(function()
+			if handles[key].destroy then
+				handles[key]:destroy()
+			end
+			if handles[key].disable then
+				handles[key]:disable()
+			end
+		end)
+	end
+	handles[key] = handle
+end
+
+local function untrack(key)
+	local h = handles[key]
+	handles[key] = nil
+	if h then
+		pcall(function()
+			if h.destroy then
+				h:destroy()
+			end
+			if h.disable then
+				h:disable()
+			end
+		end)
+	end
+end
+
+local function teleportTo(x, y, z)
+	local char = LocalPlayer.Character
+	local root = char and char:FindFirstChild("HumanoidRootPart")
+	if root then
+		root.CFrame = CFrame.new(x, y, z)
+	end
+end
+
+local function addHighlightToggle(section, key, title, target, preset)
+	section:Toggle({
+		Title = title,
+		Icon = "scan",
+		Value = false,
+		Callback = function(state)
+			if state then
+				local h = HighlightEngine.new(target, "fuzzy", preset or "item", 100)
+				h.apply()
+				track(key, h)
+			else
+				untrack(key)
+			end
+		end,
+	})
+end
+
+local function addNameTagToggle(section, key, title, target, text)
+	section:Toggle({
+		Title = title,
+		Icon = "tag",
+		Value = false,
+		Callback = function(state)
+			if state then
+				local h = NameTagEngine.new(target, "fuzzy", 20, true, text)
+				h.enable()
+				track(key, h)
+			else
+				untrack(key)
+			end
+		end,
+	})
+end
+
+local function deleteModelsByName(modelName, notify)
+	local count = 0
+	for _, inst in ipairs(Workspace:GetDescendants()) do
+		if inst:IsA("Model") and inst.Name == modelName then
+			pcall(function()
+				inst:Destroy()
+			end)
+			count = count + 1
+		end
+	end
+	notify("已删除 " .. count .. " 个 " .. modelName)
+end
+
+Unload.OnUnload(function()
+	for key in pairs(handles) do
+		untrack(key)
+	end
+end)
+
+function M.Init(Tabs, ctx)
+	local WindUI = ctx.WindUI
+	local function notify(text)
+		WindUI:Notify({ Title = "游戏专属", Content = text, Duration = 3 })
+	end
+
+	-- 小屋角色扮演：快捷指令
+	local cabinSection = Tabs.Games:Section({ Title = "小屋角色扮演" })
+	for _, cmd in ipairs({ "/re", "/kid", "/shark", "/dog", "/cat" }) do
+		cabinSection:Button({
+			Title = "发送指令 " .. cmd,
+			Icon = "message-square",
+			Callback = function()
+				pcall(function()
+					local TextChatService = Services.Get("TextChatService")
+					if TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService then
+						ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(cmd, "All")
+					else
+						TextChatService.TextChannels.RBXGeneral:SendAsync(cmd)
+					end
+				end)
+			end,
+		})
+	end
+
+	-- 南极探险队
+	local antarcticSection = Tabs.Games:Section({ Title = "南极探险队" })
+	for _, pos in ipairs({
+		{ "大本营", -6015, -158, -35 },
+		{ "营地1", 0, 0, 0 },
+		{ "营地2", 0, 0, 0 },
+	}) do
+		antarcticSection:Button({
+			Title = "传送到" .. pos[1],
+			Icon = "map-pin",
+			Callback = function()
+				teleportTo(pos[2], pos[3], pos[4])
+			end,
+		})
+	end
+
+	-- 西部森林
+	local woodSection = Tabs.Games:Section({ Title = "西部森林" })
+	addNameTagToggle(woodSection, "wood_monster", "怪物标签", "WendigoAI", "怪物")
+	addNameTagToggle(woodSection, "wood_remake", "怪物标签（重制版）", "Wendigo", "怪物")
+	addHighlightToggle(woodSection, "wood_remake_hl", "怪物透视（重制版）", "Wendigo", "hostileNpc")
+
+	-- 警笛头：遗产
+	local sirenSection = Tabs.Games:Section({ Title = "警笛头：遗产" })
+	addHighlightToggle(sirenSection, "siren_crate", "透视盒子", "crate", "item")
+	addNameTagToggle(sirenSection, "siren_crate_nt", "盒子标签", "crate", "盒子")
+	addHighlightToggle(sirenSection, "siren_berry", "透视浆果", "berry", "item")
+	addNameTagToggle(sirenSection, "siren_berry_nt", "浆果标签", "berry", "浆果")
+	sirenSection:Button({
+		Title = "传送到树顶",
+		Icon = "map-pin",
+		Callback = function()
+			teleportTo(69, 206, -72)
+		end,
+	})
+
+	-- 噩梦之行
+	local nightmareSection = Tabs.Games:Section({ Title = "噩梦之行" })
+	addHighlightToggle(nightmareSection, "nightmare_monster", "高亮怪物", "Monster", "hostileNpc")
+	nightmareSection:Button({
+		Title = "高亮芝士",
+		Icon = "scan",
+		Callback = function()
+			local h = HighlightEngine.new("Cheese", "fuzzy", "item", 100)
+			h.apply()
+			notify("已高亮芝士")
+		end,
+	})
+
+	-- 兽化项目
+	local transfurSection = Tabs.Games:Section({ Title = "兽化项目" })
+	for _, name in ipairs({ "__SnarePhysical", "Landmine", "__ClaymorePhysical" }) do
+		transfurSection:Button({
+			Title = "删除 " .. name,
+			Icon = "trash-2",
+			Callback = function()
+				deleteModelsByName(name, notify)
+			end,
+		})
+	end
+	addHighlightToggle(transfurSection, "transfur_bot", "Bot兽透视", "Bot", "item")
+	addNameTagToggle(transfurSection, "transfur_bot_nt", "Bot兽标签", "Bot", "Bot兽")
+	addHighlightToggle(transfurSection, "transfur_small", "小保险箱透视", "__BasicSmallSafe", "item")
+	addHighlightToggle(transfurSection, "transfur_large", "大保险箱透视", "__BasicLargeSafe", "item")
+	addHighlightToggle(transfurSection, "transfur_golden", "金保险箱透视", "__LargeGoldenSafe", "item")
+	addHighlightToggle(transfurSection, "transfur_crate", "武器盒透视", "Surplus Crate", "item")
+	addHighlightToggle(transfurSection, "transfur_drop", "空投透视", "SupplyDrop", "item")
+
+	-- 后院生存
+	local backyardSection = Tabs.Games:Section({ Title = "后院生存" })
+	addHighlightToggle(backyardSection, "yard_skin", "窃皮者透视", "Skin Stealer", "hostileNpc")
+	addNameTagToggle(backyardSection, "yard_skin_nt", "窃皮者标签", "Skin Stealer", "[敌对] 窃皮者")
+	addHighlightToggle(backyardSection, "yard_shrieker", "瞎子透视", "Shrieker", "hostileNpc")
+	addNameTagToggle(backyardSection, "yard_shrieker_nt", "瞎子标签", "Shrieker", "[敌对] 瞎子")
+	addHighlightToggle(backyardSection, "yard_wretch", "悲尸透视", "Wretch", "hostileNpc")
+	addNameTagToggle(backyardSection, "yard_wretch_nt", "悲尸标签", "Wretch", "[敌对] 悲尸")
+	addHighlightToggle(backyardSection, "yard_phantom", "梦魇透视", "Phantom", "hostileNpc")
+	addNameTagToggle(backyardSection, "yard_phantom_nt", "梦魇标签", "Phantom", "[敌对] 梦魇")
+	addHighlightToggle(backyardSection, "yard_bacteria", "细菌透视", "Bacteria", "hostileNpc")
+	addHighlightToggle(backyardSection, "yard_recon", "侦察兵透视", "Recon", "neutralNpc")
+	addHighlightToggle(backyardSection, "yard_mech", "修理工透视", "Mechanic", "neutralNpc")
+
+	-- 最黑暗的时刻
+	local darkSection = Tabs.Games:Section({ Title = "最黑暗的时刻" })
+	addHighlightToggle(darkSection, "dark_scrap", "收集物透视", "Scrap", "item")
+	addNameTagToggle(darkSection, "dark_scrap_nt", "收集物标签", "Scrap", "[收集物]")
+
+	-- 深渊
+	local abyssSection = Tabs.Games:Section({ Title = "深渊" })
+	abyssSection:Button({
+		Title = "传送灯笼商店",
+		Icon = "map-pin",
+		Callback = function()
+			teleportTo(-375, -11932, -504)
+		end,
+	})
+
+	-- 后悔电梯
+	local regSection = Tabs.Games:Section({ Title = "后悔电梯" })
+	addHighlightToggle(regSection, "reg_coins", "硬币透视", "Coin", "normal")
+	addNameTagToggle(regSection, "reg_coins_nt", "硬币标签", "Coin", "硬币")
+	addHighlightToggle(regSection, "reg_firewood", "木头透视", "Firewood", "item")
+	addNameTagToggle(regSection, "reg_firewood_nt", "木头标签", "Firewood", "[木头]")
+end
+
+return M

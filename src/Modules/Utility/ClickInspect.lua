@@ -40,7 +40,7 @@ local function setEnabled(on)
 				print("材质: " .. tostring(target.Material))
 				print("锚定: " .. tostring(target.Anchored))
 				print("碰撞: " .. tostring(target.CanCollide))
-				print("透明�? " .. tostring(target.Transparency))
+				print("透明度 " .. tostring(target.Transparency))
 			end
 			print("==============================")
 		end)

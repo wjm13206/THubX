@@ -132,7 +132,7 @@ function Landing.Init(Tabs, ctx)
 		end,
 	})
 	section:Button({
-		Title = "测试一次特�?,
+		Title = "测试一次特效",
 		Icon = "play",
 		Callback = function()
 			local character = Players.LocalPlayer.Character

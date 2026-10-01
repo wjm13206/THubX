@@ -41,7 +41,7 @@ local function startReceiver()
 		local messagetext = message.Text
 		pcall(function()
 			if message.WasRewritten then
-				messagetext = "(已编�? " .. message.RewrittenText
+				messagetext = "(已编辑 " .. message.RewrittenText
 			end
 		end)
 		if WindUI then
@@ -64,7 +64,7 @@ function ChatControl.Init(Tabs, ctx)
 	local pendingText = ""
 	local section = Tabs.Chat:Section({Title = "聊天控制"})
 	section:Input({
-		Title = "发送内�?,
+		Title = "发送内容",
 		Icon = "message-square",
 		Placeholder = "输入要发送的消息",
 		Callback = function(v)
@@ -72,7 +72,7 @@ function ChatControl.Init(Tabs, ctx)
 		end,
 	})
 	section:Button({
-		Title = "发送消�?,
+		Title = "发送消息",
 		Icon = "send",
 		Callback = function()
 			if pendingText ~= "" then
@@ -81,7 +81,7 @@ function ChatControl.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "通知显示收到的消�?,
+		Title = "通知显示收到的消息",
 		Icon = "bell",
 		Value = false,
 		Callback = function(state)

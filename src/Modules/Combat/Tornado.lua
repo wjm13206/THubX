@@ -1,7 +1,7 @@
 local Unload = require("../../Core/Unload")
 
 local Tornado = {}
-Tornado.Title = "龙卷�?
+Tornado.Title = "龙卷飞"
 
 local cloneref = cloneref or clonereference or function(obj) return obj end
 local Players = cloneref(game:GetService("Players"))
@@ -195,9 +195,9 @@ Unload.OnUnload(function()
 end)
 
 function Tornado.Init(Tabs, ctx)
-	local section = Tabs.Combat:Section({ Title = "龙卷�? })
+	local section = Tabs.Combat:Section({ Title = "龙卷飞" })
 	section:Toggle({
-		Title = "启用龙卷�?,
+		Title = "启用龙卷飞",
 		Icon = "tornado",
 		Value = false,
 		Callback = function(state)

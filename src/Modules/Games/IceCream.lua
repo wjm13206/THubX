@@ -150,7 +150,7 @@ function IceCream.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "使用冷却(�?",
+		Title = "使用冷却(秒",
 		Icon = "timer",
 		Step = 1,
 		Value = { Min = 1, Max = 30, Default = 3 },
@@ -159,7 +159,7 @@ function IceCream.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "触发血�?%)",
+		Title = "触发血量%)",
 		Icon = "heart-pulse",
 		Step = 1,
 		Value = { Min = 10, Max = 99, Default = 95 },

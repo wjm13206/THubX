@@ -45,13 +45,17 @@ function WindowLoader.Create()
 		Utility = Window:Tab({ Title = "实用", Icon = "wrench" }),
 		Chat = Window:Tab({ Title = "聊天", Icon = "message-circle" }),
 		Games = Window:Tab({ Title = "游戏", Icon = "gamepad-2" }),
+		Basic = Window:Tab({ Title = "基础设置", Icon = "pencil-ruler" }),
+		ScriptHub = Window:Tab({ Title = "脚本中心", Icon = "computer" }),
+		Audio = Window:Tab({ Title = "音频", Icon = "audio-waveform" }),
+		Filter = Window:Tab({ Title = "滤镜", Icon = "sparkles" }),
 		Settings = Window:Tab({ Title = "设置", Icon = "settings" }),
 	}
 
-	-- 设置页：界面 + 系统，分 Section 组织，符�?WindUI 规范
+	-- 设置页：界面 + 系统，分 Section 组织，符合WindUI 规范
 	local uiSection = Tabs.Settings:Section({ Title = "界面" })
 	uiSection:Keybind({
-		Title = "界面开关按�?,
+		Title = "界面开关按键",
 		Icon = "keyboard",
 		Value = "RightShift",
 		Callback = function(v)
@@ -108,7 +112,7 @@ function WindowLoader.Create()
 				Window:Destroy()
 			end)
 			Unload.Run()
-			Utils.Info("已卸�?)
+			Utils.Info("已卸载")
 		end,
 	})
 

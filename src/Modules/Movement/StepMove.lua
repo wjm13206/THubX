@@ -97,12 +97,12 @@ function Engine.SetDistance(distance)
 end
 
 local M = {}
-M.Title = "方向键步�?
+M.Title = "方向键步移"
 
 function M.Init(Tabs, ctx)
     local section = Tabs.Movement:Section({ Title = "步移" })
     section:Toggle({
-        Title = "方向键步�?,
+        Title = "方向键步移",
         Icon = "move",
         Value = false,
         Callback = function(state)

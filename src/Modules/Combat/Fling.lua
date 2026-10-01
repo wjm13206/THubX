@@ -860,7 +860,7 @@ end)
 function Fling.Init(Tabs, ctx)
 	local section = Tabs.Combat:Section({ Title = "甩飞" })
 	section:Toggle({
-		Title = "普通甩�?,
+		Title = "普通甩飞",
 		Icon = "send",
 		Value = false,
 		Callback = function(state)
@@ -929,7 +929,7 @@ function Fling.Init(Tabs, ctx)
 		Title = "指定甩飞目标",
 		Icon = "user",
 		Value = "",
-		Placeholder = "玩家�?/ random / all",
+		Placeholder = "玩家名/ random / all",
 		Callback = function(v)
 			targetName = v
 		end,

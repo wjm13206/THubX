@@ -526,7 +526,7 @@ function Orbit.Init(Tabs, ctx)
 		Title = "环绕目标",
 		Icon = "user",
 		Value = "",
-		Placeholder = "玩家名，�?自己",
+		Placeholder = "玩家名，空自己",
 		Callback = function(v)
 			targetName = v
 		end,

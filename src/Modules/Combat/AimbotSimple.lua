@@ -108,7 +108,7 @@ function AimbotSimple.Init(Tabs, ctx)
 			Title = "当前执行器不支持 Drawing",
 			Icon = "triangle-alert",
 			Callback = function()
-				ctx.Utils.NotifyFallback("THubX", "当前执行器不支持 Drawing �?)
+				ctx.Utils.NotifyFallback("THubX", "当前执行器不支持 Drawing 库")
 			end,
 		})
 		return

@@ -74,12 +74,12 @@ function Engine.disable()
 end
 
 local M = {}
-M.Title = "防摔�?
+M.Title = "防摔落"
 
 function M.Init(Tabs, ctx)
     local section = Tabs.Movement:Section({ Title = "保护" })
     section:Toggle({
-        Title = "防摔�?,
+        Title = "防摔落",
         Icon = "shield",
         Value = false,
         Callback = function(state)

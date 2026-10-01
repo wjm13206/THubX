@@ -68,16 +68,16 @@ local cost = string.format("%.2f", tick() - startTime)
 if #failed > 0 then
 	WindUI:Notify({
 		Title = "THubX",
-		Content = "启动完成，用�?" .. cost .. "s�? .. #failed .. " 个模块失�?" .. table.concat(failed, ","),
+		Content = "启动完成，用时" .. cost .. "s！" .. #failed .. " 个模块失败" .. table.concat(failed, ","),
 		Duration = 10,
 	})
 else
 	WindUI:Notify({
 		Title = "THubX",
-		Content = "启动成功，用�?" .. cost .. "s",
+		Content = "启动成功，用时" .. cost .. "s",
 		Duration = 5,
 	})
 end
-Utils.Info("加载成功，用�?" .. cost .. "s")
+Utils.Info("加载成功，用时" .. cost .. "s")
 _G.THubXLoaded = true
 _G.THubXLoading = false

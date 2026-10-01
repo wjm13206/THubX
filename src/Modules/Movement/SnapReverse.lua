@@ -68,7 +68,7 @@ function SnapReverse.Init(Tabs, ctx)
 	section:Input({
 		Title = "反转按键",
 		Icon = "keyboard",
-		Placeholder = "输入按键名，�?G",
+		Placeholder = "输入按键名，如G",
 		Callback = function(v)
 			if type(v) == "string" and v ~= "" then
 				pendingKey = v

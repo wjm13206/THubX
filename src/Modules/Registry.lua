@@ -70,6 +70,20 @@ local Registry = {
 	entry("PlayerControl", function() return require("./Utility/PlayerControl") end),
 	entry("FlyV4", function() return require("./Movement/FlyV4") end),
 	entry("External", function() return require("./Utility/External") end),
+	entry("Stats", function() return require("./Basic/Stats") end),
+	entry("NightVision", function() return require("./Visual/NightVision") end),
+	entry("Filter", function() return require("./Visual/Filter") end),
+	entry("Jump", function() return require("./Movement/Jump") end),
+	entry("Protection", function() return require("./Utility/Protection") end),
+	entry("DataEdit", function() return require("./Utility/DataEdit") end),
+	entry("ScriptHub", function() return require("./Utility/ScriptHub") end),
+	entry("AudioChecker", function() return require("./Utility/AudioChecker") end),
+	entry("About", function() return require("./Utility/About") end),
+	entry("ChatReceiver", function() return require("./Chat/ChatReceiver") end),
+	entry("FlingTeleport", function() return require("./Combat/FlingTeleport") end),
+	entry("Special", function() return require("./Games/Special") end),
+	entry("Grace", function() return require("./Games/Grace") end),
+	entry("DelusionsOffice", function() return require("./Games/DelusionsOffice") end),
 }
 
 return Registry

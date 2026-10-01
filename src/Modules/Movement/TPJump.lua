@@ -58,7 +58,7 @@ function TPJump.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "跳跃爆发�?,
+		Title = "跳跃爆发力",
 		Icon = "gauge",
 		Step = 5,
 		Value = {Min = 0, Max = 200, Default = 40},

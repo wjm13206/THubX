@@ -212,13 +212,13 @@ function FlyV4.Init(Tabs, ctx)
 		end,
 	})
 	section:Keybind({
-		Title = "飞行开�?,
+		Title = "飞行开关",
 		Icon = "keyboard",
 		Value = "F",
 		Callback = function()
 			setFly(not enable)
 			if ctx and ctx.WindUI then
-				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开�? or "已关�?, Duration = 3 })
+				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开启 or "已关闭, Duration = 3 })
 			end
 		end,
 	})

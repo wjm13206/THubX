@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local M = {}
-M.Title = "Ctrl点击传�?
+M.Title = "Ctrl点击传送"
 
 local cloneref = Services.cloneref or clonereference or function(obj) return obj end
 local userInputService = cloneref(game:GetService("UserInputService"))
@@ -68,9 +68,9 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "点击传�? })
+	local section = Tabs.Utility:Section({ Title = "点击传送" })
 	section:Toggle({
-		Title = "按住Ctrl点击地面传�?,
+		Title = "按住Ctrl点击地面传送",
 		Icon = "map-pin",
 		Value = false,
 		Callback = function(state)

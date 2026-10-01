@@ -122,7 +122,7 @@ function LockCam.Init(Tabs, ctx)
 		end,
 	})
 	section:Keybind({
-		Title = "锁定按键�?,
+		Title = "锁定按键名",
 		Icon = "keyboard",
 		Value = "Tab",
 		Callback = function(v)

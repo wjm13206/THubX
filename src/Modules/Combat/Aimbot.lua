@@ -340,7 +340,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "队伍检�?,
+		Title = "队伍检查",
 		Icon = "users",
 		Value = false,
 		Callback = function(state)
@@ -348,7 +348,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "穿墙检�?,
+		Title = "穿墙检查",
 		Icon = "brick-wall",
 		Value = false,
 		Callback = function(state)
@@ -356,7 +356,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "显示范围�?,
+		Title = "显示范围",
 		Icon = "circle",
 		Value = true,
 		Callback = function(state)
@@ -373,7 +373,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "平滑�?,
+		Title = "平滑",
 		Icon = "waves",
 		Step = 1,
 		Value = { Min = 0, Max = 50, Default = 30 },
@@ -391,7 +391,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "粘性瞄�?,
+		Title = "粘性瞄准",
 		Icon = "magnet",
 		Value = false,
 		Callback = function(state)
@@ -407,7 +407,7 @@ function Aimbot.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "预测�?,
+		Title = "预测",
 		Icon = "gauge",
 		Step = 10,
 		Value = { Min = 0, Max = 300, Default = 100 },

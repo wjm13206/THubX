@@ -401,7 +401,7 @@ function TCPTrigger.Init(Tabs, ctx)
 		end,
 	})
 	section:Toggle({
-		Title = "显示范围�?,
+		Title = "显示范围圈",
 		Icon = "circle",
 		Value = true,
 		Callback = function(state)

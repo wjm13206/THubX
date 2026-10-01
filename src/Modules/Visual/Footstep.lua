@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local Footstep = {}
-Footstep.Title = "落脚点指�?
+Footstep.Title = "落脚点指示"
 
 local Players = Services.Players
 local RunService = Services.RunService
@@ -150,9 +150,9 @@ Unload.OnUnload(function()
 end)
 
 function Footstep.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "落脚点指�? })
+	local section = Tabs.Visual:Section({ Title = "落脚点指示" })
 	section:Toggle({
-		Title = "显示落脚�?,
+		Title = "显示落脚点",
 		Icon = "footprints",
 		Value = false,
 		Callback = function(v)

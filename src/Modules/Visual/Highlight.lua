@@ -437,4 +437,6 @@ Unload.OnUnload(function()
     end)
 end)
 
+M.Engine = Engine
+
 return M

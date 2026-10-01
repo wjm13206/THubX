@@ -151,12 +151,12 @@ function Translator.Init(Tabs, ctx)
 		end,
 	})
 	section:Button({
-		Title = "查看翻译状�?,
+		Title = "查看翻译状态",
 		Icon = "info",
 		Callback = function()
 			ctx.WindUI:Notify({
 				Title = "界面翻译",
-				Content = "待翻�?" .. #taskQueue .. " 条，已翻�?" .. translatedCount .. " �?,
+				Content = "待翻译" .. #taskQueue .. " 条，已翻译" .. translatedCount .. " 条",
 				Duration = 3,
 			})
 		end,

@@ -2,7 +2,7 @@ local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
 
 local Movable = {}
-Movable.Title = "移动物高�?
+Movable.Title = "移动物高亮"
 
 local Workspace = Services.Get("Workspace")
 local RunService = Services.RunService
@@ -160,9 +160,9 @@ Unload.OnUnload(function()
 end)
 
 function Movable.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "移动物高�? })
+	local section = Tabs.Visual:Section({ Title = "移动物高亮" })
 	section:Toggle({
-		Title = "高亮未锚定部�?,
+		Title = "高亮未锚定部件",
 		Icon = "boxes",
 		Value = false,
 		Callback = function(v)
@@ -170,7 +170,7 @@ function Movable.Init(Tabs, ctx)
 		end,
 	})
 	section:Slider({
-		Title = "最大高�?,
+		Title = "最大高度",
 		Icon = "arrow-up",
 		Step = 10,
 		Value = { Min = 20, Max = 1000, Default = 100 },
