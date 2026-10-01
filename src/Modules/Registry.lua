@@ -1,5 +1,5 @@
 local Registry = {
-	require("../Movement/Fly"),
+	require("./Movement/Fly"),
 }
 
 return Registry
