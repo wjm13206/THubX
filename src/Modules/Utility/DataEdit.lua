@@ -17,6 +17,7 @@ local lastDeath = nil
 local deathConn = nil
 local charAddedConn = nil
 local exitCount = 0
+local recordEnabled = false
 
 local function getHum()
 	local char = LocalPlayer.Character
@@ -46,6 +47,37 @@ local function hookDeath(char)
 				lastDeath = root.CFrame
 			end
 		end)
+	end
+end
+
+local function startRecording()
+	if recordEnabled then return end
+	recordEnabled = true
+	if LocalPlayer.Character then
+		hookDeath(LocalPlayer.Character)
+	end
+	charAddedConn = LocalPlayer.CharacterAdded:Connect(function(char)
+		char:WaitForChild("HumanoidRootPart")
+		hookDeath(char)
+		if spawnPos ~= nil then
+			task.wait(0.1)
+			local root = getRoot()
+			if root then
+				root.CFrame = spawnPos
+			end
+		end
+	end)
+end
+
+local function stopRecording()
+	recordEnabled = false
+	if deathConn then
+		deathConn:Disconnect()
+		deathConn = nil
+	end
+	if charAddedConn then
+		charAddedConn:Disconnect()
+		charAddedConn = nil
 	end
 end
 
@@ -140,22 +172,19 @@ function M.Init(Tabs, ctx)
 		end
 	end
 
-	if LocalPlayer.Character then
-		hookDeath(LocalPlayer.Character)
-	end
-	charAddedConn = LocalPlayer.CharacterAdded:Connect(function(char)
-		char:WaitForChild("HumanoidRootPart")
-		hookDeath(char)
-		if spawnPos ~= nil then
-			task.wait(0.1)
-			local root = getRoot()
-			if root then
-				root.CFrame = spawnPos
-			end
-		end
-	end)
-
 	local section = Tabs.Utility:Section({ Title = "数据修改" })
+	section:Toggle({
+		Title = "记录死亡位置",
+		Icon = "ghost",
+		Value = false,
+		Callback = function(state)
+			if state then
+				startRecording()
+			else
+				stopRecording()
+			end
+		end,
+	})
 	section:Button({
 		Title = "回满血",
 		Icon = "heart-pulse",

@@ -72,7 +72,7 @@ local function enable()
 	end)
 
 	keyConn = UserInputService.InputBegan:Connect(function(input)
-		if input.KeyCode == Enum.KeyCode.Delete then
+		if input.KeyCode == Enum.KeyCode.Delete and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 			disable()
 		end
 	end)

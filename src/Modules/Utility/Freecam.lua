@@ -154,6 +154,11 @@ local function setModuleEnabled(value)
 	if moduleEnabled == value then return end
 	moduleEnabled = value
 	if value then
+		table.insert(eventConnections, UserInputService.InputBegan:Connect(onKeyPress))
+		table.insert(eventConnections, UserInputService.InputEnded:Connect(onKeyRelease))
+		table.insert(eventConnections, UserInputService.InputChanged:Connect(onMouseWheel))
+		table.insert(eventConnections, LocalPlayer.CharacterAdded:Connect(onCharacterAdded))
+		table.insert(eventConnections, LocalPlayer.CharacterRemoving:Connect(onCharacterRemoving))
 		if isMobile then
 			autoEnabledOnMobile = true
 			internalEnable()
@@ -163,6 +168,12 @@ local function setModuleEnabled(value)
 			internalDisable()
 		end
 		autoEnabledOnMobile = false
+		for _, connection in pairs(eventConnections) do
+			if connection.Connected then
+				connection:Disconnect()
+			end
+		end
+		table.clear(eventConnections)
 	end
 end
 
@@ -178,7 +189,7 @@ end
 local function onKeyPress(input, gameProcessed)
 	if not moduleEnabled then return end
 	if gameProcessed or UserInputService:GetFocusedTextBox() then return end
-	if input.KeyCode == currentKeybind then
+	if input.KeyCode == currentKeybind and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 		if freecamEnabled then
 			internalDisable()
 		else
@@ -275,12 +286,6 @@ local function fullUnload()
 	end
 	UserInputService.MouseBehavior = Enum.MouseBehavior.Default
 end
-
-table.insert(eventConnections, UserInputService.InputBegan:Connect(onKeyPress))
-table.insert(eventConnections, UserInputService.InputEnded:Connect(onKeyRelease))
-table.insert(eventConnections, UserInputService.InputChanged:Connect(onMouseWheel))
-table.insert(eventConnections, LocalPlayer.CharacterAdded:Connect(onCharacterAdded))
-table.insert(eventConnections, LocalPlayer.CharacterRemoving:Connect(onCharacterRemoving))
 
 Unload.OnUnload(fullUnload)
 

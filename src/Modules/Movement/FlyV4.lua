@@ -12,6 +12,9 @@ local speeds = 1
 local enable = false
 local tpwalking = false
 local flyConns = {}
+local bindKey = Enum.KeyCode.F
+local toggleObj = nil
+local keyConn = nil
 
 local function getChar()
 	local plr = Players.LocalPlayer
@@ -186,11 +189,30 @@ local function disable()
 	table.clear(flyConns)
 end
 
-Unload.OnUnload(disable)
+local function onInputBegan(input, gameProcessed)
+	if gameProcessed then
+		return
+	end
+	if input.KeyCode == bindKey and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+		if toggleObj then
+			toggleObj:Set(not enable)
+		end
+		return Enum.ContextActionResult.Sink
+	end
+end
+
+Unload.OnUnload(function()
+	disable()
+	if keyConn then
+		keyConn:Disconnect()
+		keyConn = nil
+	end
+end)
 
 function FlyV4.Init(Tabs, ctx)
 	local section = Tabs.Movement:Section({ Title = "V4飞行" })
-	section:Toggle({
+	keyConn = UserInputService.InputBegan:Connect(onInputBegan)
+	toggleObj = section:Toggle({
 		Title = "启用V4飞行",
 		Icon = "plane",
 		Value = false,
@@ -215,10 +237,12 @@ function FlyV4.Init(Tabs, ctx)
 		Title = "飞行开关",
 		Icon = "keyboard",
 		Value = "F",
-		Callback = function()
-			setFly(not enable)
-			if ctx and ctx.WindUI then
-				ctx.WindUI:Notify({ Title = "V4飞行", Content = enable and "已开启" or "已关闭", Duration = 3 })
+		Callback = function(v)
+			local ok, key = pcall(function()
+				return Enum.KeyCode[v]
+			end)
+			if ok and key then
+				bindKey = key
 			end
 		end,
 	})

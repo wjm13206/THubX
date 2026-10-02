@@ -51,6 +51,13 @@ local function startReceiver()
 	table.insert(connections, conn)
 end
 
+local function stopReceiver()
+	for _, conn in ipairs(connections) do
+		conn:Disconnect()
+	end
+	table.clear(connections)
+end
+
 Unload.OnUnload(function()
 	for _, conn in ipairs(connections) do
 		conn:Disconnect()
@@ -60,7 +67,6 @@ end)
 
 function ChatControl.Init(Tabs, ctx)
 	WindUI = ctx.WindUI
-	startReceiver()
 	local pendingText = ""
 	local section = Tabs.Chat:Section({Title = "聊天控制"})
 	section:Input({
@@ -86,6 +92,12 @@ function ChatControl.Init(Tabs, ctx)
 		Value = false,
 		Callback = function(state)
 			showIncoming = state
+			if state then
+				stopReceiver()
+				startReceiver()
+			else
+				stopReceiver()
+			end
 		end,
 	})
 end

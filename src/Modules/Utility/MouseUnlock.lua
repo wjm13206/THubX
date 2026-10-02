@@ -60,17 +60,14 @@ local function onInputBegan(input, gameProcessed)
 		return
 	end
 	local key = input.KeyCode
-	if key == Enum.KeyCode.K then
-		keyStates.K = true
-	elseif key == Enum.KeyCode.L then
-		keyStates.L = true
-	end
-	if keyStates.K and keyStates.L and not toggleTriggered then
-		toggleTriggered = true
-		if isUnlocked then
-			doRestore()
-		else
-			doUnlock()
+	if key == Enum.KeyCode.K and Services.UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+		if not toggleTriggered then
+			toggleTriggered = true
+			if isUnlocked then
+				doRestore()
+			else
+				doUnlock()
+			end
 		end
 	end
 end
@@ -81,10 +78,6 @@ local function onInputEnded(input)
 	end
 	local key = input.KeyCode
 	if key == Enum.KeyCode.K then
-		keyStates.K = false
-		toggleTriggered = false
-	elseif key == Enum.KeyCode.L then
-		keyStates.L = false
 		toggleTriggered = false
 	end
 end
@@ -125,7 +118,7 @@ end)
 function MouseUnlock.Init(Tabs, ctx)
 	local section = Tabs.Utility:Section({ Title = "鼠标解锁" })
 	section:Toggle({
-		Title = "启用 (K+L 切换解锁)",
+		Title = "启用 (Ctrl+K 切换解锁)",
 		Icon = "mouse",
 		Value = false,
 		Callback = function(state)

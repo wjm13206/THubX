@@ -105,7 +105,7 @@ local function bindEvents()
 		ACTION_NAME,
 		function(actionName, inputState, inputObject)
 			if inputState == Enum.UserInputState.Change then
-				if modifierHeld then
+				if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 					local now = tick()
 					if now - lastScrollTime < 0.1 then
 						return Enum.ContextActionResult.Sink
@@ -128,36 +128,26 @@ local function bindEvents()
 		Enum.UserInputType.MouseWheel
 	)
 	local inputBeganConn = UserInputService.InputBegan:Connect(function(input, gameProcessed)
-		if input.KeyCode == modifierKey then
-			modifierHeld = true
-		else
-			local pressedSlot = nil
-			for i = 1, 9 do
-				if input.KeyCode == numberToKeyCode[i] then
-					pressedSlot = i
+		local pressedSlot = nil
+		for i = 1, 9 do
+			if input.KeyCode == numberToKeyCode[i] then
+				pressedSlot = i
+				break
+			end
+		end
+		if not pressedSlot and input.KeyCode == Enum.KeyCode.Zero then
+			pressedSlot = 0
+		end
+		if pressedSlot then
+			for idx, slot in ipairs(validSlots) do
+				if slot == pressedSlot then
+					currentSlotIndex = idx
 					break
-				end
-			end
-			if not pressedSlot and input.KeyCode == Enum.KeyCode.Zero then
-				pressedSlot = 0
-			end
-			if pressedSlot then
-				for idx, slot in ipairs(validSlots) do
-					if slot == pressedSlot then
-						currentSlotIndex = idx
-						break
-					end
 				end
 			end
 		end
 	end)
 	table.insert(connections, inputBeganConn)
-	local inputEndedConn = UserInputService.InputEnded:Connect(function(input, gameProcessed)
-		if input.KeyCode == modifierKey then
-			modifierHeld = false
-		end
-	end)
-	table.insert(connections, inputEndedConn)
 	local charAddedConn = player.CharacterAdded:Connect(function(newChar)
 		character = newChar
 		task.wait(0.2)

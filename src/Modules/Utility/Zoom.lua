@@ -62,7 +62,7 @@ local function enable()
 	currentZoomFOV = defaultZoomFOV
 	inputBeganConn = UserInputService.InputBegan:Connect(function(input, gameProcessed)
 		if gameProcessed then return end
-		if isMatchingInput(input) then
+		if isMatchingInput(input) and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 			startZoom()
 		end
 		if isZooming then

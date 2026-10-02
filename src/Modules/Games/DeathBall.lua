@@ -9,6 +9,7 @@ local Workspace = Services.Get("Workspace")
 local VirtualInputManager = Services.Get("VirtualInputManager")
 local ContextActionService = Services.Get("ContextActionService")
 local RunService = Services.RunService
+local UserInputService = Services.UserInputService
 local LocalPlayer = Players.LocalPlayer
 
 local connections = {}
@@ -156,7 +157,7 @@ local function enable()
 		end
 	end))
 	table.insert(connections, ContextActionService:BindAction("THubXTeleportToBall", function(actionName, inputState)
-		if inputState == Enum.UserInputState.Begin then
+		if inputState == Enum.UserInputState.Begin and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 			teleportToBallAndBack()
 		end
 		return Enum.ContextActionResult.Pass

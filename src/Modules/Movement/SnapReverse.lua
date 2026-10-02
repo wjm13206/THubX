@@ -26,7 +26,7 @@ local function onInputBegan(input, gameProcessed)
 	if gameProcessed then
 		return
 	end
-	if input.KeyCode == currentKeyBind then
+	if input.KeyCode == currentKeyBind and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 		snapCameraReverse()
 	end
 end

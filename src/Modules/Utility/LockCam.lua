@@ -8,6 +8,7 @@ local Players = Services.Players
 local Workspace = Services.Get("Workspace")
 local RunService = Services.RunService
 local ContextActionService = Services.Get("ContextActionService")
+local UserInputService = Services.UserInputService
 
 local ACTION = "THubXLockCamera"
 local bindKey = Enum.KeyCode.Tab
@@ -54,6 +55,9 @@ local function onAction(_, state)
 		return Enum.ContextActionResult.Pass
 	end
 	if state == Enum.UserInputState.Begin then
+		if not UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+			return Enum.ContextActionResult.Pass
+		end
 		local hrp = getHRP()
 		local cam = Workspace.CurrentCamera
 		if hrp and cam then

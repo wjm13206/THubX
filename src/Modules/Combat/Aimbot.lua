@@ -191,7 +191,7 @@ local function _setupInputListeners()
 	if _isMobile then return end
 
 	local keyBeganConn = _userInputService.InputBegan:Connect(function(input)
-		if input.KeyCode == _keybind and not _useMouse then
+		if input.KeyCode == _keybind and not _useMouse and _userInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 			_target = _getClosestToMouse()
 			_isAimKeyDown = true
 		end
@@ -297,6 +297,14 @@ end
 
 local function enable()
 	_enabled = true
+	_checkMobile()
+	if not _fovCircle then
+		_createFovCircle()
+	end
+	if #_connections == 0 then
+		_setupInputListeners()
+		_setupMainLoop()
+	end
 	if _isMobile then
 		_isAimKeyDown = true
 	end
@@ -307,6 +315,14 @@ local function disable()
 	_isAimKeyDown = false
 	_target = nil
 	_cancelTween()
+	for _, conn in ipairs(_connections) do
+		conn:Disconnect()
+	end
+	table.clear(_connections)
+	if _fovCircle then
+		_fovCircle.Gui.Enabled = false
+		_fovCircle.Stroke.Enabled = false
+	end
 end
 
 local function setFov(v)
@@ -319,11 +335,6 @@ end
 Unload.OnUnload(function()
 	disable()
 end)
-
-_checkMobile()
-_createFovCircle()
-_setupInputListeners()
-_setupMainLoop()
 
 function Aimbot.Init(Tabs, ctx)
 	local section = Tabs.Combat:Section({ Title = "自瞄" })

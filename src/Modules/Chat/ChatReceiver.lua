@@ -10,7 +10,7 @@ local TextChatService = Services.Get("TextChatService")
 local LocalPlayer = Players.LocalPlayer
 
 local CHAT_MAX = 100
-local enabled = true
+local enabled = false
 local messages = {}
 local conn = nil
 local WindUIRef = nil
@@ -60,15 +60,22 @@ end)
 
 function M.Init(Tabs, ctx)
 	WindUIRef = ctx.WindUI
-	startReceiver()
 
 	local section = Tabs.Chat:Section({ Title = "聊天接收" })
 	section:Toggle({
 		Title = "启用聊天接收",
 		Icon = "bell",
-		Value = true,
+		Value = false,
 		Callback = function(state)
 			enabled = state
+			if state then
+				startReceiver()
+			else
+				if conn then
+					conn:Disconnect()
+					conn = nil
+				end
+			end
 		end,
 	})
 	section:Button({

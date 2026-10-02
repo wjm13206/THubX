@@ -70,6 +70,7 @@ end
 local function restore()
 	fixConn = disc(fixConn)
 	fakeDiedConn = disc(fakeDiedConn)
+	charAddedConn = disc(charAddedConn)
 	local fake = fakeChar
 	local real = realChar
 	fakeChar = nil
@@ -196,6 +197,23 @@ local function setEnabled(on, toggleObj)
 			end)
 		end
 		bindVoidCheck()
+		charAddedConn = disc(charAddedConn)
+		charAddedConn = player.CharacterAdded:Connect(function(newChar)
+			if isInvis then
+				fixConn = disc(fixConn)
+				fakeDiedConn = disc(fakeDiedConn)
+				local fake = fakeChar
+				fakeChar = nil
+				if fake and fake.Parent then
+					pcall(function()
+						fake:Destroy()
+					end)
+				end
+				isInvis = false
+				isRunning = false
+			end
+			realChar = newChar
+		end)
 		isInvis = true
 		isRunning = false
 	else
@@ -204,23 +222,6 @@ local function setEnabled(on, toggleObj)
 		end
 	end
 end
-
-charAddedConn = player.CharacterAdded:Connect(function(newChar)
-	if isInvis then
-		fixConn = disc(fixConn)
-		fakeDiedConn = disc(fakeDiedConn)
-		local fake = fakeChar
-		fakeChar = nil
-		if fake and fake.Parent then
-			pcall(function()
-				fake:Destroy()
-			end)
-		end
-		isInvis = false
-		isRunning = false
-	end
-	realChar = newChar
-end)
 
 Unload.OnUnload(function()
 	if charAddedConn then

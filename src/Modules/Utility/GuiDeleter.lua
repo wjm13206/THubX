@@ -38,7 +38,7 @@ local function setEnabled(on)
 			if processed then
 				return
 			end
-			if input.KeyCode == bindKey then
+			if input.KeyCode == bindKey and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
 				deleteAtCursor()
 			end
 		end)

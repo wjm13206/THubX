@@ -12,6 +12,7 @@ local humanoid = nil
 local rootPart = nil
 local enabled = false
 local wasFalling = false
+local charAddedConn = nil
 
 local function onHeartbeat()
     if not humanoid or not humanoid.Parent then return end
@@ -52,24 +53,23 @@ local function onCharacterAdded(newCharacter)
     end
 end
 
-if player.Character then
-    onCharacterAdded(player.Character)
-end
-
-player.CharacterAdded:Connect(onCharacterAdded)
-
 local Engine = {}
 
 function Engine.enable()
     if enabled then return end
     enabled = true
-    if character then
-        startHeartbeat()
+    charAddedConn = player.CharacterAdded:Connect(onCharacterAdded)
+    if player.Character then
+        onCharacterAdded(player.Character)
     end
 end
 
 function Engine.disable()
     enabled = false
+    if charAddedConn then
+        charAddedConn:Disconnect()
+        charAddedConn = nil
+    end
     stopHeartbeat()
 end
 
