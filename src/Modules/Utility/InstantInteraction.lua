@@ -42,8 +42,8 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "秒交互" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "长按交互改为秒按",
 		Icon = "zap",
 		Value = false,

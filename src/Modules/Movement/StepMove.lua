@@ -100,8 +100,8 @@ local M = {}
 M.Title = "方向键步移"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Movement:Section({ Title = "步移" })
-    section:Toggle({
+    local settings = ctx.FeatureSettings("方向键步移")
+    Tabs.Movement:Toggle({
         Title = "方向键步移",
         Icon = "move",
         Value = false,
@@ -113,7 +113,7 @@ function M.Init(Tabs, ctx)
             end
         end,
     })
-    section:Slider({
+    settings:Slider({
         Title = "步移距离",
         Step = 1,
         Value = { Min = 1, Max = 50, Default = 10 },

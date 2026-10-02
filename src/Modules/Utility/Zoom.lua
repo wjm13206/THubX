@@ -102,8 +102,8 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "缩放视角" })
-	section:Toggle({
+	local settings = ctx.FeatureSettings("缩放视角")
+	Tabs.Utility:Toggle({
 		Title = "启用缩放",
 		Icon = "zoom-in",
 		Value = false,
@@ -115,7 +115,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Keybind({
+	settings:Keybind({
 		Title = "缩放按键",
 		Icon = "keyboard",
 		Value = "C",
@@ -126,7 +126,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "缩放视野",
 		Icon = "eye",
 		Step = 1,

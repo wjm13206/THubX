@@ -6,8 +6,8 @@ local loaded = false
 
 function PlayerControl.Init(Tabs, ctx)
 	local WindUI = ctx.WindUI
-	local section = Tabs.Utility:Section({ Title = "玩家控制" })
-	section:Button({
+
+	Tabs.Utility:Button({
 		Title = "打开玩家控制面板",
 		Icon = "users",
 		Callback = function()

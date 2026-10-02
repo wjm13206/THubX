@@ -298,10 +298,10 @@ Unload.OnUnload(function()
 end)
 
 function HandleKill.Init(Tabs, ctx)
-	local section = Tabs.Combat:Section({ Title = "武器击杀" })
+	local settings = ctx.FeatureSettings("武器击杀")
 	local targetText = "All"
 	local killRange = math.huge
-	section:Input({
+	Tabs.Combat:Input({
 		Title = "击杀目标",
 		Icon = "user",
 		Value = "All",
@@ -310,7 +310,7 @@ function HandleKill.Init(Tabs, ctx)
 			targetText = v
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "击杀范围",
 		Icon = "scan",
 		Step = 10,
@@ -323,7 +323,7 @@ function HandleKill.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Combat:Button({
 		Title = "开始击杀",
 		Icon = "sword",
 		Callback = function()
@@ -335,7 +335,7 @@ function HandleKill.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	section:Button({
+	Tabs.Combat:Button({
 		Title = "停止击杀",
 		Icon = "octagon",
 		Callback = function()

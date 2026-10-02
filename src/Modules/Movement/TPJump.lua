@@ -48,8 +48,8 @@ Unload.OnUnload(function()
 end)
 
 function TPJump.Init(Tabs, ctx)
-	local section = Tabs.Movement:Section({Title = "跳跃增强"})
-	section:Toggle({
+	local settings = ctx.FeatureSettings("跳跃增强")
+	Tabs.Movement:Toggle({
 		Title = "启用跳跃增强",
 		Icon = "chevrons-up",
 		Value = false,
@@ -57,7 +57,7 @@ function TPJump.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "跳跃爆发力",
 		Icon = "gauge",
 		Step = 5,

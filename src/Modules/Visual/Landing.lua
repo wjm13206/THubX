@@ -122,8 +122,7 @@ Unload.OnUnload(function()
 end)
 
 function Landing.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "落地特效" })
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "落地光环",
 		Icon = "circle-dot",
 		Value = false,
@@ -131,7 +130,7 @@ function Landing.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	section:Button({
+	Tabs.Visual:Button({
 		Title = "测试一次特效",
 		Icon = "play",
 		Callback = function()

@@ -68,8 +68,8 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "点击传送" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "按住Ctrl点击地面传送",
 		Icon = "map-pin",
 		Value = false,

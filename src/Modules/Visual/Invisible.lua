@@ -234,9 +234,8 @@ Unload.OnUnload(function()
 end)
 
 function Invisible.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "隐身" })
 	local toggleObj = nil
-	toggleObj = section:Toggle({
+	toggleObj = Tabs.Visual:Toggle({
 		Title = "隐身自己",
 		Icon = "ghost",
 		Value = false,

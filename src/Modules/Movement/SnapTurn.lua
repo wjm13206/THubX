@@ -73,8 +73,7 @@ Unload.OnUnload(function()
 end)
 
 function SnapTurn.Init(Tabs, ctx)
-	local section = Tabs.Movement:Section({Title = "锁定转向"})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "启用锁定转向",
 		Icon = "rotate-cw",
 		Value = false,

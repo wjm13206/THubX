@@ -39,9 +39,9 @@ local ScriptList = {
 
 function M.Init(Tabs, ctx)
 	local WindUI = ctx.WindUI
-	local section = Tabs.ScriptHub:Section({ Title = "推荐脚本（大多未经验证，谨慎使用）" })
+
 	for _, info in ipairs(ScriptList) do
-		section:Button({
+		Tabs.ScriptHub:Button({
 			Title = info.Name,
 			Icon = "download",
 			Callback = function()

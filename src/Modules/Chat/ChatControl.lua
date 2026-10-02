@@ -68,8 +68,7 @@ end)
 function ChatControl.Init(Tabs, ctx)
 	WindUI = ctx.WindUI
 	local pendingText = ""
-	local section = Tabs.Chat:Section({Title = "聊天控制"})
-	section:Input({
+	Tabs.Chat:Input({
 		Title = "发送内容",
 		Icon = "message-square",
 		Placeholder = "输入要发送的消息",
@@ -77,7 +76,7 @@ function ChatControl.Init(Tabs, ctx)
 			pendingText = tostring(v)
 		end,
 	})
-	section:Button({
+	Tabs.Chat:Button({
 		Title = "发送消息",
 		Icon = "send",
 		Callback = function()
@@ -86,7 +85,7 @@ function ChatControl.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Chat:Toggle({
 		Title = "通知显示收到的消息",
 		Icon = "bell",
 		Value = false,

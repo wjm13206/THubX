@@ -61,8 +61,7 @@ end)
 function M.Init(Tabs, ctx)
 	WindUIRef = ctx.WindUI
 
-	local section = Tabs.Chat:Section({ Title = "聊天接收" })
-	section:Toggle({
+	Tabs.Chat:Toggle({
 		Title = "启用聊天接收",
 		Icon = "bell",
 		Value = false,
@@ -78,7 +77,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Chat:Button({
 		Title = "复制最近 10 条消息",
 		Icon = "clipboard",
 		Callback = function()
@@ -99,7 +98,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Chat:Button({
 		Title = "清空消息记录",
 		Icon = "trash-2",
 		Callback = function()

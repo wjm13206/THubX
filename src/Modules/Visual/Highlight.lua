@@ -396,8 +396,8 @@ local M = {}
 M.Title = "物品高亮"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Visual:Section({ Title = "高亮" })
-    section:Input({
+    local settings = ctx.FeatureSettings("物品高亮")
+    Tabs.Visual:Input({
         Title = "高亮目标",
         Icon = "search",
         Placeholder = "输入物品名称",
@@ -405,7 +405,7 @@ function M.Init(Tabs, ctx)
             currentTarget = v or ""
         end,
     })
-    section:Dropdown({
+    settings:Dropdown({
         Title = "匹配模式",
         Icon = "list",
         Values = { "fuzzy", "only" },
@@ -414,7 +414,7 @@ function M.Init(Tabs, ctx)
             currentMode = v or "fuzzy"
         end,
     })
-    section:Button({
+    Tabs.Visual:Button({
         Title = "开始高亮",
         Icon = "play",
         Callback = function()
@@ -422,7 +422,7 @@ function M.Init(Tabs, ctx)
             Engine.new(currentTarget, currentMode, "item", 100).apply()
         end,
     })
-    section:Button({
+    Tabs.Visual:Button({
         Title = "清除高亮",
         Icon = "trash-2",
         Callback = function()

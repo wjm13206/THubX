@@ -61,8 +61,8 @@ Unload.OnUnload(function()
 end)
 
 function PartTP.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "零件传送" })
-	section:Input({
+	local settings = ctx.FeatureSettings("零件传送")
+	Tabs.Utility:Input({
 		Title = "零件名称",
 		Icon = "tag",
 		Placeholder = "输入零件名",
@@ -70,7 +70,7 @@ function PartTP.Init(Tabs, ctx)
 			partName = v
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "传送间隔(秒)",
 		Icon = "timer",
 		Step = 1,
@@ -79,7 +79,7 @@ function PartTP.Init(Tabs, ctx)
 			delayTime = v / 10
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "开始传送",
 		Icon = "navigation",
 		Callback = function()

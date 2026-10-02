@@ -18,8 +18,7 @@ end)
 
 function Drawme.Init(Tabs, ctx)
 	local WindUI = ctx.WindUI
-	local section = Tabs.Games:Section({ Title = "Drawme" })
-	section:Button({
+	Tabs.Games:Button({
 		Title = "加载 Drawme 工具",
 		Icon = "brush",
 		Callback = function()

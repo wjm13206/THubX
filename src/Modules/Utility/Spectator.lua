@@ -117,8 +117,8 @@ Unload.OnUnload(function()
 end)
 
 function Spectator.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "旁观" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "启用旁观",
 		Icon = "eye",
 		Value = false,
@@ -130,14 +130,14 @@ function Spectator.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "上一个人",
 		Icon = "chevron-left",
 		Callback = function()
 			switchToPlayer(currentSpectateIndex - 1, ctx)
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "下一个人",
 		Icon = "chevron-right",
 		Callback = function()

@@ -269,8 +269,8 @@ end)
 
 function MusicPlayer.Init(Tabs, ctx)
 	WindUIRef = ctx.WindUI
-	local section = Tabs.Audio:Section({ Title = "音乐播放器" })
-	section:Dropdown({
+	local settings = ctx.FeatureSettings("音乐播放器")
+	settings:Dropdown({
 		Title = "预设音乐ID",
 		Icon = "list",
 		Values = PRESETS,
@@ -282,7 +282,7 @@ function MusicPlayer.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Input({
+	Tabs.Audio:Input({
 		Title = "自定义音乐ID",
 		Icon = "music",
 		Placeholder = "输入 rbxassetid，如 142376088",
@@ -293,7 +293,7 @@ function MusicPlayer.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Input({
+	Tabs.Audio:Input({
 		Title = "音乐直链",
 		Icon = "link",
 		Placeholder = "输入音乐直链",
@@ -303,7 +303,7 @@ function MusicPlayer.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "播放",
 		Icon = "play",
 		Callback = function()
@@ -314,28 +314,28 @@ function MusicPlayer.Init(Tabs, ctx)
 			startPlay()
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "停止",
 		Icon = "square",
 		Callback = function()
 			stopPlay()
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "暂停 / 继续",
 		Icon = "pause",
 		Callback = function()
 			togglePause()
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "切换播放模式",
 		Icon = "repeat",
 		Callback = function()
 			cycleMode()
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "音量",
 		Icon = "volume-2",
 		Step = 1,
@@ -346,7 +346,7 @@ function MusicPlayer.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "音高",
 		Icon = "music",
 		Step = 0.1,

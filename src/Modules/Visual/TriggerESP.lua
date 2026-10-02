@@ -235,8 +235,7 @@ end
 Unload.OnUnload(disableAll)
 
 function TriggerESP.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "触发器透视" })
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "触碰器透视",
 		Icon = "hand",
 		Value = false,
@@ -244,7 +243,7 @@ function TriggerESP.Init(Tabs, ctx)
 			setKind("touch", v)
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "点击器透视",
 		Icon = "mouse-pointer-click",
 		Value = false,
@@ -252,7 +251,7 @@ function TriggerESP.Init(Tabs, ctx)
 			setKind("click", v)
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "接近提示透视",
 		Icon = "scan",
 		Value = false,

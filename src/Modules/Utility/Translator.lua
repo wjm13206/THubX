@@ -141,8 +141,8 @@ Unload.OnUnload(function()
 end)
 
 function Translator.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "界面翻译" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "启用翻译",
 		Icon = "languages",
 		Value = false,
@@ -150,7 +150,7 @@ function Translator.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "查看翻译状态",
 		Icon = "info",
 		Callback = function()

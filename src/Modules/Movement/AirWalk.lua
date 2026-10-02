@@ -132,8 +132,7 @@ local M = {}
 M.Title = "空中行走"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Movement:Section({ Title = "行走" })
-    section:Toggle({
+    Tabs.Movement:Toggle({
         Title = "空中行走",
         Icon = "footprints",
         Value = false,

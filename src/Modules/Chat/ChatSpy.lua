@@ -174,8 +174,7 @@ end)
 
 function ChatSpy.Init(Tabs, ctx)
 	WindUI = ctx.WindUI
-	local section = Tabs.Chat:Section({Title = "聊天偷听"})
-	section:Toggle({
+	Tabs.Chat:Toggle({
 		Title = "启用聊天偷听",
 		Icon = "eye",
 		Value = false,
@@ -183,7 +182,7 @@ function ChatSpy.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Chat:Toggle({
 		Title = "偷听自己的消息",
 		Icon = "user",
 		Value = false,
@@ -191,7 +190,7 @@ function ChatSpy.Init(Tabs, ctx)
 			spyOnSelf = state
 		end,
 	})
-	section:Toggle({
+	Tabs.Chat:Toggle({
 		Title = "公开广播",
 		Icon = "megaphone",
 		Value = false,

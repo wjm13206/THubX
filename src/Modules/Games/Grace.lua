@@ -96,8 +96,7 @@ end)
 
 function M.Init(Tabs, ctx)
 	WindUIRef = ctx.WindUI
-	local section = Tabs.Games:Section({ Title = "格蕾丝" })
-	section:Toggle({
+	Tabs.Games:Toggle({
 		Title = "自动拉杆",
 		Icon = "anchor",
 		Value = false,
@@ -105,7 +104,7 @@ function M.Init(Tabs, ctx)
 			setAutoLever(state)
 		end,
 	})
-	section:Button({
+	Tabs.Games:Button({
 		Title = "删除全部实体",
 		Icon = "trash-2",
 		Callback = function()

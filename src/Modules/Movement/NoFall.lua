@@ -77,8 +77,7 @@ local M = {}
 M.Title = "防摔落"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Movement:Section({ Title = "保护" })
-    section:Toggle({
+    Tabs.Movement:Toggle({
         Title = "防摔落",
         Icon = "shield",
         Value = false,

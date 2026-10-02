@@ -65,8 +65,7 @@ local M = {}
 M.Title = "相机穿墙"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Movement:Section({ Title = "穿墙" })
-    section:Toggle({
+    Tabs.Movement:Toggle({
         Title = "相机穿墙",
         Icon = "ghost",
         Value = false,

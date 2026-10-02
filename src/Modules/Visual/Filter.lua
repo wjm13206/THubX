@@ -109,10 +109,9 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	local fxSection = Tabs.Filter:Section({ Title = "后处理特效" })
 	for _, info in ipairs(EFFECT_CLASSES) do
 		local exists = findEffect(info.Class)
-		fxSection:Toggle({
+		Tabs.Filter:Toggle({
 			Title = info.Name .. "（" .. info.Class .. "）",
 			Icon = "sparkles",
 			Value = exists and exists.Enabled or false,
@@ -121,7 +120,7 @@ function M.Init(Tabs, ctx)
 			end,
 		})
 	end
-	fxSection:Button({
+	Tabs.Filter:Button({
 		Title = "重置所有滤镜",
 		Icon = "rotate-ccw",
 		Callback = function()
@@ -140,8 +139,8 @@ function M.Init(Tabs, ctx)
 		end,
 	})
 
-	local colorSection = Tabs.Filter:Section({ Title = "颜色微调" })
-	colorSection:Slider({
+	local colorSettings = ctx.FeatureSettings("颜色微调")
+	colorSettings:Slider({
 		Title = "饱和度",
 		Icon = "palette",
 		Step = 0.05,
@@ -154,7 +153,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	colorSection:Slider({
+	colorSettings:Slider({
 		Title = "亮度",
 		Icon = "sun",
 		Step = 0.05,
@@ -167,7 +166,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	colorSection:Slider({
+	colorSettings:Slider({
 		Title = "对比度",
 		Icon = "contrast",
 		Step = 0.05,
@@ -180,7 +179,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	colorSection:Colorpicker({
+	colorSettings:Colorpicker({
 		Title = "色调颜色",
 		Icon = "pipette",
 		Default = Color3.fromRGB(255, 255, 255),
@@ -193,8 +192,8 @@ function M.Init(Tabs, ctx)
 		end,
 	})
 
-	local blindSection = Tabs.Filter:Section({ Title = "色盲模拟器" })
-	blindSection:Dropdown({
+	local blindSettings = ctx.FeatureSettings("色盲模拟器")
+	blindSettings:Dropdown({
 		Title = "选择色盲模式",
 		Icon = "glasses",
 		Values = COLOR_BLIND_MODES,

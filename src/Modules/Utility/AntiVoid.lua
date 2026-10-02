@@ -93,8 +93,8 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "防甩飞" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "开启防甩飞",
 		Icon = "ban",
 		Value = false,

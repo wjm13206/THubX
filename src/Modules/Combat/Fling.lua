@@ -858,8 +858,8 @@ Unload.OnUnload(function()
 end)
 
 function Fling.Init(Tabs, ctx)
-	local section = Tabs.Combat:Section({ Title = "甩飞" })
-	section:Toggle({
+	local settings = ctx.FeatureSettings("甩飞")
+	Tabs.Combat:Toggle({
 		Title = "普通甩飞",
 		Icon = "send",
 		Value = false,
@@ -871,7 +871,7 @@ function Fling.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Combat:Toggle({
 		Title = "飞行甩飞",
 		Icon = "plane",
 		Value = false,
@@ -883,7 +883,7 @@ function Fling.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "飞行甩飞速度",
 		Icon = "gauge",
 		Step = 1,
@@ -892,7 +892,7 @@ function Fling.Init(Tabs, ctx)
 			flyflingSpeed = v
 		end,
 	})
-	section:Toggle({
+	Tabs.Combat:Toggle({
 		Title = "走路甩飞",
 		Icon = "footprints",
 		Value = false,
@@ -904,7 +904,7 @@ function Fling.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Combat:Toggle({
 		Title = "隐身甩飞",
 		Icon = "ghost",
 		Value = false,
@@ -916,7 +916,7 @@ function Fling.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Combat:Toggle({
 		Title = "Ctrl+G 快捷甩飞",
 		Icon = "keyboard",
 		Value = false,
@@ -925,7 +925,7 @@ function Fling.Init(Tabs, ctx)
 		end,
 	})
 	local targetName = ""
-	section:Input({
+	Tabs.Combat:Input({
 		Title = "指定甩飞目标",
 		Icon = "user",
 		Value = "",
@@ -934,7 +934,7 @@ function Fling.Init(Tabs, ctx)
 			targetName = v
 		end,
 	})
-	section:Button({
+	Tabs.Combat:Button({
 		Title = "甩飞目标",
 		Icon = "send",
 		Callback = function()

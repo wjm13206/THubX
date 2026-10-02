@@ -112,8 +112,7 @@ function M.Init(Tabs, ctx)
 		WindUI:Notify({ Title = "甩飞传送", Content = text, Duration = 3 })
 	end
 
-	local section = Tabs.Combat:Section({ Title = "恶劣功能（可能导致封号）" })
-	section:Input({
+	Tabs.Combat:Input({
 		Title = "要甩飞的玩家名",
 		Icon = "user",
 		Value = "",
@@ -122,7 +121,7 @@ function M.Init(Tabs, ctx)
 			targetName = tostring(text or "")
 		end,
 	})
-	section:Button({
+	Tabs.Combat:Button({
 		Title = "甩飞这个玩家",
 		Icon = "rocket",
 		Callback = function()
@@ -134,7 +133,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Combat:Button({
 		Title = "甩飞全部玩家",
 		Icon = "bomb",
 		Callback = function()

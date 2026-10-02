@@ -52,8 +52,8 @@ Unload.OnUnload(function()
 end)
 
 function ClickDelete.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "点击删除" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "Ctrl+点击删除部件",
 		Icon = "eraser",
 		Value = false,

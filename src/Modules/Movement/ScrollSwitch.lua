@@ -194,8 +194,7 @@ Unload.OnUnload(function()
 end)
 
 function ScrollSwitch.Init(Tabs, ctx)
-	local section = Tabs.Movement:Section({Title = "滚轮切道"})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "启用滚轮切道(按住V+滚轮)",
 		Icon = "repeat",
 		Value = false,

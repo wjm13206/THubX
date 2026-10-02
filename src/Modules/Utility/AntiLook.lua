@@ -68,8 +68,8 @@ Unload.OnUnload(function()
 end)
 
 function AntiLook.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "反视线阻挡" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "阻挡视线检测",
 		Icon = "eye-off",
 		Value = false,

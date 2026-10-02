@@ -150,8 +150,7 @@ Unload.OnUnload(function()
 end)
 
 function Footstep.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "落脚点指示" })
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "显示落脚点",
 		Icon = "footprints",
 		Value = false,

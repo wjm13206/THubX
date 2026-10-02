@@ -165,22 +165,21 @@ end)
 
 function Hanker.Init(Tabs, ctx)
 	WindUIRef = ctx.WindUI
-	local section = Tabs.Hanker:Section({ Title = "恶劣功能" })
-	section:Button({
+	Tabs.Hanker:Button({
 		Title = "警告：使用此部分功能会导致封号",
 		Icon = "triangle-alert",
 		Callback = function()
 			notify("警告", "使用此部分功能会导致封号，请谨慎使用")
 		end,
 	})
-	section:Button({
+	Tabs.Hanker:Button({
 		Title = "获得打飞机工具",
 		Icon = "wrench",
 		Callback = function()
 			getJerkTool()
 		end,
 	})
-	section:Button({
+	Tabs.Hanker:Button({
 		Title = "击杀贴在你身上的人",
 		Icon = "skull",
 		Callback = function()

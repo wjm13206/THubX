@@ -23,9 +23,9 @@ local function getRootPlaceId(universeId)
 end
 
 function GameTP.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "游戏传送" })
+
 	local universeId = ""
-	section:Input({
+	Tabs.Utility:Input({
 		Title = "游戏ID(universeId)",
 		Icon = "hash",
 		Placeholder = "输入数字ID",
@@ -33,7 +33,7 @@ function GameTP.Init(Tabs, ctx)
 			universeId = v
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "传送",
 		Icon = "send",
 		Callback = function()

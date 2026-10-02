@@ -116,8 +116,8 @@ Unload.OnUnload(function()
 end)
 
 function PassBypass.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "通行证领取" })
-	section:Button({
+
+	Tabs.Utility:Button({
 		Title = "刷新开发者产品",
 		Icon = "refresh-ccw",
 		Callback = function()
@@ -126,7 +126,7 @@ function PassBypass.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "刷新游戏通行证",
 		Icon = "refresh-ccw",
 		Callback = function()
@@ -135,7 +135,7 @@ function PassBypass.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	section:Input({
+	Tabs.Utility:Input({
 		Title = "通行证/产品名称",
 		Icon = "ticket",
 		Placeholder = "输入刷新到的名称",
@@ -143,7 +143,7 @@ function PassBypass.Init(Tabs, ctx)
 			manualId = v
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "领取所填项",
 		Icon = "key",
 		Callback = function()
@@ -162,7 +162,7 @@ function PassBypass.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "一键全领",
 		Icon = "zap",
 		Callback = function()

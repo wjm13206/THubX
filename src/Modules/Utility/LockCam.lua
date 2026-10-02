@@ -116,8 +116,8 @@ Unload.OnUnload(function()
 end)
 
 function LockCam.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "锁定视角" })
-	section:Toggle({
+	local settings = ctx.FeatureSettings("锁定视角")
+	Tabs.Utility:Toggle({
 		Title = "按住锁定视角",
 		Icon = "video",
 		Value = false,
@@ -125,7 +125,7 @@ function LockCam.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	section:Keybind({
+	settings:Keybind({
 		Title = "锁定按键名",
 		Icon = "keyboard",
 		Value = "Tab",

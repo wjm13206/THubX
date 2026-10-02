@@ -19,15 +19,15 @@ local function loadRemote(path, title, ctx)
 end
 
 function External.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "第三方脚本" })
-	section:Button({
+
+	Tabs.Utility:Button({
 		Title = "打开 Dex",
 		Icon = "database",
 		Callback = function()
 			loadRemote("/modules/scripts/DexDark.lua", "Dex", ctx)
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "打开 IY 指令",
 		Icon = "terminal",
 		Callback = function()

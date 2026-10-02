@@ -280,8 +280,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "视觉增强" })
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "夜视",
 		Icon = "moon",
 		Value = false,
@@ -289,7 +288,7 @@ function M.Init(Tabs, ctx)
 			setNightVision(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "超级夜视",
 		Icon = "sun",
 		Value = false,
@@ -297,7 +296,7 @@ function M.Init(Tabs, ctx)
 			setSuperNightVision(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "随身灯笼",
 		Icon = "lamp",
 		Value = false,
@@ -309,7 +308,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "超级光明",
 		Icon = "lightbulb",
 		Value = false,
@@ -321,7 +320,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "X光",
 		Icon = "scan",
 		Value = false,
@@ -329,7 +328,7 @@ function M.Init(Tabs, ctx)
 			setXray(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "显示隐藏部件",
 		Icon = "eye",
 		Value = false,
@@ -337,7 +336,7 @@ function M.Init(Tabs, ctx)
 			setShowHidden(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "禁用雾效",
 		Icon = "cloud-off",
 		Value = false,

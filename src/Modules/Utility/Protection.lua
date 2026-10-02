@@ -402,8 +402,8 @@ function M.Init(Tabs, ctx)
 
 	setAntiAFK(true)
 
-	local section = Tabs.Utility:Section({ Title = "防护系统" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "防挂机",
 		Icon = "shield",
 		Value = true,
@@ -411,7 +411,7 @@ function M.Init(Tabs, ctx)
 			setAntiAFK(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "传送后保持 THubX",
 		Icon = "repeat",
 		Value = false,
@@ -419,7 +419,7 @@ function M.Init(Tabs, ctx)
 			setKeepTHub(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "防击倒",
 		Icon = "shield",
 		Value = false,
@@ -427,7 +427,7 @@ function M.Init(Tabs, ctx)
 			setAntiFall(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "防虚空伤害",
 		Icon = "shield",
 		Value = false,
@@ -435,7 +435,7 @@ function M.Init(Tabs, ctx)
 			setAntiVoid(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "防死亡",
 		Icon = "shield-plus",
 		Value = false,
@@ -443,7 +443,7 @@ function M.Init(Tabs, ctx)
 			setAntiDead(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "禁用购买提示框",
 		Icon = "shopping-cart",
 		Value = false,
@@ -451,7 +451,7 @@ function M.Init(Tabs, ctx)
 			setPurchasePromptDisabled(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "禁用游戏暂停",
 		Icon = "pause",
 		Value = false,
@@ -459,7 +459,7 @@ function M.Init(Tabs, ctx)
 			setNetworkPauseDisabled(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "禁用触点实例",
 		Icon = "ban",
 		Value = false,
@@ -468,7 +468,7 @@ function M.Init(Tabs, ctx)
 			notify(state and "已禁用所有触点" or "已恢复所有触点")
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "禁用点击触发实例",
 		Icon = "ban",
 		Value = false,
@@ -476,7 +476,7 @@ function M.Init(Tabs, ctx)
 			setInteractDisabled("ClickDetector", state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "禁用可交互实例",
 		Icon = "ban",
 		Value = false,
@@ -484,7 +484,7 @@ function M.Init(Tabs, ctx)
 			setInteractDisabled("ProximityPrompt", state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "管理员检测",
 		Icon = "siren",
 		Value = false,
@@ -504,7 +504,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "死亡播报",
 		Icon = "megaphone",
 		Value = false,
@@ -512,7 +512,7 @@ function M.Init(Tabs, ctx)
 			setDeathAnnounce(state, notify)
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "聊天重发",
 		Icon = "repeat",
 		Value = false,
@@ -520,7 +520,7 @@ function M.Init(Tabs, ctx)
 			M.ChatResend = state
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "触发所有触点实例",
 		Icon = "zap",
 		Callback = function()
@@ -549,7 +549,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "触发所有点击触发实例",
 		Icon = "mouse-pointer-click",
 		Callback = function()
@@ -564,7 +564,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "触发所有可交互实例",
 		Icon = "hand",
 		Callback = function()

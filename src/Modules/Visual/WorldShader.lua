@@ -5,8 +5,7 @@ local URL = "https://raw.githubusercontent.com/wjm13206/THub/refs/heads/main/mod
 
 function WorldShader.Init(Tabs, ctx)
 	local WindUI = ctx.WindUI
-	local section = Tabs.Visual:Section({ Title = "世界着色器" })
-	section:Button({
+	Tabs.Visual:Button({
 		Title = "应用世界着色器",
 		Icon = "palette",
 		Callback = function()

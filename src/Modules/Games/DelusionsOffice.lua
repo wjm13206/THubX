@@ -86,8 +86,7 @@ end)
 
 function M.Init(Tabs, ctx)
 	WindUIRef = ctx.WindUI
-	local section = Tabs.Games:Section({ Title = "妄想办公室" })
-	section:Toggle({
+	Tabs.Games:Toggle({
 		Title = "实体警告",
 		Icon = "siren",
 		Value = false,
@@ -95,7 +94,7 @@ function M.Init(Tabs, ctx)
 			setWarning(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Games:Toggle({
 		Title = "提醒其他玩家",
 		Icon = "megaphone",
 		Value = false,
@@ -103,7 +102,7 @@ function M.Init(Tabs, ctx)
 			tipOthers = state
 		end,
 	})
-	section:Toggle({
+	Tabs.Games:Toggle({
 		Title = "自动应对 EN-013",
 		Icon = "bot",
 		Value = false,

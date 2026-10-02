@@ -244,8 +244,7 @@ local M = {}
 M.Title = "玩家透视"
 
 function M.Init(Tabs, ctx)
-    local section = Tabs.Visual:Section({ Title = "透视" })
-    section:Toggle({
+    Tabs.Visual:Toggle({
         Title = "玩家透视",
         Icon = "eye",
         Value = false,

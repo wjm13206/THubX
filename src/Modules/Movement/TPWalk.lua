@@ -45,8 +45,8 @@ Unload.OnUnload(function()
 end)
 
 function TPWalk.Init(Tabs, ctx)
-	local section = Tabs.Movement:Section({Title = "瞬移行走"})
-	section:Toggle({
+	local settings = ctx.FeatureSettings("瞬移行走")
+	Tabs.Movement:Toggle({
 		Title = "启用瞬移行走",
 		Icon = "zap",
 		Value = false,
@@ -54,7 +54,7 @@ function TPWalk.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "移动速度",
 		Icon = "gauge",
 		Step = 1,

@@ -208,8 +208,7 @@ Unload.OnUnload(function()
 end)
 
 function DeathBall.Init(Tabs, ctx)
-	local section = Tabs.Games:Section({ Title = "死亡球" })
-	section:Toggle({
+	Tabs.Games:Toggle({
 		Title = "启用死亡球辅助",
 		Icon = "volleyball",
 		Value = false,
@@ -221,7 +220,7 @@ function DeathBall.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Games:Button({
 		Title = "手动击球 (R键",
 		Icon = "zap",
 		Callback = function()

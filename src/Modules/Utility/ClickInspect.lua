@@ -57,8 +57,8 @@ Unload.OnUnload(function()
 end)
 
 function ClickInspect.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "点击查看" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "Ctrl+点击打印部件信息",
 		Icon = "info",
 		Value = false,

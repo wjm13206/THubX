@@ -374,10 +374,10 @@ Unload.OnUnload(function()
 end)
 
 function TCPTrigger.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "交互触发" })
+	local settings = ctx.FeatureSettings("交互触发")
 	for _, interactType in ipairs({ "TouchTransmitter", "ClickDetector", "ProximityPrompt" }) do
 		local t = interactType
-		section:Toggle({
+		Tabs.Utility:Toggle({
 			Title = "自动" .. (TYPE_TITLES[t] or t),
 			Icon = "zap",
 			Value = false,
@@ -390,7 +390,7 @@ function TCPTrigger.Init(Tabs, ctx)
 			end,
 		})
 	end
-	section:Slider({
+	settings:Slider({
 		Title = "触发距离",
 		Icon = "ruler",
 		Step = 1,
@@ -400,7 +400,7 @@ function TCPTrigger.Init(Tabs, ctx)
 			DestroyRing()
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "显示范围圈",
 		Icon = "circle",
 		Value = true,
@@ -411,7 +411,7 @@ function TCPTrigger.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Utility:Toggle({
 		Title = "循环触发模式",
 		Icon = "repeat",
 		Value = false,

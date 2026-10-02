@@ -103,8 +103,8 @@ Unload.OnUnload(function()
 end)
 
 function AntiFling.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "反甩飞" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "他端碰撞关闭",
 		Icon = "shield-off",
 		Value = false,

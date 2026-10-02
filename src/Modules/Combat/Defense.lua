@@ -243,8 +243,8 @@ Unload.OnUnload(function()
 end)
 
 function Defense.Init(Tabs, ctx)
-	local section = Tabs.Combat:Section({ Title = "防御力场" })
-	section:Toggle({
+	local settings = ctx.FeatureSettings("防御力场")
+	Tabs.Combat:Toggle({
 		Title = "启用力场",
 		Icon = "shield",
 		Value = false,
@@ -256,7 +256,7 @@ function Defense.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Slider({
+	settings:Slider({
 		Title = "力场半径",
 		Icon = "scan",
 		Step = 1,
@@ -268,7 +268,7 @@ function Defense.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Combat:Toggle({
 		Title = "显示力场",
 		Icon = "eye",
 		Value = true,

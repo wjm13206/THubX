@@ -116,8 +116,8 @@ Unload.OnUnload(function()
 end)
 
 function MouseUnlock.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "鼠标解锁" })
-	section:Toggle({
+
+	Tabs.Utility:Toggle({
 		Title = "启用 (Ctrl+K 切换解锁)",
 		Icon = "mouse",
 		Value = false,
@@ -125,7 +125,7 @@ function MouseUnlock.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	section:Button({
+	Tabs.Utility:Button({
 		Title = "立即解锁 / 恢复",
 		Icon = "unlock",
 		Callback = function()

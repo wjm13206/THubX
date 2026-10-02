@@ -122,8 +122,8 @@ function M.Init(Tabs, ctx)
 	testSound.Volume = 0.5
 	testSound.Parent = SoundService
 
-	local section = Tabs.Audio:Section({ Title = "音频检查器" })
-	section:Input({
+
+	Tabs.Audio:Input({
 		Title = "响度阈值",
 		Icon = "volume-2",
 		Value = "30",
@@ -135,7 +135,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Audio:Toggle({
 		Title = "开始检测音频",
 		Icon = "radar",
 		Value = false,
@@ -143,14 +143,14 @@ function M.Init(Tabs, ctx)
 			setScanning(state)
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "立即扫描一次",
 		Icon = "search",
 		Callback = function()
 			doScan(true)
 		end,
 	})
-	section:Input({
+	Tabs.Audio:Input({
 		Title = "测试播放 ID",
 		Icon = "music",
 		Value = "",
@@ -161,7 +161,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "播放 / 停止测试",
 		Icon = "play",
 		Callback = function()
@@ -193,7 +193,7 @@ function M.Init(Tabs, ctx)
 			WindUIRef:Notify({ Title = "正在播放", Content = tostring(info.Name or selectedId), Duration = 3 })
 		end,
 	})
-	section:Button({
+	Tabs.Audio:Button({
 		Title = "复制选中 ID",
 		Icon = "clipboard",
 		Callback = function()

@@ -104,8 +104,7 @@ Unload.OnUnload(function()
 end)
 
 function LoopOof.Init(Tabs, ctx)
-	local section = Tabs.Visual:Section({ Title = "循环惨叫" })
-	section:Toggle({
+	Tabs.Visual:Toggle({
 		Title = "全员循环惨叫",
 		Icon = "volume-2",
 		Value = false,

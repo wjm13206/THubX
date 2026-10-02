@@ -120,8 +120,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Movement:Section({ Title = "跳跃增强" })
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "连跳",
 		Icon = "arrow-up",
 		Value = false,
@@ -129,7 +128,7 @@ function M.Init(Tabs, ctx)
 			setInfJump(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "边缘跳跃",
 		Icon = "footprints",
 		Value = false,
@@ -137,7 +136,7 @@ function M.Init(Tabs, ctx)
 			setEdgeJump(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "自动跳跃",
 		Icon = "repeat",
 		Value = false,
@@ -145,7 +144,7 @@ function M.Init(Tabs, ctx)
 			setAutoJump(state)
 		end,
 	})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "锚定到世界",
 		Icon = "anchor",
 		Value = false,
@@ -157,7 +156,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "坐下",
 		Icon = "armchair",
 		Value = false,

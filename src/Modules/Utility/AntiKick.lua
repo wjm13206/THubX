@@ -107,9 +107,9 @@ end
 Unload.OnUnload(fullUnload)
 
 function M.Init(Tabs, ctx)
-	local section = Tabs.Utility:Section({ Title = "反踢出" })
+
 	local tg
-	tg = section:Toggle({
+	tg = Tabs.Utility:Toggle({
 		Title = "开启反踢出",
 		Icon = "shield",
 		Value = false,

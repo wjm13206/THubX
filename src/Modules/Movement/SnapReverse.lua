@@ -56,8 +56,7 @@ end)
 
 function SnapReverse.Init(Tabs, ctx)
 	local pendingKey = "G"
-	local section = Tabs.Movement:Section({Title = "视角反转"})
-	section:Toggle({
+	Tabs.Movement:Toggle({
 		Title = "启用视角反转 (按G反转视角)",
 		Icon = "refresh-ccw",
 		Value = false,
@@ -65,7 +64,7 @@ function SnapReverse.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	section:Input({
+	Tabs.Movement:Input({
 		Title = "反转按键",
 		Icon = "keyboard",
 		Placeholder = "输入按键名，如G",
@@ -75,7 +74,7 @@ function SnapReverse.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	Tabs.Movement:Button({
 		Title = "应用按键",
 		Icon = "check",
 		Callback = function()

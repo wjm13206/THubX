@@ -410,8 +410,8 @@ function M.Init(Tabs, ctx)
 	end
 
 	-- 基础数值
-	local numSection = Tabs.Basic:Section({ Title = "基础数值" })
-	numSection:Slider({
+	local settingsNum = ctx.FeatureSettings("基础数值")
+	settingsNum:Slider({
 		Title = "玩家移速",
 		Icon = "gauge",
 		Step = 1,
@@ -424,7 +424,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	numSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "锁定玩家移速",
 		Icon = "lock",
 		Value = false,
@@ -433,7 +433,7 @@ function M.Init(Tabs, ctx)
 			refreshSpoofHooks()
 		end,
 	})
-	numSection:Slider({
+	settingsNum:Slider({
 		Title = "跳跃力量",
 		Icon = "arrow-up",
 		Step = 1,
@@ -446,7 +446,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	numSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "锁定跳跃力量",
 		Icon = "lock",
 		Value = false,
@@ -455,7 +455,7 @@ function M.Init(Tabs, ctx)
 			refreshSpoofHooks()
 		end,
 	})
-	numSection:Slider({
+	settingsNum:Slider({
 		Title = "最大血量",
 		Icon = "heart",
 		Step = 1,
@@ -468,7 +468,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	numSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "锁定最大血量",
 		Icon = "lock",
 		Value = false,
@@ -481,7 +481,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	numSection:Slider({
+	settingsNum:Slider({
 		Title = "当前血量",
 		Icon = "heart-pulse",
 		Step = 1,
@@ -494,7 +494,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	numSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "锁定当前血量",
 		Icon = "lock",
 		Value = false,
@@ -507,7 +507,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	numSection:Slider({
+	settingsNum:Slider({
 		Title = "世界重力",
 		Icon = "globe",
 		Step = 1,
@@ -517,7 +517,7 @@ function M.Init(Tabs, ctx)
 			Workspace.Gravity = v
 		end,
 	})
-	numSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "锁定世界重力",
 		Icon = "lock",
 		Value = false,
@@ -532,8 +532,8 @@ function M.Init(Tabs, ctx)
 	})
 
 	-- 体格
-	local bodySection = Tabs.Basic:Section({ Title = "体格" })
-	bodySection:Slider({
+	local settingsBody = ctx.FeatureSettings("体格")
+	settingsBody:Slider({
 		Title = "角色密度",
 		Icon = "box",
 		Step = 0.0001,
@@ -542,14 +542,14 @@ function M.Init(Tabs, ctx)
 			setDensity(tonumber(v) or 1)
 		end,
 	})
-	bodySection:Button({
+	Tabs.Basic:Button({
 		Title = "恢复默认密度",
 		Icon = "rotate-ccw",
 		Callback = function()
 			restoreDensity()
 		end,
 	})
-	bodySection:Slider({
+	settingsBody:Slider({
 		Title = "臀部高度",
 		Icon = "move-vertical",
 		Step = 1,
@@ -561,7 +561,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	bodySection:Slider({
+	settingsBody:Slider({
 		Title = "最大攀爬角度",
 		Icon = "trending-up",
 		Step = 1,
@@ -573,7 +573,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	bodySection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "死亡时断开关节",
 		Icon = "bone",
 		Value = true,
@@ -586,8 +586,8 @@ function M.Init(Tabs, ctx)
 	})
 
 	-- 显示
-	local showSection = Tabs.Basic:Section({ Title = "显示" })
-	showSection:Toggle({
+	local settingsShow = ctx.FeatureSettings("显示")
+	Tabs.Basic:Toggle({
 		Title = "控制玩家名称显示距离",
 		Icon = "tag",
 		Value = false,
@@ -596,7 +596,7 @@ function M.Init(Tabs, ctx)
 			applyNameDist()
 		end,
 	})
-	showSection:Input({
+	settingsShow:Input({
 		Title = "名称显示距离",
 		Icon = "ruler",
 		Value = "100",
@@ -609,7 +609,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	showSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "控制玩家生命值显示距离",
 		Icon = "heart",
 		Value = false,
@@ -618,7 +618,7 @@ function M.Init(Tabs, ctx)
 			applyHealthDist()
 		end,
 	})
-	showSection:Input({
+	settingsShow:Input({
 		Title = "生命值显示距离",
 		Icon = "ruler",
 		Value = "100",
@@ -631,7 +631,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	showSection:Toggle({
+	Tabs.Basic:Toggle({
 		Title = "始终显示玩家生命值",
 		Icon = "eye",
 		Value = false,
