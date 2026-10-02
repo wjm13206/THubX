@@ -22,7 +22,8 @@ if (-not (Test-Path -LiteralPath $DistDir)) {
 $darklua = Get-Command darklua -ErrorAction SilentlyContinue
 if (-not $darklua) {
   Write-Host "[ x ] 未找到 darklua，请先安装：" -ForegroundColor Red
-  Write-Host "  方式1(推荐): cargo install darklua"
+  Write-Host "  方式1(推荐): rokit install（按仓库 rokit.toml 安装）"
+  Write-Host "  方式2: cargo install darklua"
   Write-Host "  方式2: 去 https://github.com/seaofvoices/darklua/releases 下载 darklua.exe 并加入 PATH"
   Write-Host "  方式3(winget): winget install darklua"
   exit 1

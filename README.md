@@ -28,13 +28,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/wjm13206/THubX/refs/h
 
 ### 依赖
 
-- [darklua](https://github.com/seaofvoices/darklua) 0.19.0+（经 [aftman](https://github.com/LPGhatguy/aftman) 安装）
+- [darklua](https://github.com/seaofvoices/darklua) 0.19.0+（经 [Rokit](https://github.com/rojo-rbx/rokit) 安装）
 
 ### 步骤
 
 ```bash
 # 安装 darklua
-aftman install
+rokit install
 
 # 构建（Linux/macOS）
 npm run build

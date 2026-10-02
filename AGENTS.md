@@ -4,7 +4,7 @@ THubX 是 Roblox Luau 脚本 hub（WindUI 驱动）。darklua 把 `src/` 多文�
 
 ## 构建命令
 
-- 先装 darklua：`aftman install`（`aftman.toml` 锁定 darklua 0.19.0）。无 aftman 时也可 `cargo install darklua`、winget 或下载 exe 加入 PATH（见 `build/build.ps1` 提示）。
+- 先装 darklua：`rokit install`（`rokit.toml` 锁定 darklua 0.19.0）。无 Rokit 时也可 `cargo install darklua`、winget 或下载 exe 加入 PATH（见 `build/build.ps1` 提示）。
 - **Windows（PowerShell）必须用** `npm run build:win` —— 不要用 `npm run build`（后者调 bash 脚本，Windows 上会失败）。
 - Linux/macOS：`npm run build`。
 - 产物：`dist/THubX.lua`（构建过程临时写 `dist/temp.lua` 后合并，`temp.lua` 在 .gitignore 中）。
@@ -15,7 +15,7 @@ THubX 是 Roblox Luau 脚本 hub（WindUI 驱动）。darklua 把 `src/` 多文�
 
 ## CI
 
-`.github/workflows/build.yml`：push 到 `main` 且改动 `src/**`、`build/**`、`package.json`、`aftman.toml` 时触发，自动构建并**把 `dist/THubX.lua` commit 回 main**。因此：
+`.github/workflows/build.yml`：push 到 `main` 且改动 `src/**`、`build/**`、`package.json`、`rokit.toml` 时触发，自动构建并**把 `dist/THubX.lua` commit 回 main**。因此：
 
 - `dist/THubX.lua` 是构建产物，**不要手动编辑**。
 - 本地改完源码构建后无需提交 `dist/`——CI 会重建并覆盖。

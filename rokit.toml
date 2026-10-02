@@ -1,0 +1,4 @@
+# THubX 工具链（Rokit 管理，https://github.com/rojo-rbx/rokit）
+# 安装：rokit install
+[tools]
+darklua = "seaofvoices/darklua@0.19.0"

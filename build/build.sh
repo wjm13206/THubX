@@ -11,7 +11,7 @@ OUTPUT="$ROOT/dist/THubX.lua"
 mkdir -p "$DIST_DIR"
 
 if ! command -v darklua >/dev/null 2>&1; then
-  echo "[ x ] 未找到 darklua"
+  echo "[ x ] 未找到 darklua，请先运行 rokit install"
   exit 1
 fi
 
