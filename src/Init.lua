@@ -13,16 +13,29 @@ end
 local startTime = tick()
 Utils.Info("开始初始化")
 
+-- 加载超时保护：60 秒还没走完则放行重复执行并通知
+local loadDone = false
+task.spawn(function()
+	task.wait(60)
+	if not loadDone then
+		_G.THubXLoading = false
+		Utils.NotifyFallback("THubX", "加载超时，请重试")
+		Utils.Info("加载超时，请重试")
+	end
+end)
+
 local WindowLoader = require("./UI/Window")
 local ok, WindUI, Window, Tabs = pcall(WindowLoader.Create)
 if not ok then
 	Utils.NotifyFallback("THubX", "WindUI 加载失败，请重试")
 	_G.THubXLoading = false
+	loadDone = true
 	error(tostring(WindUI))
 end
 if (not Window) or (not Tabs) then
 	Utils.NotifyFallback("THubX", "WindUI window is nil")
 	_G.THubXLoading = false
+	loadDone = true
 	error("WindUI window is nil")
 end
 
@@ -65,6 +78,7 @@ pcall(function()
 end)
 
 local cost = string.format("%.2f", tick() - startTime)
+loadDone = true
 if #failed > 0 then
 	WindUI:Notify({
 		Title = "THubX",

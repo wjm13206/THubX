@@ -41,7 +41,7 @@ THubX 是 Roblox Luau 脚本 hub（WindUI 驱动）。darklua 把 `src/` 多文�
 - `Init(Tabs, ctx)`：接收 Tab 表与上下文 `ctx`（含 `WindUI`、`Window`、`Config`、`Services`、`Utils`）。在此用 `Tabs.XXX:Section(...)` / `:Toggle(...)` 等构建 UI 并绑定回调。
 - 用 `Unload.OnUnload(fn)` 注册自身清理（断开连接、销毁实例、还原状态），否则卸载时残留。
 
-Tab 名见 `src/UI/Window.lua` 的 `Tabs` 表：`Movement` / `Visual` / `Combat` / `Utility` / `Chat` / `Games` / `Basic` / `ScriptHub` / `Audio` / `Filter` / `Settings`。
+Tab 名见 `src/UI/Window.lua` 的 `Tabs` 表：`Movement` / `Visual` / `Combat` / `Hanker` / `Utility` / `Chat` / `Games` / `Basic` / `ScriptHub` / `Audio` / `Filter` / `Settings`。
 
 ## require 风格
 

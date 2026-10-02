@@ -84,6 +84,8 @@ local Registry = {
 	entry("Special", function() return require("./Games/Special") end),
 	entry("Grace", function() return require("./Games/Grace") end),
 	entry("DelusionsOffice", function() return require("./Games/DelusionsOffice") end),
+	entry("Hanker", function() return require("./Combat/Hanker") end),
+	entry("MusicPlayer", function() return require("./Utility/MusicPlayer") end),
 }
 
 return Registry

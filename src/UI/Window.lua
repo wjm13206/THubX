@@ -42,6 +42,7 @@ function WindowLoader.Create()
 		Movement = Window:Tab({ Title = "移动", Icon = "bird" }),
 		Visual = Window:Tab({ Title = "视觉", Icon = "eye" }),
 		Combat = Window:Tab({ Title = "战斗", Icon = "swords" }),
+		Hanker = Window:Tab({ Title = "恶劣", Icon = "shield-alert" }),
 		Utility = Window:Tab({ Title = "实用", Icon = "wrench" }),
 		Chat = Window:Tab({ Title = "聊天", Icon = "message-circle" }),
 		Games = Window:Tab({ Title = "游戏", Icon = "gamepad-2" }),
