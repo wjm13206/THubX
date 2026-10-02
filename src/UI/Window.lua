@@ -117,130 +117,15 @@ function WindowLoader.Create()
 		end,
 	})
 
-	-- 最小化
-	local reopenGui = nil
-	local reopenConns = {}
-	local function setReopenVisible(v)
-		pcall(function()
-			if reopenGui then
-				reopenGui.Enabled = v
-			end
-		end)
-	end
-	local function destroyReopen()
-		for _, c in ipairs(reopenConns) do
-			pcall(function()
-				c:Disconnect()
-			end)
-		end
-		table.clear(reopenConns)
-		if reopenGui then
-			pcall(function()
-				reopenGui:Destroy()
-			end)
-			reopenGui = nil
-		end
-	end
-	pcall(function()
-		local uiParent
-		do
-			local okHui, hui = pcall(function()
-				return (gethui and gethui()) or nil
-			end)
-			if okHui and hui then
-				uiParent = hui
-			else
-				local plr = Services.Players.LocalPlayer
-				uiParent = plr and plr:FindFirstChildOfClass("PlayerGui") or Services.CoreGui
-			end
-		end
-		reopenGui = Instance.new("ScreenGui")
-		reopenGui.Name = "THubXReopen"
-		reopenGui.ResetOnSpawn = false
-		reopenGui.DisplayOrder = 999
-		reopenGui.IgnoreGuiInset = true
-		reopenGui.Enabled = false
-		pcall(function()
-			if protectgui then
-				protectgui(reopenGui)
-			elseif syn and syn.protect_gui then
-				syn.protect_gui(reopenGui)
-			end
-		end)
-		reopenGui.Parent = uiParent
-
-		local btn = Instance.new("TextButton")
-		btn.Name = "Open"
-		btn.Size = UDim2.fromOffset(56, 56)
-		btn.Position = UDim2.new(1, -72, 0.5, -28)
-		btn.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
-		btn.TextColor3 = Color3.fromRGB(255, 255, 255)
-		btn.Text = "THubX"
-		btn.TextSize = 13
-		btn.Font = Enum.Font.GothamBold
-		btn.AutoButtonColor = true
-		btn.Parent = reopenGui
-		pcall(function()
-			local corner = Instance.new("UICorner")
-			corner.CornerRadius = UDim.new(0, 12)
-			corner.Parent = btn
-		end)
-
-		-- 点按重开窗口，按住拖动换位置(拖动不触发打开)
-		local dragging = false
-		local dragStart = nil
-		local startPos = nil
-		local moved = false
-		table.insert(reopenConns, btn.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragging = true
-				moved = false
-				dragStart = input.Position
-				startPos = btn.Position
-			end
-		end))
-		table.insert(reopenConns, Services.UserInputService.InputChanged:Connect(function(input)
-			if not dragging then
-				return
-			end
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-				local delta = input.Position - dragStart
-				if delta.Magnitude > 8 then
-					moved = true
-				end
-				btn.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-			end
-		end))
-		table.insert(reopenConns, Services.UserInputService.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				local wasDrag = moved
-				dragging = false
-				moved = false
-				if not wasDrag then
-					pcall(function()
-						Window:Open()
-					end)
-				end
-			end
-		end))
-	end)
-
-	-- 最小化只切换悬浮按钮显隐，不卸载任何功能
+	-- 窗口关闭/销毁时自动清理，避免残留连接与 ESP
 	pcall(function()
 		if Window.OnClose then
 			Window:OnClose(function()
-				setReopenVisible(true)
+				local Unload = require("../Core/Unload")
+				Unload.Run()
 			end)
 		end
 	end)
-	pcall(function()
-		if Window.OnOpen then
-			Window:OnOpen(function()
-				setReopenVisible(false)
-			end)
-		end
-	end)
-	-- 只有真正销毁窗口时才清理(卸载按钮会显式调 Unload.Run，这里是兜底)
 	pcall(function()
 		if Window.OnDestroy then
 			Window:OnDestroy(function()
@@ -248,11 +133,6 @@ function WindowLoader.Create()
 				Unload.Run()
 			end)
 		end
-	end)
-	-- 卸载时销毁悬浮按钮，避免残留
-	pcall(function()
-		local Unload = require("../Core/Unload")
-		Unload.OnUnload(destroyReopen)
 	end)
 
 	return WindUI, Window, Tabs
