@@ -36,7 +36,33 @@ function WindowLoader.Create()
 		SideBarWidth = 200,
 		ScrollBarEnabled = true,
 		HideSearchBar = false,
+		-- 最小化/关闭后的悬浮重开按钮：默认 WindUI 只在移动端显示，
+		-- 强制 PC 也显示
+		OpenButton = {
+			Title = Config.Title,
+			Icon = "rocket",
+			Enabled = true,
+			Draggable = true,
+			OnlyMobile = false,
+			CornerRadius = UDim.new(1, 0),
+			StrokeThickness = 2,
+		},
 	})
+
+	-- 兼容处理
+	pcall(function()
+		if Window.EditOpenButton then
+			Window:EditOpenButton({
+				Title = Config.Title,
+				Icon = "rocket",
+				Enabled = true,
+				Draggable = true,
+				OnlyMobile = false,
+				CornerRadius = UDim.new(1, 0),
+				StrokeThickness = 2,
+			})
+		end
+	end)
 
 	local Tabs = {
 		Movement = Window:Tab({ Title = "移动", Icon = "bird" }),
