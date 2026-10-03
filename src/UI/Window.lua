@@ -1,6 +1,8 @@
 local Config = require("../Core/Config")
 local Services = require("../Core/Services")
 local Utils = require("../Core/Utils")
+local Confirm = require("../Core/Confirm")
+local ConfigStore = require("../Core/ConfigStore")
 
 local WindowLoader = {}
 
@@ -79,6 +81,12 @@ function WindowLoader.Create()
 		Settings = Window:Tab({ Title = "设置", Icon = "settings" }),
 	}
 
+	-- 当前设置：先建本游戏配置，再给元素自动补 Flag（模块加载时注册进配置）
+	pcall(function()
+		ConfigStore.Setup(Window)
+		ConfigStore.WrapTabs(Tabs)
+	end)
+
 	-- 设置页：界面 + 系统，分 Section 组织，符合WindUI 规范
 	local uiSection = Tabs.Settings:Section({ Title = "界面" })
 	uiSection:Keybind({
@@ -134,12 +142,49 @@ function WindowLoader.Create()
 		Title = "卸载 THubX",
 		Icon = "trash-2",
 		Callback = function()
-			local Unload = require("../Core/Unload")
-			pcall(function()
-				Window:Destroy()
-			end)
-			Unload.Run()
-			Utils.Info("已卸载")
+			Confirm.Show(Window, {
+				Title = "卸载 THubX",
+				Content = "确定要卸载并清理所有功能吗？界面将关闭且无法恢复。",
+				ConfirmText = "卸载",
+				OnConfirm = function()
+					local Unload = require("../Core/Unload")
+					pcall(function()
+						Window:Destroy()
+					end)
+					Unload.Run()
+					Utils.Info("已卸载")
+				end,
+			})
+		end,
+	})
+
+	-- 界面设置：按游戏隔离，存于 WindUI/THubX/config/Game_<PlaceId>.json
+	-- 保存是静默自动的（卸载时自动保存），这里只提供删除
+	local saveSection = Tabs.Settings:Section({ Title = "当前设置" })
+	pcall(function()
+		if saveSection.Paragraph then
+			saveSection:Paragraph({
+				Title = "本游戏设置",
+				Desc = ConfigStore.GameKey() .. "（每个游戏独立保存，卸载时自动写入）",
+			})
+		end
+	end)
+	saveSection:Button({
+		Title = "删除本游戏已保存设置",
+		Icon = "trash",
+		Callback = function()
+			Confirm.Show(Window, {
+				Title = "删除已保存设置",
+				Content = "确定要删除当前游戏已保存的界面设置吗？删除后下次启动恢复默认设置。",
+				ConfirmText = "删除",
+				OnConfirm = function()
+					if ConfigStore.Delete() then
+						Utils.Info("已保存设置已删除")
+					else
+						Utils.NotifyFallback("THubX", "当前执行器不支持设置保存")
+					end
+				end,
+			})
 		end,
 	})
 

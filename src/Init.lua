@@ -5,6 +5,8 @@ end
 local Config = require("./Core/Config")
 local Services = require("./Core/Services")
 local Utils = require("./Core/Utils")
+local Unload = require("./Core/Unload")
+local ConfigStore = require("./Core/ConfigStore")
 
 if not Utils.EnsureSingleRun("THubXLoaded") then
 	return
@@ -57,6 +59,11 @@ ctx.FeatureSettings = function(title)
 	settingsSections[title] = sec
 	return sec
 end
+-- 卸载时静默自动保存本游戏界面设置（执行器不支持文件时跳过）
+Unload.OnUnload(function()
+	ConfigStore.Save()
+end)
+
 local failed = {}
 for _, item in Registry do
 	local okLoad, mod = pcall(item.Load)
@@ -79,6 +86,11 @@ for _, item in Registry do
 	end
 	task.wait()
 end
+
+-- 模块全部注册完后，应用本游戏已保存的界面设置
+pcall(function()
+	ConfigStore.Load()
+end)
 
 -- WindUI: default select first tab
 pcall(function()

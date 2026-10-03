@@ -1,5 +1,6 @@
 local Services = require("../../Core/Services")
 local Unload = require("../../Core/Unload")
+local Confirm = require("../../Core/Confirm")
 
 local M = {}
 M.Title = "数据修改"
@@ -16,7 +17,6 @@ local spawnPos = nil
 local lastDeath = nil
 local deathConn = nil
 local charAddedConn = nil
-local exitCount = 0
 local recordEnabled = false
 
 local function getHum()
@@ -282,22 +282,29 @@ function M.Init(Tabs, ctx)
 		Title = "移除全部工具",
 		Icon = "trash-2",
 		Callback = function()
-			local backpack = LocalPlayer:FindFirstChildWhichIsA("Backpack")
-			if backpack then
-				for _, inst in ipairs(backpack:GetChildren()) do
-					if inst:IsA("Tool") or inst:IsA("HopperBin") then
-						inst:Destroy()
+			Confirm.Show(ctx.Window, {
+				Title = "移除全部工具",
+				Content = "确定要删除背包和手上所有工具吗？此操作不可恢复。",
+				ConfirmText = "删除",
+				OnConfirm = function()
+					local backpack = LocalPlayer:FindFirstChildWhichIsA("Backpack")
+					if backpack then
+						for _, inst in ipairs(backpack:GetChildren()) do
+							if inst:IsA("Tool") or inst:IsA("HopperBin") then
+								inst:Destroy()
+							end
+						end
 					end
-				end
-			end
-			local char = LocalPlayer.Character
-			if char then
-				for _, inst in ipairs(char:GetChildren()) do
-					if inst:IsA("Tool") or inst:IsA("HopperBin") then
-						inst:Destroy()
+					local char = LocalPlayer.Character
+					if char then
+						for _, inst in ipairs(char:GetChildren()) do
+							if inst:IsA("Tool") or inst:IsA("HopperBin") then
+								inst:Destroy()
+							end
+						end
 					end
-				end
-			end
+				end,
+			})
 		end,
 	})
 	Tabs.Utility:Button({
@@ -319,22 +326,29 @@ function M.Init(Tabs, ctx)
 		Title = "丢弃全部工具",
 		Icon = "hand",
 		Callback = function()
-			local backpack = LocalPlayer:FindFirstChildWhichIsA("Backpack")
-			local char = LocalPlayer.Character
-			if backpack and char then
-				for _, inst in ipairs(backpack:GetChildren()) do
-					if inst:IsA("Tool") then
-						inst.Parent = char
+			Confirm.Show(ctx.Window, {
+				Title = "丢弃全部工具",
+				Content = "确定要把所有工具丢到地上吗？",
+				ConfirmText = "丢弃",
+				OnConfirm = function()
+					local backpack = LocalPlayer:FindFirstChildWhichIsA("Backpack")
+					local char = LocalPlayer.Character
+					if backpack and char then
+						for _, inst in ipairs(backpack:GetChildren()) do
+							if inst:IsA("Tool") then
+								inst.Parent = char
+							end
+						end
+						task.wait()
+						for _, inst in ipairs(char:GetChildren()) do
+							if inst:IsA("Tool") then
+								inst.Parent = Workspace
+							end
+						end
 					end
-				end
-				task.wait()
-				for _, inst in ipairs(char:GetChildren()) do
-					if inst:IsA("Tool") then
-						inst.Parent = Workspace
-					end
-				end
-			end
-			notify("掉落工具", "已丢弃全部工具")
+					notify("掉落工具", "已丢弃全部工具")
+				end,
+			})
 		end,
 	})
 	Tabs.Utility:Button({
@@ -468,12 +482,14 @@ function M.Init(Tabs, ctx)
 		Title = "终止当前游戏进程",
 		Icon = "power",
 		Callback = function()
-			exitCount = exitCount + 1
-			if exitCount < 4 then
-				notify("警告", "再次点击确认终止游戏进程（" .. exitCount .. "/3）")
-			else
-				game:Shutdown()
-			end
+			Confirm.Show(ctx.Window, {
+				Title = "终止游戏进程",
+				Content = "确定要关闭当前游戏吗？未保存的进度会丢失。",
+				ConfirmText = "终止",
+				OnConfirm = function()
+					game:Shutdown()
+				end,
+			})
 		end,
 	})
 end
