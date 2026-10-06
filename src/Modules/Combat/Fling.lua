@@ -699,7 +699,7 @@ local function getPlayer(PlayerName)
 	end
 end
 
-local function Fling(TargetPlayer)
+local function DoFling(TargetPlayer)
 	local OldPos = nil
 	local FallenPartsDestroyHeight = nil
 	local Character = LocalPlayer.Character
@@ -834,7 +834,7 @@ local function tofling(targetName)
 		for _, pl in next, Players:GetPlayers() do
 			if pl ~= LocalPlayer then
 				pcall(function()
-					Fling(pl)
+					DoFling(pl)
 				end)
 			end
 		end
@@ -844,7 +844,7 @@ local function tofling(targetName)
 	local target = getPlayer(name)
 	if target and target ~= LocalPlayer then
 		pcall(function()
-			Fling(target)
+			DoFling(target)
 		end)
 	end
 end
