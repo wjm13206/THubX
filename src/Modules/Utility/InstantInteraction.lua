@@ -43,7 +43,7 @@ Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "长按交互改为秒按",
 		Icon = "zap",
 		Value = false,

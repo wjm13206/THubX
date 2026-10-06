@@ -69,7 +69,7 @@ Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Teleport:Toggle({
 		Title = "按住Ctrl点击地面传送",
 		Icon = "map-pin",
 		Value = false,

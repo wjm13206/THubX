@@ -135,7 +135,7 @@ end)
 
 function PartCleaner.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("移动部件清理")
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "启用清理",
 		Icon = "eraser",
 		Value = false,

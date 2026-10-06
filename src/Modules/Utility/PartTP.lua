@@ -62,7 +62,7 @@ end)
 
 function PartTP.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("零件传送")
-	Tabs.Utility:Input({
+	Tabs.Teleport:Input({
 		Title = "零件名称",
 		Icon = "tag",
 		Placeholder = "输入零件名",
@@ -79,7 +79,7 @@ function PartTP.Init(Tabs, ctx)
 			delayTime = v / 10
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "开始传送",
 		Icon = "navigation",
 		Callback = function()

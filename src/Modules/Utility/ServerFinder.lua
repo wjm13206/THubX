@@ -61,7 +61,7 @@ end)
 
 function ServerFinder.Init(Tabs, ctx)
 
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "刷新服务器列表",
 		Icon = "refresh-ccw",
 		Callback = function()
@@ -70,7 +70,7 @@ function ServerFinder.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "加入人数最少的服",
 		Icon = "users",
 		Callback = function()
@@ -93,7 +93,7 @@ function ServerFinder.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "随机换服",
 		Icon = "shuffle",
 		Callback = function()

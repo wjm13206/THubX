@@ -397,7 +397,7 @@ M.Title = "物品高亮"
 
 function M.Init(Tabs, ctx)
     local settings = ctx.FeatureSettings("物品高亮")
-    Tabs.Visual:Input({
+    Tabs.ESP:Input({
         Title = "高亮目标",
         Icon = "search",
         Placeholder = "输入物品名称",
@@ -414,7 +414,7 @@ function M.Init(Tabs, ctx)
             currentMode = v or "fuzzy"
         end,
     })
-    Tabs.Visual:Button({
+    Tabs.ESP:Button({
         Title = "开始高亮",
         Icon = "play",
         Callback = function()
@@ -422,7 +422,7 @@ function M.Init(Tabs, ctx)
             Engine.new(currentTarget, currentMode, "item", 100).apply()
         end,
     })
-    Tabs.Visual:Button({
+    Tabs.ESP:Button({
         Title = "清除高亮",
         Icon = "trash-2",
         Callback = function()

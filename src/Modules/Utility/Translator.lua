@@ -142,7 +142,7 @@ end)
 
 function Translator.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Data:Toggle({
 		Title = "启用翻译",
 		Icon = "languages",
 		Value = false,
@@ -150,7 +150,7 @@ function Translator.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Data:Button({
 		Title = "查看翻译状态",
 		Icon = "info",
 		Callback = function()

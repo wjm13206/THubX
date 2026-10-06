@@ -49,13 +49,15 @@ local ctx = {
 	Services = Services,
 	Utils = Utils,
 }
--- 扁平化布局：功能 Tab 只放 Toggle/Button，参数统一收进“设置”Tab（按标题分组，带缓存复用）
+
+
 local settingsSections = {}
 ctx.FeatureSettings = function(title)
 	if settingsSections[title] then
 		return settingsSections[title]
 	end
-	local sec = Tabs.Settings:Section({ Title = title })
+	local host = Tabs.FeatureSettings or Tabs.Settings
+	local sec = host:Section({ Title = title })
 	settingsSections[title] = sec
 	return sec
 end

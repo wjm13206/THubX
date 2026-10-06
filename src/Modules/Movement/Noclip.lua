@@ -65,7 +65,7 @@ local M = {}
 M.Title = "相机穿墙"
 
 function M.Init(Tabs, ctx)
-    Tabs.Movement:Toggle({
+    Tabs.Camera:Toggle({
         Title = "相机穿墙",
         Icon = "ghost",
         Value = false,

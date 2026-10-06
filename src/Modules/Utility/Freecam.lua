@@ -291,7 +291,7 @@ Unload.OnUnload(fullUnload)
 
 function M.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("自由相机")
-	Tabs.Utility:Toggle({
+	Tabs.Camera:Toggle({
 		Title = "启用自由相机模块",
 		Icon = "video",
 		Value = false,

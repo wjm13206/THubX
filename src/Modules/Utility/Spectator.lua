@@ -118,7 +118,7 @@ end)
 
 function Spectator.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Teleport:Toggle({
 		Title = "启用旁观",
 		Icon = "eye",
 		Value = false,
@@ -130,14 +130,14 @@ function Spectator.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "上一个人",
 		Icon = "chevron-left",
 		Callback = function()
 			switchToPlayer(currentSpectateIndex - 1, ctx)
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "下一个人",
 		Icon = "chevron-right",
 		Callback = function()

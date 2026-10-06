@@ -117,7 +117,7 @@ end)
 
 function MouseUnlock.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Camera:Toggle({
 		Title = "启用 (Ctrl+K 切换解锁)",
 		Icon = "mouse",
 		Value = false,
@@ -125,7 +125,7 @@ function MouseUnlock.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Camera:Button({
 		Title = "立即解锁 / 恢复",
 		Icon = "unlock",
 		Callback = function()

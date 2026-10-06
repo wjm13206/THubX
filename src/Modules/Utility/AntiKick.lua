@@ -109,7 +109,7 @@ Unload.OnUnload(fullUnload)
 function M.Init(Tabs, ctx)
 
 	local tg
-	tg = Tabs.Utility:Toggle({
+	tg = Tabs.Protect:Toggle({
 		Title = "开启反踢出",
 		Icon = "shield",
 		Value = false,

@@ -244,7 +244,7 @@ local M = {}
 M.Title = "玩家透视"
 
 function M.Init(Tabs, ctx)
-    Tabs.Visual:Toggle({
+    Tabs.ESP:Toggle({
         Title = "玩家透视",
         Icon = "eye",
         Value = false,

@@ -7,7 +7,7 @@ local loaded = false
 function PlayerControl.Init(Tabs, ctx)
 	local WindUI = ctx.WindUI
 
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "打开玩家控制面板",
 		Icon = "users",
 		Callback = function()

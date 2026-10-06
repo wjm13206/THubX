@@ -69,7 +69,7 @@ end)
 
 function AntiLook.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Protect:Toggle({
 		Title = "阻挡视线检测",
 		Icon = "eye-off",
 		Value = false,

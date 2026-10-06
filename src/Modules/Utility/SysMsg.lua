@@ -67,7 +67,7 @@ end)
 
 function SysMsg.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("系统消息")
-	Tabs.Utility:Input({
+	Tabs.Data:Input({
 		Title = "消息内容",
 		Icon = "message-square",
 		Placeholder = "输入要发送的内容",
@@ -84,7 +84,7 @@ function SysMsg.Init(Tabs, ctx)
 			msgType = v
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Data:Button({
 		Title = "发送",
 		Icon = "send",
 		Callback = function()

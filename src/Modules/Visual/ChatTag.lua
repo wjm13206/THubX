@@ -107,7 +107,7 @@ function ChatTag.Init(Tabs, ctx)
 	local toggleObj = nil
 	local settings = ctx.FeatureSettings("聊天标签")
 
-	Tabs.Visual:Input({
+	Tabs.Chat:Input({
 		Title = "目标玩家名",
 		Icon = "user",
 		Placeholder = "留空=自己",
@@ -115,7 +115,7 @@ function ChatTag.Init(Tabs, ctx)
 			targetName = v
 		end,
 	})
-	Tabs.Visual:Input({
+	Tabs.Chat:Input({
 		Title = "标签文字",
 		Icon = "tag",
 		Value = "[VIP]",
@@ -131,7 +131,7 @@ function ChatTag.Init(Tabs, ctx)
 			tagColor = v
 		end,
 	})
-	Tabs.Visual:Toggle({
+	Tabs.Chat:Toggle({
 		Title = "彩虹色",
 		Icon = "rainbow",
 		Value = false,
@@ -139,7 +139,7 @@ function ChatTag.Init(Tabs, ctx)
 			rainbow = v
 		end,
 	})
-	Tabs.Visual:Button({
+	Tabs.Chat:Button({
 		Title = "应用标签",
 		Icon = "check",
 		Callback = function()
@@ -159,7 +159,7 @@ function ChatTag.Init(Tabs, ctx)
 			ctx.WindUI:Notify({ Title = "聊天标签", Content = "已应用", Duration = 3 })
 		end,
 	})
-	Tabs.Visual:Button({
+	Tabs.Chat:Button({
 		Title = "清除全部标签",
 		Icon = "trash-2",
 		Callback = function()

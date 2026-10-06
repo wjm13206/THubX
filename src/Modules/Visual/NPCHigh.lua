@@ -219,7 +219,7 @@ end)
 
 function NPCHigh.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("NPC高亮")
-	Tabs.Visual:Toggle({
+	Tabs.ESP:Toggle({
 		Title = "启用NPC高亮",
 		Icon = "bot",
 		Value = false,
@@ -227,7 +227,7 @@ function NPCHigh.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	Tabs.Visual:Toggle({
+	Tabs.ESP:Toggle({
 		Title = "显示距离",
 		Icon = "ruler",
 		Value = false,

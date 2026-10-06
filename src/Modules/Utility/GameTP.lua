@@ -25,7 +25,7 @@ end
 function GameTP.Init(Tabs, ctx)
 
 	local universeId = ""
-	Tabs.Utility:Input({
+	Tabs.Teleport:Input({
 		Title = "游戏ID(universeId)",
 		Icon = "hash",
 		Placeholder = "输入数字ID",
@@ -33,7 +33,7 @@ function GameTP.Init(Tabs, ctx)
 			universeId = v
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Teleport:Button({
 		Title = "传送",
 		Icon = "send",
 		Callback = function()

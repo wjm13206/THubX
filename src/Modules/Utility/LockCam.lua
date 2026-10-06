@@ -117,7 +117,7 @@ end)
 
 function LockCam.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("锁定视角")
-	Tabs.Utility:Toggle({
+	Tabs.Camera:Toggle({
 		Title = "按住锁定视角",
 		Icon = "video",
 		Value = false,

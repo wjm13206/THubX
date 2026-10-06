@@ -56,7 +56,7 @@ end)
 
 function GuiDeleter.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("界面删除")
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "按键删除指向界面",
 		Icon = "layout-template",
 		Value = false,

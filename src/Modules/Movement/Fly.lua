@@ -269,7 +269,7 @@ M.Title = "飞行"
 
 function M.Init(Tabs, ctx)
     local settings = ctx.FeatureSettings("飞行")
-    Tabs.Movement:Toggle({
+    Tabs.Flight:Toggle({
         Title = "启用飞行",
         Icon = "plane",
         Value = false,

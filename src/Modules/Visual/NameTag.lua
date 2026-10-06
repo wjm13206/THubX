@@ -450,7 +450,7 @@ M.Title = "模型标签"
 
 function M.Init(Tabs, ctx)
     local settings = ctx.FeatureSettings("模型标签")
-    Tabs.Visual:Input({
+    Tabs.ESP:Input({
         Title = "标签目标",
         Icon = "tag",
         Placeholder = "输入模型名称",
@@ -467,7 +467,7 @@ function M.Init(Tabs, ctx)
             currentMode = v or "fuzzy"
         end,
     })
-    Tabs.Visual:Toggle({
+    Tabs.ESP:Toggle({
         Title = "显示距离",
         Icon = "ruler",
         Value = false,
@@ -475,7 +475,7 @@ function M.Init(Tabs, ctx)
             showDistance = state
         end,
     })
-    Tabs.Visual:Button({
+    Tabs.ESP:Button({
         Title = "开始标记",
         Icon = "play",
         Callback = function()
@@ -483,7 +483,7 @@ function M.Init(Tabs, ctx)
             Engine.new(currentTarget, currentMode, nil, showDistance, nil).enable()
         end,
     })
-    Tabs.Visual:Button({
+    Tabs.ESP:Button({
         Title = "清除标记",
         Icon = "trash-2",
         Callback = function()

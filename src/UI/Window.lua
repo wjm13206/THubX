@@ -68,16 +68,23 @@ function WindowLoader.Create()
 
 	local Tabs = {
 		Movement = Window:Tab({ Title = "移动", Icon = "bird" }),
-		Visual = Window:Tab({ Title = "视觉", Icon = "eye" }),
+		Flight = Window:Tab({ Title = "飞行", Icon = "plane" }),
+		ESP = Window:Tab({ Title = "透视", Icon = "eye" }),
+		Visual = Window:Tab({ Title = "视觉", Icon = "palette" }),
 		Combat = Window:Tab({ Title = "战斗", Icon = "swords" }),
 		Hanker = Window:Tab({ Title = "恶劣", Icon = "shield-alert" }),
-		Utility = Window:Tab({ Title = "实用", Icon = "wrench" }),
+		Teleport = Window:Tab({ Title = "传送", Icon = "map-pin" }),
+		Interact = Window:Tab({ Title = "互动", Icon = "mouse-pointer-click" }),
+		Protect = Window:Tab({ Title = "防护", Icon = "shield" }),
+		Camera = Window:Tab({ Title = "视角", Icon = "video" }),
+		Data = Window:Tab({ Title = "数据", Icon = "database" }),
 		Chat = Window:Tab({ Title = "聊天", Icon = "message-circle" }),
 		Games = Window:Tab({ Title = "游戏", Icon = "gamepad-2" }),
 		Basic = Window:Tab({ Title = "基础设置", Icon = "pencil-ruler" }),
 		ScriptHub = Window:Tab({ Title = "脚本中心", Icon = "computer" }),
 		Audio = Window:Tab({ Title = "音频", Icon = "audio-waveform" }),
 		Filter = Window:Tab({ Title = "滤镜", Icon = "sparkles" }),
+		FeatureSettings = Window:Tab({ Title = "功能设置", Icon = "sliders-horizontal" }),
 		Settings = Window:Tab({ Title = "设置", Icon = "settings" }),
 	}
 

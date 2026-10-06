@@ -110,7 +110,7 @@ M.Title = "穿帧飞行"
 
 function M.Init(Tabs, ctx)
     local settings = ctx.FeatureSettings("穿帧飞行")
-    Tabs.Movement:Toggle({
+    Tabs.Flight:Toggle({
         Title = "穿帧飞行",
         Icon = "rocket",
         Value = false,

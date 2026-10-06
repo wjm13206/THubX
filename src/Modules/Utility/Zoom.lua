@@ -103,7 +103,7 @@ Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("缩放视角")
-	Tabs.Utility:Toggle({
+	Tabs.Camera:Toggle({
 		Title = "启用缩放",
 		Icon = "zoom-in",
 		Value = false,

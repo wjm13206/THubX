@@ -212,7 +212,7 @@ end)
 function FlyV4.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("V4飞行")
 	keyConn = UserInputService.InputBegan:Connect(onInputBegan)
-	toggleObj = Tabs.Movement:Toggle({
+	toggleObj = Tabs.Flight:Toggle({
 		Title = "启用V4飞行",
 		Icon = "plane",
 		Value = false,

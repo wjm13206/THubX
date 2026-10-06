@@ -53,7 +53,7 @@ end)
 
 function ClickDelete.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "Ctrl+点击删除部件",
 		Icon = "eraser",
 		Value = false,

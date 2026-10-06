@@ -161,7 +161,7 @@ end)
 
 function Movable.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("移动物高亮")
-	Tabs.Visual:Toggle({
+	Tabs.ESP:Toggle({
 		Title = "高亮未锚定部件",
 		Icon = "boxes",
 		Value = false,

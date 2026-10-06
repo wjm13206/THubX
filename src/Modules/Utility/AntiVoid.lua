@@ -94,7 +94,7 @@ end)
 
 function M.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Protect:Toggle({
 		Title = "开启防甩飞",
 		Icon = "ban",
 		Value = false,

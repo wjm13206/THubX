@@ -104,7 +104,7 @@ end)
 
 function AntiFling.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Protect:Toggle({
 		Title = "他端碰撞关闭",
 		Icon = "shield-off",
 		Value = false,

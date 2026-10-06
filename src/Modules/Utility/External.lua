@@ -20,14 +20,14 @@ end
 
 function External.Init(Tabs, ctx)
 
-	Tabs.Utility:Button({
+	Tabs.Data:Button({
 		Title = "打开 Dex",
 		Icon = "database",
 		Callback = function()
 			loadRemote("/modules/scripts/DexDark.lua", "Dex", ctx)
 		end,
 	})
-	Tabs.Utility:Button({
+	Tabs.Data:Button({
 		Title = "打开 IY 指令",
 		Icon = "terminal",
 		Callback = function()

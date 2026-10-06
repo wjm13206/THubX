@@ -58,7 +58,7 @@ end)
 
 function ClickInspect.Init(Tabs, ctx)
 
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "Ctrl+点击打印部件信息",
 		Icon = "info",
 		Value = false,

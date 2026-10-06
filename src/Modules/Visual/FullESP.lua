@@ -25,7 +25,7 @@ end)
 
 function FullESP.Init(Tabs, ctx)
 	local WindUI = ctx.WindUI
-	Tabs.Visual:Button({
+	Tabs.ESP:Button({
 		Title = "打开完整ESP面板",
 		Icon = "layout-dashboard",
 		Callback = function()
@@ -53,7 +53,7 @@ function FullESP.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Visual:Button({
+	Tabs.ESP:Button({
 		Title = "关闭完整ESP面板",
 		Icon = "x",
 		Callback = function()

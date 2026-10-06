@@ -377,7 +377,7 @@ function TCPTrigger.Init(Tabs, ctx)
 	local settings = ctx.FeatureSettings("交互触发")
 	for _, interactType in ipairs({ "TouchTransmitter", "ClickDetector", "ProximityPrompt" }) do
 		local t = interactType
-		Tabs.Utility:Toggle({
+		Tabs.Interact:Toggle({
 			Title = "自动" .. (TYPE_TITLES[t] or t),
 			Icon = "zap",
 			Value = false,
@@ -400,7 +400,7 @@ function TCPTrigger.Init(Tabs, ctx)
 			DestroyRing()
 		end,
 	})
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "显示范围圈",
 		Icon = "circle",
 		Value = true,
@@ -411,7 +411,7 @@ function TCPTrigger.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Utility:Toggle({
+	Tabs.Interact:Toggle({
 		Title = "循环触发模式",
 		Icon = "repeat",
 		Value = false,
