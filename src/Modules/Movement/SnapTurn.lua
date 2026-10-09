@@ -73,7 +73,8 @@ Unload.OnUnload(function()
 end)
 
 function SnapTurn.Init(Tabs, ctx)
-	Tabs.Movement:Toggle({
+	local folder = ctx.Folder(Tabs.Movement, SnapTurn.Title, { Icon = "rotate-cw" })
+	folder:Toggle({
 		Title = "启用锁定转向",
 		Icon = "rotate-cw",
 		Value = false,

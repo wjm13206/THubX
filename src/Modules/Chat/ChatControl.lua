@@ -66,9 +66,10 @@ Unload.OnUnload(function()
 end)
 
 function ChatControl.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Chat, ChatControl.Title, { Icon = "message-square" })
 	WindUI = ctx.WindUI
 	local pendingText = ""
-	Tabs.Chat:Input({
+	folder:Input({
 		Title = "发送内容",
 		Icon = "message-square",
 		Placeholder = "输入要发送的消息",
@@ -76,7 +77,7 @@ function ChatControl.Init(Tabs, ctx)
 			pendingText = tostring(v)
 		end,
 	})
-	Tabs.Chat:Button({
+	folder:Button({
 		Title = "发送消息",
 		Icon = "send",
 		Callback = function()
@@ -85,7 +86,7 @@ function ChatControl.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Chat:Toggle({
+	folder:Toggle({
 		Title = "通知显示收到的消息",
 		Icon = "bell",
 		Value = false,

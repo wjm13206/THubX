@@ -55,8 +55,8 @@ Unload.OnUnload(function()
 end)
 
 function GuiDeleter.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("界面删除")
-	Tabs.Interact:Toggle({
+	local folder = ctx.Folder(Tabs.Interact, GuiDeleter.Title, { Icon = "layout-template" })
+	folder:Toggle({
 		Title = "按键删除指向界面",
 		Icon = "layout-template",
 		Value = false,
@@ -64,7 +64,7 @@ function GuiDeleter.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	settings:Keybind({
+	folder:Keybind({
 		Title = "删除按键",
 		Icon = "keyboard",
 		Value = "Backspace",

@@ -59,9 +59,10 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Chat, M.Title, { Icon = "bell" })
 	WindUIRef = ctx.WindUI
 
-	Tabs.Chat:Toggle({
+	folder:Toggle({
 		Title = "启用聊天接收",
 		Icon = "bell",
 		Value = false,
@@ -77,7 +78,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Chat:Button({
+	folder:Button({
 		Title = "复制最近 10 条消息",
 		Icon = "clipboard",
 		Callback = function()
@@ -98,7 +99,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Chat:Button({
+	folder:Button({
 		Title = "清空消息记录",
 		Icon = "trash-2",
 		Callback = function()

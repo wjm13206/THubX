@@ -51,15 +51,35 @@ local ctx = {
 }
 
 
-local settingsSections = {}
-ctx.FeatureSettings = function(title)
-	if settingsSections[title] then
-		return settingsSections[title]
+local folderCache = {}
+local function tabNameOf(tab)
+	for name, t in pairs(Tabs) do
+		if t == tab then
+			return name
+		end
 	end
-	local host = Tabs.FeatureSettings or Tabs.Settings
-	local sec = host:Section({ Title = title })
-	settingsSections[title] = sec
-	return sec
+	return "Custom"
+end
+-- Folder 导航（见 API.md）：每个功能在所属 Tab 下建一个 Folder，
+-- 开关与参数全部挂在同一 Folder 内；多组参数用 folder:Folder 建二级子目录。
+-- 用法：local folder = ctx.Folder(Tabs.Flight, M.Title, { Icon = "plane" })
+ctx.Folder = function(tab, title, opts)
+	assert(type(tab) == "table" and tab.Folder, "[THubX] ctx.Folder 需要传入有效的 Tab")
+	assert(type(title) == "string", "[THubX] ctx.Folder 需要传入标题")
+	folderCache[tab] = folderCache[tab] or {}
+	if folderCache[tab][title] then
+		return folderCache[tab][title]
+	end
+	opts = opts or {}
+	if opts.Title == nil then
+		opts.Title = title
+	end
+	local folder = tab:Folder(opts)
+	pcall(function()
+		ConfigStore.WrapObject(folder, "THX_" .. tabNameOf(tab) .. "_" .. title)
+	end)
+	folderCache[tab][title] = folder
+	return folder
 end
 -- 卸载时静默自动保存本游戏界面设置（执行器不支持文件时跳过）
 Unload.OnUnload(function()

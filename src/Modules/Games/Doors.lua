@@ -54,9 +54,9 @@ Unload.OnUnload(function()
 end)
 
 function Doors.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Games, Doors.Title, { Icon = "gauge" })
 	local WindUI = ctx.WindUI
-	local settings = ctx.FeatureSettings("Doors")
-	settings:Slider({
+	folder:Slider({
 		Title = "扫描仪帧率",
 		Icon = "gauge",
 		Step = 1,
@@ -65,7 +65,7 @@ function Doors.Init(Tabs, ctx)
 			fps = v
 		end,
 	})
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "获取扫描仪",
 		Icon = "scan-line",
 		Callback = function()
@@ -76,7 +76,7 @@ function Doors.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "移除扫描仪",
 		Icon = "trash-2",
 		Callback = function()

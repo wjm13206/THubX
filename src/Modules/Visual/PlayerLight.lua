@@ -103,8 +103,8 @@ Unload.OnUnload(function()
 end)
 
 function PlayerLight.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("人物光源")
-	Tabs.Visual:Toggle({
+	local folder = ctx.Folder(Tabs.Visual, PlayerLight.Title, { Icon = "lightbulb" })
+	folder:Toggle({
 		Title = "跟随光源",
 		Icon = "lightbulb",
 		Value = false,
@@ -112,7 +112,7 @@ function PlayerLight.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "亮度",
 		Icon = "sun",
 		Step = 1,
@@ -122,7 +122,7 @@ function PlayerLight.Init(Tabs, ctx)
 			applyProps()
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "范围",
 		Icon = "radius",
 		Step = 1,
@@ -132,7 +132,7 @@ function PlayerLight.Init(Tabs, ctx)
 			applyProps()
 		end,
 	})
-	settings:Colorpicker({
+	folder:Colorpicker({
 		Title = "光源颜色",
 		Icon = "palette",
 		Default = Color3.fromRGB(255, 255, 255),

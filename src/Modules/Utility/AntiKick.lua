@@ -107,9 +107,10 @@ end
 Unload.OnUnload(fullUnload)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Protect, M.Title, { Icon = "shield" })
 
 	local tg
-	tg = Tabs.Protect:Toggle({
+	tg = folder:Toggle({
 		Title = "开启反踢出",
 		Icon = "shield",
 		Value = false,

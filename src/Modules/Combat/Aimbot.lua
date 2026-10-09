@@ -337,8 +337,8 @@ Unload.OnUnload(function()
 end)
 
 function Aimbot.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("自瞄")
-	Tabs.Combat:Toggle({
+	local folder = ctx.Folder(Tabs.Combat, Aimbot.Title, { Icon = "crosshair" })
+	folder:Toggle({
 		Title = "启用自瞄",
 		Icon = "crosshair",
 		Value = false,
@@ -350,7 +350,7 @@ function Aimbot.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Combat:Toggle({
+	folder:Toggle({
 		Title = "队伍检查",
 		Icon = "users",
 		Value = false,
@@ -358,7 +358,7 @@ function Aimbot.Init(Tabs, ctx)
 			_teamCheck = state
 		end,
 	})
-	Tabs.Combat:Toggle({
+	folder:Toggle({
 		Title = "穿墙检查",
 		Icon = "brick-wall",
 		Value = false,
@@ -366,7 +366,7 @@ function Aimbot.Init(Tabs, ctx)
 			_wallCheck = state
 		end,
 	})
-	Tabs.Combat:Toggle({
+	folder:Toggle({
 		Title = "显示范围",
 		Icon = "circle",
 		Value = true,
@@ -374,7 +374,7 @@ function Aimbot.Init(Tabs, ctx)
 			_showFov = state
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "索敌范围",
 		Icon = "scan",
 		Step = 10,
@@ -383,7 +383,7 @@ function Aimbot.Init(Tabs, ctx)
 			setFov(v)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "平滑",
 		Icon = "waves",
 		Step = 1,
@@ -392,7 +392,7 @@ function Aimbot.Init(Tabs, ctx)
 			_smoothing = math.clamp(v, 0, 50)
 		end,
 	})
-	settings:Dropdown({
+	folder:Dropdown({
 		Title = "瞄准部位",
 		Icon = "locate",
 		Values = { "Head", "Torso", "HumanoidRootPart" },
@@ -401,7 +401,7 @@ function Aimbot.Init(Tabs, ctx)
 			_aimPart = v
 		end,
 	})
-	Tabs.Combat:Toggle({
+	folder:Toggle({
 		Title = "粘性瞄准",
 		Icon = "magnet",
 		Value = false,
@@ -409,7 +409,7 @@ function Aimbot.Init(Tabs, ctx)
 			_stickyAim = state
 		end,
 	})
-	Tabs.Combat:Toggle({
+	folder:Toggle({
 		Title = "子弹预测",
 		Icon = "zap",
 		Value = false,
@@ -417,7 +417,7 @@ function Aimbot.Init(Tabs, ctx)
 			_prediction = state
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "预测",
 		Icon = "gauge",
 		Step = 10,
@@ -426,7 +426,7 @@ function Aimbot.Init(Tabs, ctx)
 			_predictionAmount = math.max(0, v)
 		end,
 	})
-	settings:Keybind({
+	folder:Keybind({
 		Title = "自瞄按键",
 		Icon = "keyboard",
 		Value = "E",

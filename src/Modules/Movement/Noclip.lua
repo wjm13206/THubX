@@ -65,7 +65,8 @@ local M = {}
 M.Title = "相机穿墙"
 
 function M.Init(Tabs, ctx)
-    Tabs.Camera:Toggle({
+	local folder = ctx.Folder(Tabs.Camera, M.Title, { Icon = "ghost" })
+    folder:Toggle({
         Title = "相机穿墙",
         Icon = "ghost",
         Value = false,

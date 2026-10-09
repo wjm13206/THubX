@@ -160,8 +160,8 @@ Unload.OnUnload(function()
 end)
 
 function Movable.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("移动物高亮")
-	Tabs.ESP:Toggle({
+	local folder = ctx.Folder(Tabs.ESP, Movable.Title, { Icon = "boxes" })
+	folder:Toggle({
 		Title = "高亮未锚定部件",
 		Icon = "boxes",
 		Value = false,
@@ -169,7 +169,7 @@ function Movable.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "最大高度",
 		Icon = "arrow-up",
 		Step = 10,
@@ -178,7 +178,7 @@ function Movable.Init(Tabs, ctx)
 			maxHeight = v
 		end,
 	})
-	settings:Colorpicker({
+	folder:Colorpicker({
 		Title = "高亮颜色",
 		Icon = "palette",
 		Default = Color3.fromRGB(255, 215, 0),

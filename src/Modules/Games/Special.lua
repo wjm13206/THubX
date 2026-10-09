@@ -109,6 +109,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Games, M.Title, { Icon = "scan" })
 	local WindUI = ctx.WindUI
 	GamesTab = Tabs.Games
 	local function notify(text)
@@ -117,7 +118,7 @@ function M.Init(Tabs, ctx)
 
 	-- 小屋角色扮演：快捷指令
 	for _, cmd in ipairs({ "/re", "/kid", "/shark", "/dog", "/cat" }) do
-		Tabs.Games:Button({
+		folder:Button({
 			Title = "发送指令 " .. cmd,
 			Icon = "message-square",
 			Callback = function()
@@ -139,7 +140,7 @@ function M.Init(Tabs, ctx)
 		{ "营地1", 0, 0, 0 },
 		{ "营地2", 0, 0, 0 },
 	}) do
-		Tabs.Games:Button({
+		folder:Button({
 			Title = "传送到" .. pos[1],
 			Icon = "map-pin",
 			Callback = function()
@@ -158,7 +159,7 @@ function M.Init(Tabs, ctx)
 	addNameTagToggle("siren_crate_nt", "盒子标签", "crate", "盒子")
 	addHighlightToggle("siren_berry", "透视浆果", "berry", "item")
 	addNameTagToggle("siren_berry_nt", "浆果标签", "berry", "浆果")
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "传送到树顶",
 		Icon = "map-pin",
 		Callback = function()
@@ -168,7 +169,7 @@ function M.Init(Tabs, ctx)
 
 	-- 噩梦之行
 	addHighlightToggle("nightmare_monster", "高亮怪物", "Monster", "hostileNpc")
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "高亮芝士",
 		Icon = "scan",
 		Callback = function()
@@ -180,7 +181,7 @@ function M.Init(Tabs, ctx)
 
 	-- 兽化项目
 	for _, name in ipairs({ "__SnarePhysical", "Landmine", "__ClaymorePhysical" }) do
-		Tabs.Games:Button({
+		folder:Button({
 			Title = "删除 " .. name,
 			Icon = "trash-2",
 			Callback = function()
@@ -214,7 +215,7 @@ function M.Init(Tabs, ctx)
 	addNameTagToggle("dark_scrap_nt", "收集物标签", "Scrap", "[收集物]")
 
 	-- 深渊
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "传送灯笼商店",
 		Icon = "map-pin",
 		Callback = function()

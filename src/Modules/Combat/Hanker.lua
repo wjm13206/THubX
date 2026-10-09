@@ -164,22 +164,23 @@ Unload.OnUnload(function()
 end)
 
 function Hanker.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Hanker, Hanker.Title, { Icon = "triangle-alert" })
 	WindUIRef = ctx.WindUI
-	Tabs.Hanker:Button({
+	folder:Button({
 		Title = "警告：使用此部分功能会导致封号",
 		Icon = "triangle-alert",
 		Callback = function()
 			notify("警告", "使用此部分功能会导致封号，请谨慎使用")
 		end,
 	})
-	Tabs.Hanker:Button({
+	folder:Button({
 		Title = "获得打飞机工具",
 		Icon = "wrench",
 		Callback = function()
 			getJerkTool()
 		end,
 	})
-	Tabs.Hanker:Button({
+	folder:Button({
 		Title = "击杀贴在你身上的人",
 		Icon = "skull",
 		Callback = function()

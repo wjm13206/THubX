@@ -205,8 +205,8 @@ Unload.OnUnload(function()
 end)
 
 function Spin.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("旋转")
-	Tabs.Combat:Toggle({
+	local folder = ctx.Folder(Tabs.Combat, Spin.Title, { Icon = "rotate-cw" })
+	folder:Toggle({
 		Title = "启用旋转",
 		Icon = "rotate-cw",
 		Value = false,
@@ -218,7 +218,7 @@ function Spin.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "旋转速度",
 		Icon = "gauge",
 		Step = 5,

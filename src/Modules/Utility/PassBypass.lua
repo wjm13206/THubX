@@ -116,8 +116,9 @@ Unload.OnUnload(function()
 end)
 
 function PassBypass.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Data, PassBypass.Title, { Icon = "refresh-ccw" })
 
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "刷新开发者产品",
 		Icon = "refresh-ccw",
 		Callback = function()
@@ -126,7 +127,7 @@ function PassBypass.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "刷新游戏通行证",
 		Icon = "refresh-ccw",
 		Callback = function()
@@ -135,7 +136,7 @@ function PassBypass.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Data:Input({
+	folder:Input({
 		Title = "通行证/产品名称",
 		Icon = "ticket",
 		Placeholder = "输入刷新到的名称",
@@ -143,7 +144,7 @@ function PassBypass.Init(Tabs, ctx)
 			manualId = v
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "领取所填项",
 		Icon = "key",
 		Callback = function()
@@ -162,7 +163,7 @@ function PassBypass.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "一键全领",
 		Icon = "zap",
 		Callback = function()

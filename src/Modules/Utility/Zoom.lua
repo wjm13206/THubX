@@ -102,8 +102,8 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("缩放视角")
-	Tabs.Camera:Toggle({
+	local folder = ctx.Folder(Tabs.Camera, M.Title, { Icon = "zoom-in" })
+	folder:Toggle({
 		Title = "启用缩放",
 		Icon = "zoom-in",
 		Value = false,
@@ -115,7 +115,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Keybind({
+	folder:Keybind({
 		Title = "缩放按键",
 		Icon = "keyboard",
 		Value = "C",
@@ -126,7 +126,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "缩放视野",
 		Icon = "eye",
 		Step = 1,

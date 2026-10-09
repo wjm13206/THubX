@@ -66,8 +66,8 @@ Unload.OnUnload(function()
 end)
 
 function SysMsg.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("系统消息")
-	Tabs.Data:Input({
+	local folder = ctx.Folder(Tabs.Data, SysMsg.Title, { Icon = "message-square" })
+	folder:Input({
 		Title = "消息内容",
 		Icon = "message-square",
 		Placeholder = "输入要发送的内容",
@@ -75,7 +75,7 @@ function SysMsg.Init(Tabs, ctx)
 			message = v
 		end,
 	})
-	settings:Dropdown({
+	folder:Dropdown({
 		Title = "消息类型",
 		Icon = "list",
 		Values = { "Info", "Success", "Warning", "Error" },
@@ -84,7 +84,7 @@ function SysMsg.Init(Tabs, ctx)
 			msgType = v
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "发送",
 		Icon = "send",
 		Callback = function()

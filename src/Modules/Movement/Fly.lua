@@ -268,8 +268,8 @@ local M = {}
 M.Title = "飞行"
 
 function M.Init(Tabs, ctx)
-    local settings = ctx.FeatureSettings("飞行")
-    Tabs.Flight:Toggle({
+	local folder = ctx.Folder(Tabs.Flight, M.Title, { Icon = "plane" })
+    folder:Toggle({
         Title = "启用飞行",
         Icon = "plane",
         Value = false,
@@ -281,7 +281,7 @@ function M.Init(Tabs, ctx)
             end
         end,
     })
-    settings:Slider({
+    folder:Slider({
         Title = "飞行速度",
         Step = 1,
         Value = { Min = 1, Max = 10, Default = 1 },
@@ -289,7 +289,7 @@ function M.Init(Tabs, ctx)
             Engine.setflyspeed(v)
         end,
     })
-    settings:Keybind({
+    folder:Keybind({
         Title = "飞行开关",
         Icon = "keyboard",
         Value = "F",

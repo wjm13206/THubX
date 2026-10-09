@@ -208,7 +208,8 @@ Unload.OnUnload(function()
 end)
 
 function DeathBall.Init(Tabs, ctx)
-	Tabs.Games:Toggle({
+	local folder = ctx.Folder(Tabs.Games, DeathBall.Title, { Icon = "volleyball" })
+	folder:Toggle({
 		Title = "启用死亡球辅助",
 		Icon = "volleyball",
 		Value = false,
@@ -220,7 +221,7 @@ function DeathBall.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "手动击球 (R键",
 		Icon = "zap",
 		Callback = function()

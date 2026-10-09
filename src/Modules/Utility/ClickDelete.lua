@@ -52,8 +52,9 @@ Unload.OnUnload(function()
 end)
 
 function ClickDelete.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Interact, ClickDelete.Title, { Icon = "eraser" })
 
-	Tabs.Interact:Toggle({
+	folder:Toggle({
 		Title = "Ctrl+点击删除部件",
 		Icon = "eraser",
 		Value = false,

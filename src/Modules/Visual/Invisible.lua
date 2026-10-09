@@ -234,8 +234,9 @@ Unload.OnUnload(function()
 end)
 
 function Invisible.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Visual, Invisible.Title, { Icon = "ghost" })
 	local toggleObj = nil
-	toggleObj = Tabs.Visual:Toggle({
+	toggleObj = folder:Toggle({
 		Title = "隐身自己",
 		Icon = "ghost",
 		Value = false,

@@ -85,8 +85,9 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Games, M.Title, { Icon = "siren" })
 	WindUIRef = ctx.WindUI
-	Tabs.Games:Toggle({
+	folder:Toggle({
 		Title = "实体警告",
 		Icon = "siren",
 		Value = false,
@@ -94,7 +95,7 @@ function M.Init(Tabs, ctx)
 			setWarning(state)
 		end,
 	})
-	Tabs.Games:Toggle({
+	folder:Toggle({
 		Title = "提醒其他玩家",
 		Icon = "megaphone",
 		Value = false,
@@ -102,7 +103,7 @@ function M.Init(Tabs, ctx)
 			tipOthers = state
 		end,
 	})
-	Tabs.Games:Toggle({
+	folder:Toggle({
 		Title = "自动应对 EN-013",
 		Icon = "bot",
 		Value = false,

@@ -5,9 +5,10 @@ local URL = "https://raw.githubusercontent.com/wjm13206/THub/refs/heads/main/mod
 local loaded = false
 
 function PlayerControl.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Teleport, PlayerControl.Title, { Icon = "users" })
 	local WindUI = ctx.WindUI
 
-	Tabs.Teleport:Button({
+	folder:Button({
 		Title = "打开玩家控制面板",
 		Icon = "users",
 		Callback = function()

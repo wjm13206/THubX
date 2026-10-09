@@ -195,8 +195,8 @@ Unload.OnUnload(function()
 end)
 
 function Tornado.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("龙卷飞")
-	Tabs.Combat:Toggle({
+	local folder = ctx.Folder(Tabs.Combat, Tornado.Title, { Icon = "tornado" })
+	folder:Toggle({
 		Title = "启用龙卷飞",
 		Icon = "tornado",
 		Value = false,
@@ -208,7 +208,7 @@ function Tornado.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "吸附半径",
 		Icon = "scan",
 		Step = 5,
@@ -217,7 +217,7 @@ function Tornado.Init(Tabs, ctx)
 			config.radius = math.clamp(v, 0, 10000)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "龙卷高度",
 		Icon = "arrow-up",
 		Step = 5,
@@ -226,7 +226,7 @@ function Tornado.Init(Tabs, ctx)
 			config.height = math.clamp(v, 0, 10000)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "旋转速度",
 		Icon = "rotate-cw",
 		Step = 1,
@@ -235,7 +235,7 @@ function Tornado.Init(Tabs, ctx)
 			config.rotationSpeed = math.clamp(v, 0, 10000)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "吸附强度",
 		Icon = "magnet",
 		Step = 50,

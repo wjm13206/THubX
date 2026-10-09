@@ -393,6 +393,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Protect, M.Title, { Icon = "shield" })
 	local WindUI = ctx.WindUI
 	local function notify(text)
 		if WindUI then
@@ -403,7 +404,7 @@ function M.Init(Tabs, ctx)
 	setAntiAFK(true)
 
 
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "防挂机",
 		Icon = "shield",
 		Value = true,
@@ -411,7 +412,7 @@ function M.Init(Tabs, ctx)
 			setAntiAFK(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "传送后保持 THubX",
 		Icon = "repeat",
 		Value = false,
@@ -419,7 +420,7 @@ function M.Init(Tabs, ctx)
 			setKeepTHub(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "防击倒",
 		Icon = "shield",
 		Value = false,
@@ -427,7 +428,7 @@ function M.Init(Tabs, ctx)
 			setAntiFall(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "防虚空伤害",
 		Icon = "shield",
 		Value = false,
@@ -435,7 +436,7 @@ function M.Init(Tabs, ctx)
 			setAntiVoid(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "防死亡",
 		Icon = "shield-plus",
 		Value = false,
@@ -443,7 +444,7 @@ function M.Init(Tabs, ctx)
 			setAntiDead(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "禁用购买提示框",
 		Icon = "shopping-cart",
 		Value = false,
@@ -451,7 +452,7 @@ function M.Init(Tabs, ctx)
 			setPurchasePromptDisabled(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "禁用游戏暂停",
 		Icon = "pause",
 		Value = false,
@@ -459,7 +460,7 @@ function M.Init(Tabs, ctx)
 			setNetworkPauseDisabled(state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "禁用触点实例",
 		Icon = "ban",
 		Value = false,
@@ -468,7 +469,7 @@ function M.Init(Tabs, ctx)
 			notify(state and "已禁用所有触点" or "已恢复所有触点")
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "禁用点击触发实例",
 		Icon = "ban",
 		Value = false,
@@ -476,7 +477,7 @@ function M.Init(Tabs, ctx)
 			setInteractDisabled("ClickDetector", state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "禁用可交互实例",
 		Icon = "ban",
 		Value = false,
@@ -484,7 +485,7 @@ function M.Init(Tabs, ctx)
 			setInteractDisabled("ProximityPrompt", state)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "管理员检测",
 		Icon = "siren",
 		Value = false,
@@ -504,7 +505,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "死亡播报",
 		Icon = "megaphone",
 		Value = false,
@@ -512,7 +513,7 @@ function M.Init(Tabs, ctx)
 			setDeathAnnounce(state, notify)
 		end,
 	})
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "聊天重发",
 		Icon = "repeat",
 		Value = false,
@@ -520,7 +521,7 @@ function M.Init(Tabs, ctx)
 			M.ChatResend = state
 		end,
 	})
-	Tabs.Protect:Button({
+	folder:Button({
 		Title = "触发所有触点实例",
 		Icon = "zap",
 		Callback = function()
@@ -549,7 +550,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Protect:Button({
+	folder:Button({
 		Title = "触发所有点击触发实例",
 		Icon = "mouse-pointer-click",
 		Callback = function()
@@ -564,7 +565,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Protect:Button({
+	folder:Button({
 		Title = "触发所有可交互实例",
 		Icon = "hand",
 		Callback = function()

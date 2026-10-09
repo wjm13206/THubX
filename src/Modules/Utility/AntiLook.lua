@@ -68,8 +68,9 @@ Unload.OnUnload(function()
 end)
 
 function AntiLook.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Protect, AntiLook.Title, { Icon = "eye-off" })
 
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "阻挡视线检测",
 		Icon = "eye-off",
 		Value = false,

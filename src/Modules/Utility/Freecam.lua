@@ -290,8 +290,8 @@ end
 Unload.OnUnload(fullUnload)
 
 function M.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("自由相机")
-	Tabs.Camera:Toggle({
+	local folder = ctx.Folder(Tabs.Camera, M.Title, { Icon = "video" })
+	folder:Toggle({
 		Title = "启用自由相机模块",
 		Icon = "video",
 		Value = false,
@@ -299,7 +299,7 @@ function M.Init(Tabs, ctx)
 			setModuleEnabled(state)
 		end,
 	})
-	settings:Keybind({
+	folder:Keybind({
 		Title = "自由相机开关按键",
 		Icon = "keyboard",
 		Value = "F",
@@ -310,7 +310,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "相机速度",
 		Icon = "gauge",
 		Step = 1,

@@ -120,7 +120,8 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	Tabs.Movement:Toggle({
+	local folder = ctx.Folder(Tabs.Movement, M.Title, { Icon = "arrow-up" })
+	folder:Toggle({
 		Title = "连跳",
 		Icon = "arrow-up",
 		Value = false,
@@ -128,7 +129,7 @@ function M.Init(Tabs, ctx)
 			setInfJump(state)
 		end,
 	})
-	Tabs.Movement:Toggle({
+	folder:Toggle({
 		Title = "边缘跳跃",
 		Icon = "footprints",
 		Value = false,
@@ -136,7 +137,7 @@ function M.Init(Tabs, ctx)
 			setEdgeJump(state)
 		end,
 	})
-	Tabs.Movement:Toggle({
+	folder:Toggle({
 		Title = "自动跳跃",
 		Icon = "repeat",
 		Value = false,
@@ -144,7 +145,7 @@ function M.Init(Tabs, ctx)
 			setAutoJump(state)
 		end,
 	})
-	Tabs.Movement:Toggle({
+	folder:Toggle({
 		Title = "锚定到世界",
 		Icon = "anchor",
 		Value = false,
@@ -156,7 +157,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Movement:Toggle({
+	folder:Toggle({
 		Title = "坐下",
 		Icon = "armchair",
 		Value = false,

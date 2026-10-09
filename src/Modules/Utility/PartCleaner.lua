@@ -134,8 +134,8 @@ Unload.OnUnload(function()
 end)
 
 function PartCleaner.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("移动部件清理")
-	Tabs.Interact:Toggle({
+	local folder = ctx.Folder(Tabs.Interact, PartCleaner.Title, { Icon = "eraser" })
+	folder:Toggle({
 		Title = "启用清理",
 		Icon = "eraser",
 		Value = false,
@@ -143,7 +143,7 @@ function PartCleaner.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "扫描半径",
 		Icon = "radius",
 		Step = 10,
@@ -152,7 +152,7 @@ function PartCleaner.Init(Tabs, ctx)
 			scanRadius = v
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "扫描间隔(帧",
 		Icon = "timer",
 		Step = 1,

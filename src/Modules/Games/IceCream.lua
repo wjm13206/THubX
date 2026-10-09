@@ -136,8 +136,8 @@ Unload.OnUnload(function()
 end)
 
 function IceCream.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("Regretevator")
-	Tabs.Games:Toggle({
+	local folder = ctx.Folder(Tabs.Games, IceCream.Title, { Icon = "ice-cream-cone" })
+	folder:Toggle({
 		Title = "血量低自动吃冰淇淋",
 		Icon = "ice-cream-cone",
 		Value = false,
@@ -149,7 +149,7 @@ function IceCream.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "使用冷却(秒",
 		Icon = "timer",
 		Step = 1,
@@ -158,7 +158,7 @@ function IceCream.Init(Tabs, ctx)
 			useCooldown = v
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "触发血量%)",
 		Icon = "heart-pulse",
 		Step = 1,

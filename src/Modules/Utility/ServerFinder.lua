@@ -60,8 +60,9 @@ Unload.OnUnload(function()
 end)
 
 function ServerFinder.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Teleport, ServerFinder.Title, { Icon = "refresh-ccw" })
 
-	Tabs.Teleport:Button({
+	folder:Button({
 		Title = "刷新服务器列表",
 		Icon = "refresh-ccw",
 		Callback = function()
@@ -70,7 +71,7 @@ function ServerFinder.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Teleport:Button({
+	folder:Button({
 		Title = "加入人数最少的服",
 		Icon = "users",
 		Callback = function()
@@ -93,7 +94,7 @@ function ServerFinder.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Teleport:Button({
+	folder:Button({
 		Title = "随机换服",
 		Icon = "shuffle",
 		Callback = function()

@@ -104,7 +104,8 @@ Unload.OnUnload(function()
 end)
 
 function LoopOof.Init(Tabs, ctx)
-	Tabs.Visual:Toggle({
+	local folder = ctx.Folder(Tabs.Visual, LoopOof.Title, { Icon = "volume-2" })
+	folder:Toggle({
 		Title = "全员循环惨叫",
 		Icon = "volume-2",
 		Value = false,

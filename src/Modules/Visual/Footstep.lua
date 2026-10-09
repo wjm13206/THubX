@@ -150,7 +150,8 @@ Unload.OnUnload(function()
 end)
 
 function Footstep.Init(Tabs, ctx)
-	Tabs.Visual:Toggle({
+	local folder = ctx.Folder(Tabs.Visual, Footstep.Title, { Icon = "footprints" })
+	folder:Toggle({
 		Title = "显示落脚点",
 		Icon = "footprints",
 		Value = false,

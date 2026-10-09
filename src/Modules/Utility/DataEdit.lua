@@ -165,6 +165,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Data, M.Title, { Icon = "ghost" })
 	local WindUI = ctx.WindUI
 	local function notify(title, text)
 		if WindUI then
@@ -173,7 +174,7 @@ function M.Init(Tabs, ctx)
 	end
 
 
-	Tabs.Data:Toggle({
+	folder:Toggle({
 		Title = "记录死亡位置",
 		Icon = "ghost",
 		Value = false,
@@ -185,7 +186,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "回满血",
 		Icon = "heart-pulse",
 		Callback = function()
@@ -195,7 +196,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "自杀",
 		Icon = "skull",
 		Callback = function()
@@ -205,28 +206,28 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "强制自杀",
 		Icon = "skull",
 		Callback = function()
 			respawn()
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "强制自杀2",
 		Icon = "skull",
 		Callback = function()
 			respawn2()
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "原地重生",
 		Icon = "rotate-ccw",
 		Callback = function()
 			refresh()
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "设置当前位置为重生点",
 		Icon = "map-pin",
 		Callback = function()
@@ -237,7 +238,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "恢复默认重生点",
 		Icon = "map-pin-off",
 		Callback = function()
@@ -245,7 +246,7 @@ function M.Init(Tabs, ctx)
 			notify("重生点", "已恢复默认重生点")
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "回到最后的死亡点",
 		Icon = "ghost",
 		Callback = function()
@@ -259,7 +260,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "获取游戏内全部工具",
 		Icon = "briefcase",
 		Callback = function()
@@ -278,7 +279,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "移除全部工具",
 		Icon = "trash-2",
 		Callback = function()
@@ -307,7 +308,7 @@ function M.Init(Tabs, ctx)
 			})
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "丢弃手中工具",
 		Icon = "hand",
 		Callback = function()
@@ -322,7 +323,7 @@ function M.Init(Tabs, ctx)
 			notify("掉落工具", "已丢弃手中工具")
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "丢弃全部工具",
 		Icon = "hand",
 		Callback = function()
@@ -351,7 +352,7 @@ function M.Init(Tabs, ctx)
 			})
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "获得点击传送工具",
 		Icon = "mouse-pointer",
 		Callback = function()
@@ -377,14 +378,14 @@ function M.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "重新加入当前房间",
 		Icon = "refresh-cw",
 		Callback = function()
 			Services.Get("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "切换角色为R6",
 		Icon = "person-standing",
 		Callback = function()
@@ -395,7 +396,7 @@ function M.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "切换角色为R15",
 		Icon = "person-standing",
 		Callback = function()
@@ -406,7 +407,7 @@ function M.Init(Tabs, ctx)
 			end)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "切换时间为白天",
 		Icon = "sun",
 		Callback = function()
@@ -416,7 +417,7 @@ function M.Init(Tabs, ctx)
 			}):Play()
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "切换时间为黑夜",
 		Icon = "moon",
 		Callback = function()
@@ -426,7 +427,7 @@ function M.Init(Tabs, ctx)
 			}):Play()
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "打印当前坐标",
 		Icon = "map-pin",
 		Callback = function()
@@ -438,21 +439,21 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "开启控制台界面",
 		Icon = "terminal",
 		Callback = function()
 			StarterGui:SetCore("DevConsoleVisible", true)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "启用所有ROBLOXUI",
 		Icon = "layout-grid",
 		Callback = function()
 			StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "获取建筑工具",
 		Icon = "hammer",
 		Callback = function()
@@ -478,7 +479,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "终止当前游戏进程",
 		Icon = "power",
 		Callback = function()

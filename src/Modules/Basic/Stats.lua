@@ -400,6 +400,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Basic, M.Title, { Icon = "gauge" })
 	charAddedConn = LocalPlayer.CharacterAdded:Connect(setupCharacter)
 	charRemovingConn = LocalPlayer.CharacterRemoving:Connect(function()
 		detachMaxHealth()
@@ -410,7 +411,7 @@ function M.Init(Tabs, ctx)
 	end
 
 	-- 基础数值
-	local settingsNum = ctx.FeatureSettings("基础数值")
+	local settingsNum = folder:Folder({ Title = "基础数值" })
 	settingsNum:Slider({
 		Title = "玩家移速",
 		Icon = "gauge",
@@ -424,7 +425,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "锁定玩家移速",
 		Icon = "lock",
 		Value = false,
@@ -446,7 +447,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "锁定跳跃力量",
 		Icon = "lock",
 		Value = false,
@@ -468,7 +469,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "锁定最大血量",
 		Icon = "lock",
 		Value = false,
@@ -494,7 +495,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "锁定当前血量",
 		Icon = "lock",
 		Value = false,
@@ -517,7 +518,7 @@ function M.Init(Tabs, ctx)
 			Workspace.Gravity = v
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "锁定世界重力",
 		Icon = "lock",
 		Value = false,
@@ -532,7 +533,7 @@ function M.Init(Tabs, ctx)
 	})
 
 	-- 体格
-	local settingsBody = ctx.FeatureSettings("体格")
+	local settingsBody = folder:Folder({ Title = "体格" })
 	settingsBody:Slider({
 		Title = "角色密度",
 		Icon = "box",
@@ -542,7 +543,7 @@ function M.Init(Tabs, ctx)
 			setDensity(tonumber(v) or 1)
 		end,
 	})
-	Tabs.Basic:Button({
+	folder:Button({
 		Title = "恢复默认密度",
 		Icon = "rotate-ccw",
 		Callback = function()
@@ -573,7 +574,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "死亡时断开关节",
 		Icon = "bone",
 		Value = true,
@@ -586,8 +587,8 @@ function M.Init(Tabs, ctx)
 	})
 
 	-- 显示
-	local settingsShow = ctx.FeatureSettings("显示")
-	Tabs.Basic:Toggle({
+	local settingsShow = folder:Folder({ Title = "显示" })
+	folder:Toggle({
 		Title = "控制玩家名称显示距离",
 		Icon = "tag",
 		Value = false,
@@ -609,7 +610,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "控制玩家生命值显示距离",
 		Icon = "heart",
 		Value = false,
@@ -631,7 +632,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Basic:Toggle({
+	folder:Toggle({
 		Title = "始终显示玩家生命值",
 		Icon = "eye",
 		Value = false,

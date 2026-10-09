@@ -68,8 +68,9 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Teleport, M.Title, { Icon = "map-pin" })
 
-	Tabs.Teleport:Toggle({
+	folder:Toggle({
 		Title = "按住Ctrl点击地面传送",
 		Icon = "map-pin",
 		Value = false,

@@ -210,9 +210,9 @@ Unload.OnUnload(function()
 end)
 
 function FlyV4.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("V4飞行")
+	local folder = ctx.Folder(Tabs.Flight, FlyV4.Title, { Icon = "plane" })
 	keyConn = UserInputService.InputBegan:Connect(onInputBegan)
-	toggleObj = Tabs.Flight:Toggle({
+	toggleObj = folder:Toggle({
 		Title = "启用V4飞行",
 		Icon = "plane",
 		Value = false,
@@ -220,7 +220,7 @@ function FlyV4.Init(Tabs, ctx)
 			setFly(state)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "移动速度",
 		Icon = "gauge",
 		Step = 1,
@@ -233,7 +233,7 @@ function FlyV4.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Keybind({
+	folder:Keybind({
 		Title = "飞行开关",
 		Icon = "keyboard",
 		Value = "F",

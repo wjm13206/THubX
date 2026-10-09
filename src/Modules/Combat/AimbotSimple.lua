@@ -102,9 +102,9 @@ Unload.OnUnload(function()
 end)
 
 function AimbotSimple.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("轻量自瞄")
+	local folder = ctx.Folder(Tabs.Combat, AimbotSimple.Title, { Icon = "triangle-alert" })
 	if not hasDrawing then
-		Tabs.Combat:Button({
+		folder:Button({
 			Title = "当前执行器不支持 Drawing",
 			Icon = "triangle-alert",
 			Callback = function()
@@ -113,7 +113,7 @@ function AimbotSimple.Init(Tabs, ctx)
 		})
 		return
 	end
-	Tabs.Combat:Toggle({
+	folder:Toggle({
 		Title = "启用轻量自瞄",
 		Icon = "crosshair",
 		Value = false,
@@ -127,7 +127,7 @@ function AimbotSimple.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "索敌范围",
 		Icon = "scan",
 		Step = 5,

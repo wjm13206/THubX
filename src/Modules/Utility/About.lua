@@ -22,9 +22,9 @@ local function maskMiddle(s)
 end
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Settings, M.Title, { Icon = "info" })
 	local WindUI = ctx.WindUI
-	local section = Tabs.Settings:Section({ Title = "关于" })
-	section:Button({
+	folder:Button({
 		Title = "版本信息",
 		Icon = "info",
 		Callback = function()
@@ -35,7 +35,7 @@ function M.Init(Tabs, ctx)
 			})
 		end,
 	})
-	section:Button({
+	folder:Button({
 		Title = "复制 HWID",
 		Icon = "fingerprint",
 		Callback = function()
@@ -54,7 +54,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	section:Button({
+	folder:Button({
 		Title = "查看状态（延迟/内存）",
 		Icon = "activity",
 		Callback = function()
@@ -69,7 +69,7 @@ function M.Init(Tabs, ctx)
 			})
 		end,
 	})
-	section:Button({
+	folder:Button({
 		Title = "强制内存垃圾回收",
 		Icon = "trash-2",
 		Callback = function()

@@ -473,8 +473,8 @@ Unload.OnUnload(function()
 end)
 
 function Orbit.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("环绕武器")
-	Tabs.Combat:Toggle({
+	local folder = ctx.Folder(Tabs.Combat, Orbit.Title, { Icon = "orbit" })
+	folder:Toggle({
 		Title = "启用环绕",
 		Icon = "orbit",
 		Value = false,
@@ -486,7 +486,7 @@ function Orbit.Init(Tabs, ctx)
 			end
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "环绕半径",
 		Icon = "scan",
 		Step = 1,
@@ -495,7 +495,7 @@ function Orbit.Init(Tabs, ctx)
 			_offset = tonumber(v) or _offset
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "环绕速度",
 		Icon = "gauge",
 		Step = 1,
@@ -512,7 +512,7 @@ function Orbit.Init(Tabs, ctx)
 			_speed = s
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "环绕模式",
 		Icon = "shapes",
 		Step = 1,
@@ -522,7 +522,7 @@ function Orbit.Init(Tabs, ctx)
 		end,
 	})
 	local targetName = ""
-	Tabs.Combat:Input({
+	folder:Input({
 		Title = "环绕目标",
 		Icon = "user",
 		Value = "",
@@ -531,14 +531,14 @@ function Orbit.Init(Tabs, ctx)
 			targetName = v
 		end,
 	})
-	Tabs.Combat:Button({
+	folder:Button({
 		Title = "锁定目标",
 		Icon = "locate",
 		Callback = function()
 			setTarget(targetName)
 		end,
 	})
-	Tabs.Combat:Button({
+	folder:Button({
 		Title = "重置目标",
 		Icon = "rotate-ccw",
 		Callback = function()

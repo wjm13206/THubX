@@ -218,8 +218,8 @@ Unload.OnUnload(function()
 end)
 
 function NPCHigh.Init(Tabs, ctx)
-	local settings = ctx.FeatureSettings("NPC高亮")
-	Tabs.ESP:Toggle({
+	local folder = ctx.Folder(Tabs.ESP, NPCHigh.Title, { Icon = "bot" })
+	folder:Toggle({
 		Title = "启用NPC高亮",
 		Icon = "bot",
 		Value = false,
@@ -227,7 +227,7 @@ function NPCHigh.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	Tabs.ESP:Toggle({
+	folder:Toggle({
 		Title = "显示距离",
 		Icon = "ruler",
 		Value = false,
@@ -235,7 +235,7 @@ function NPCHigh.Init(Tabs, ctx)
 			showDistance = v
 		end,
 	})
-	settings:Colorpicker({
+	folder:Colorpicker({
 		Title = "高亮颜色",
 		Icon = "palette",
 		Default = Color3.fromRGB(255, 215, 0),

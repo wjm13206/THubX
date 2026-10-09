@@ -116,6 +116,7 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Audio, M.Title, { Icon = "volume-2" })
 	WindUIRef = ctx.WindUI
 	testSound = Instance.new("Sound")
 	testSound.Name = "THubXAudioTest"
@@ -123,7 +124,7 @@ function M.Init(Tabs, ctx)
 	testSound.Parent = SoundService
 
 
-	Tabs.Audio:Input({
+	folder:Input({
 		Title = "响度阈值",
 		Icon = "volume-2",
 		Value = "30",
@@ -135,7 +136,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Audio:Toggle({
+	folder:Toggle({
 		Title = "开始检测音频",
 		Icon = "radar",
 		Value = false,
@@ -143,14 +144,14 @@ function M.Init(Tabs, ctx)
 			setScanning(state)
 		end,
 	})
-	Tabs.Audio:Button({
+	folder:Button({
 		Title = "立即扫描一次",
 		Icon = "search",
 		Callback = function()
 			doScan(true)
 		end,
 	})
-	Tabs.Audio:Input({
+	folder:Input({
 		Title = "测试播放 ID",
 		Icon = "music",
 		Value = "",
@@ -161,7 +162,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Audio:Button({
+	folder:Button({
 		Title = "播放 / 停止测试",
 		Icon = "play",
 		Callback = function()
@@ -193,7 +194,7 @@ function M.Init(Tabs, ctx)
 			WindUIRef:Notify({ Title = "正在播放", Content = tostring(info.Name or selectedId), Duration = 3 })
 		end,
 	})
-	Tabs.Audio:Button({
+	folder:Button({
 		Title = "复制选中 ID",
 		Icon = "clipboard",
 		Callback = function()

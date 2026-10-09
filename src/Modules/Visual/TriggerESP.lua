@@ -235,7 +235,8 @@ end
 Unload.OnUnload(disableAll)
 
 function TriggerESP.Init(Tabs, ctx)
-	Tabs.ESP:Toggle({
+	local folder = ctx.Folder(Tabs.ESP, TriggerESP.Title, { Icon = "hand" })
+	folder:Toggle({
 		Title = "触碰器透视",
 		Icon = "hand",
 		Value = false,
@@ -243,7 +244,7 @@ function TriggerESP.Init(Tabs, ctx)
 			setKind("touch", v)
 		end,
 	})
-	Tabs.ESP:Toggle({
+	folder:Toggle({
 		Title = "点击器透视",
 		Icon = "mouse-pointer-click",
 		Value = false,
@@ -251,7 +252,7 @@ function TriggerESP.Init(Tabs, ctx)
 			setKind("click", v)
 		end,
 	})
-	Tabs.ESP:Toggle({
+	folder:Toggle({
 		Title = "接近提示透视",
 		Icon = "scan",
 		Value = false,

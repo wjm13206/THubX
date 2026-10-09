@@ -173,8 +173,9 @@ Unload.OnUnload(function()
 end)
 
 function ChatSpy.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Chat, ChatSpy.Title, { Icon = "eye" })
 	WindUI = ctx.WindUI
-	Tabs.Chat:Toggle({
+	folder:Toggle({
 		Title = "启用聊天偷听",
 		Icon = "eye",
 		Value = false,
@@ -182,7 +183,7 @@ function ChatSpy.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	Tabs.Chat:Toggle({
+	folder:Toggle({
 		Title = "偷听自己的消息",
 		Icon = "user",
 		Value = false,
@@ -190,7 +191,7 @@ function ChatSpy.Init(Tabs, ctx)
 			spyOnSelf = state
 		end,
 	})
-	Tabs.Chat:Toggle({
+	folder:Toggle({
 		Title = "公开广播",
 		Icon = "megaphone",
 		Value = false,

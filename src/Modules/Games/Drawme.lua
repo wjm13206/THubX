@@ -17,8 +17,9 @@ Unload.OnUnload(function()
 end)
 
 function Drawme.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Games, Drawme.Title, { Icon = "brush" })
 	local WindUI = ctx.WindUI
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "加载 Drawme 工具",
 		Icon = "brush",
 		Callback = function()

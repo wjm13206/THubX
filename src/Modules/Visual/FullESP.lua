@@ -24,8 +24,9 @@ Unload.OnUnload(function()
 end)
 
 function FullESP.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.ESP, FullESP.Title, { Icon = "layout-dashboard" })
 	local WindUI = ctx.WindUI
-	Tabs.ESP:Button({
+	folder:Button({
 		Title = "打开完整ESP面板",
 		Icon = "layout-dashboard",
 		Callback = function()
@@ -53,7 +54,7 @@ function FullESP.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.ESP:Button({
+	folder:Button({
 		Title = "关闭完整ESP面板",
 		Icon = "x",
 		Callback = function()

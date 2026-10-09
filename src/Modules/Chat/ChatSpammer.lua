@@ -77,10 +77,10 @@ Unload.OnUnload(function()
 end)
 
 function ChatSpammer.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Chat, ChatSpammer.Title, { Icon = "megaphone" })
 	WindUI = ctx.WindUI
-	local settings = ctx.FeatureSettings("自动喊话")
 	local spamToggle = nil
-	spamToggle = Tabs.Chat:Toggle({
+	spamToggle = folder:Toggle({
 		Title = "开始自动喊话",
 		Icon = "megaphone",
 		Value = false,
@@ -104,7 +104,7 @@ function ChatSpammer.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Chat:Input({
+	folder:Input({
 		Title = "喊话内容",
 		Icon = "message-square",
 		Placeholder = "多条用| 分隔",
@@ -112,7 +112,7 @@ function ChatSpammer.Init(Tabs, ctx)
 			parseMessages(v)
 		end,
 	})
-	settings:Slider({
+	folder:Slider({
 		Title = "发送间隔秒",
 		Icon = "timer",
 		Step = 1,
@@ -123,7 +123,7 @@ function ChatSpammer.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Chat:Toggle({
+	folder:Toggle({
 		Title = "随机顺序",
 		Icon = "shuffle",
 		Value = false,

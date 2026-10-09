@@ -38,10 +38,11 @@ local ScriptList = {
 }
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.ScriptHub, M.Title, { Icon = "download" })
 	local WindUI = ctx.WindUI
 
 	for _, info in ipairs(ScriptList) do
-		Tabs.ScriptHub:Button({
+		folder:Button({
 			Title = info.Name,
 			Icon = "download",
 			Callback = function()

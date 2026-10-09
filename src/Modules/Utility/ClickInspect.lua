@@ -57,8 +57,9 @@ Unload.OnUnload(function()
 end)
 
 function ClickInspect.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Interact, ClickInspect.Title, { Icon = "info" })
 
-	Tabs.Interact:Toggle({
+	folder:Toggle({
 		Title = "Ctrl+点击打印部件信息",
 		Icon = "info",
 		Value = false,

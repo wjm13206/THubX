@@ -141,8 +141,9 @@ Unload.OnUnload(function()
 end)
 
 function Translator.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Data, Translator.Title, { Icon = "languages" })
 
-	Tabs.Data:Toggle({
+	folder:Toggle({
 		Title = "启用翻译",
 		Icon = "languages",
 		Value = false,
@@ -150,7 +151,7 @@ function Translator.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "查看翻译状态",
 		Icon = "info",
 		Callback = function()

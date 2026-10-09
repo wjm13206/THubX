@@ -122,7 +122,8 @@ Unload.OnUnload(function()
 end)
 
 function Landing.Init(Tabs, ctx)
-	Tabs.Visual:Toggle({
+	local folder = ctx.Folder(Tabs.Visual, Landing.Title, { Icon = "circle-dot" })
+	folder:Toggle({
 		Title = "落地光环",
 		Icon = "circle-dot",
 		Value = false,
@@ -130,7 +131,7 @@ function Landing.Init(Tabs, ctx)
 			setEnabled(v)
 		end,
 	})
-	Tabs.Visual:Button({
+	folder:Button({
 		Title = "测试一次特效",
 		Icon = "play",
 		Callback = function()

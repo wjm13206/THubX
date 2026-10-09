@@ -107,12 +107,13 @@ local function executeFlingTeleport(target, notify)
 end
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Combat, M.Title, { Icon = "user" })
 	local WindUI = ctx.WindUI
 	local function notify(text)
 		WindUI:Notify({ Title = "甩飞传送", Content = text, Duration = 3 })
 	end
 
-	Tabs.Combat:Input({
+	folder:Input({
 		Title = "要甩飞的玩家名",
 		Icon = "user",
 		Value = "",
@@ -121,7 +122,7 @@ function M.Init(Tabs, ctx)
 			targetName = tostring(text or "")
 		end,
 	})
-	Tabs.Combat:Button({
+	folder:Button({
 		Title = "甩飞这个玩家",
 		Icon = "rocket",
 		Callback = function()
@@ -133,7 +134,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Combat:Button({
+	folder:Button({
 		Title = "甩飞全部玩家",
 		Icon = "bomb",
 		Callback = function()

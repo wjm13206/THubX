@@ -95,8 +95,9 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Games, M.Title, { Icon = "anchor" })
 	WindUIRef = ctx.WindUI
-	Tabs.Games:Toggle({
+	folder:Toggle({
 		Title = "自动拉杆",
 		Icon = "anchor",
 		Value = false,
@@ -104,7 +105,7 @@ function M.Init(Tabs, ctx)
 			setAutoLever(state)
 		end,
 	})
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "删除全部实体",
 		Icon = "trash-2",
 		Callback = function()

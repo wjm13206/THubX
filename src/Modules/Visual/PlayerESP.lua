@@ -244,7 +244,8 @@ local M = {}
 M.Title = "玩家透视"
 
 function M.Init(Tabs, ctx)
-    Tabs.ESP:Toggle({
+	local folder = ctx.Folder(Tabs.ESP, M.Title, { Icon = "eye" })
+    folder:Toggle({
         Title = "玩家透视",
         Icon = "eye",
         Value = false,

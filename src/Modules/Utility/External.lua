@@ -19,15 +19,16 @@ local function loadRemote(path, title, ctx)
 end
 
 function External.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Data, External.Title, { Icon = "database" })
 
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "打开 Dex",
 		Icon = "database",
 		Callback = function()
 			loadRemote("/modules/scripts/DexDark.lua", "Dex", ctx)
 		end,
 	})
-	Tabs.Data:Button({
+	folder:Button({
 		Title = "打开 IY 指令",
 		Icon = "terminal",
 		Callback = function()

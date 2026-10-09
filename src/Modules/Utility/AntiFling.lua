@@ -103,8 +103,9 @@ Unload.OnUnload(function()
 end)
 
 function AntiFling.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Protect, AntiFling.Title, { Icon = "shield-off" })
 
-	Tabs.Protect:Toggle({
+	folder:Toggle({
 		Title = "他端碰撞关闭",
 		Icon = "shield-off",
 		Value = false,

@@ -23,9 +23,10 @@ local function getRootPlaceId(universeId)
 end
 
 function GameTP.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Teleport, GameTP.Title, { Icon = "hash" })
 
 	local universeId = ""
-	Tabs.Teleport:Input({
+	folder:Input({
 		Title = "游戏ID(universeId)",
 		Icon = "hash",
 		Placeholder = "输入数字ID",
@@ -33,7 +34,7 @@ function GameTP.Init(Tabs, ctx)
 			universeId = v
 		end,
 	})
-	Tabs.Teleport:Button({
+	folder:Button({
 		Title = "传送",
 		Icon = "send",
 		Callback = function()

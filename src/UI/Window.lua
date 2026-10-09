@@ -84,7 +84,6 @@ function WindowLoader.Create()
 		ScriptHub = Window:Tab({ Title = "脚本中心", Icon = "computer" }),
 		Audio = Window:Tab({ Title = "音频", Icon = "audio-waveform" }),
 		Filter = Window:Tab({ Title = "滤镜", Icon = "sparkles" }),
-		FeatureSettings = Window:Tab({ Title = "功能设置", Icon = "sliders-horizontal" }),
 		Settings = Window:Tab({ Title = "设置", Icon = "settings" }),
 	}
 
@@ -94,9 +93,9 @@ function WindowLoader.Create()
 		ConfigStore.WrapTabs(Tabs)
 	end)
 
-	-- 设置页：界面 + 系统，分 Section 组织，符合WindUI 规范
-	local uiSection = Tabs.Settings:Section({ Title = "界面" })
-	uiSection:Keybind({
+	-- 设置页：Folder 导航（见 API.md），界面 / 系统 / 当前设置各为一个文件夹
+	local uiFolder = Tabs.Settings:Folder({ Title = "界面", Icon = "palette" })
+	uiFolder:Keybind({
 		Title = "界面开关按键",
 		Icon = "keyboard",
 		Value = "RightShift",
@@ -109,7 +108,7 @@ function WindowLoader.Create()
 			end
 		end,
 	})
-	uiSection:Dropdown({
+	uiFolder:Dropdown({
 		Title = "主题",
 		Icon = "palette",
 		Values = (function()
@@ -144,8 +143,8 @@ function WindowLoader.Create()
 		end,
 	})
 
-	local sysSection = Tabs.Settings:Section({ Title = "系统" })
-	sysSection:Button({
+	local sysFolder = Tabs.Settings:Folder({ Title = "系统", Icon = "settings-2" })
+	sysFolder:Button({
 		Title = "卸载 THubX",
 		Icon = "trash-2",
 		Callback = function()
@@ -167,16 +166,16 @@ function WindowLoader.Create()
 
 	-- 界面设置：按游戏隔离，存于 WindUI/THubX/config/Game_<PlaceId>.json
 	-- 保存是静默自动的（卸载时自动保存），这里只提供删除
-	local saveSection = Tabs.Settings:Section({ Title = "当前设置" })
+	local saveFolder = Tabs.Settings:Folder({ Title = "当前设置", Icon = "save" })
 	pcall(function()
-		if saveSection.Paragraph then
-			saveSection:Paragraph({
+		if saveFolder.Paragraph then
+			saveFolder:Paragraph({
 				Title = "本游戏设置",
 				Desc = ConfigStore.GameKey() .. "（每个游戏独立保存，卸载时自动写入）",
 			})
 		end
 	end)
-	saveSection:Button({
+	saveFolder:Button({
 		Title = "删除本游戏已保存设置",
 		Icon = "trash",
 		Callback = function()

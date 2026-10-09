@@ -77,7 +77,8 @@ local M = {}
 M.Title = "防摔落"
 
 function M.Init(Tabs, ctx)
-    Tabs.Movement:Toggle({
+	local folder = ctx.Folder(Tabs.Movement, M.Title, { Icon = "shield" })
+    folder:Toggle({
         Title = "防摔落",
         Icon = "shield",
         Value = false,

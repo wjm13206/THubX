@@ -109,9 +109,10 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Filter, M.Title, { Icon = "sparkles" })
 	for _, info in ipairs(EFFECT_CLASSES) do
 		local exists = findEffect(info.Class)
-		Tabs.Filter:Toggle({
+		folder:Toggle({
 			Title = info.Name .. "（" .. info.Class .. "）",
 			Icon = "sparkles",
 			Value = exists and exists.Enabled or false,
@@ -120,7 +121,7 @@ function M.Init(Tabs, ctx)
 			end,
 		})
 	end
-	Tabs.Filter:Button({
+	folder:Button({
 		Title = "重置所有滤镜",
 		Icon = "rotate-ccw",
 		Callback = function()
@@ -139,7 +140,7 @@ function M.Init(Tabs, ctx)
 		end,
 	})
 
-	local colorSettings = ctx.FeatureSettings("颜色微调")
+	local colorSettings = folder:Folder({ Title = "颜色微调" })
 	colorSettings:Slider({
 		Title = "饱和度",
 		Icon = "palette",
@@ -192,7 +193,7 @@ function M.Init(Tabs, ctx)
 		end,
 	})
 
-	local blindSettings = ctx.FeatureSettings("色盲模拟器")
+	local blindSettings = folder:Folder({ Title = "色盲模拟器" })
 	blindSettings:Dropdown({
 		Title = "选择色盲模式",
 		Icon = "glasses",

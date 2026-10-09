@@ -194,7 +194,8 @@ Unload.OnUnload(function()
 end)
 
 function ScrollSwitch.Init(Tabs, ctx)
-	Tabs.Movement:Toggle({
+	local folder = ctx.Folder(Tabs.Movement, ScrollSwitch.Title, { Icon = "repeat" })
+	folder:Toggle({
 		Title = "启用滚轮切道(按住V+滚轮)",
 		Icon = "repeat",
 		Value = false,

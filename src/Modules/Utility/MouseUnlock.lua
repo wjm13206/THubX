@@ -116,8 +116,9 @@ Unload.OnUnload(function()
 end)
 
 function MouseUnlock.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Camera, MouseUnlock.Title, { Icon = "mouse" })
 
-	Tabs.Camera:Toggle({
+	folder:Toggle({
 		Title = "启用 (Ctrl+K 切换解锁)",
 		Icon = "mouse",
 		Value = false,
@@ -125,7 +126,7 @@ function MouseUnlock.Init(Tabs, ctx)
 			setEnabled(state)
 		end,
 	})
-	Tabs.Camera:Button({
+	folder:Button({
 		Title = "立即解锁 / 恢复",
 		Icon = "unlock",
 		Callback = function()

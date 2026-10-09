@@ -4,8 +4,9 @@ WorldShader.Title = "世界着色器"
 local URL = "https://raw.githubusercontent.com/wjm13206/THub/refs/heads/main/modules/visual/WorldShader.lua"
 
 function WorldShader.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Visual, WorldShader.Title, { Icon = "palette" })
 	local WindUI = ctx.WindUI
-	Tabs.Visual:Button({
+	folder:Button({
 		Title = "应用世界着色器",
 		Icon = "palette",
 		Callback = function()

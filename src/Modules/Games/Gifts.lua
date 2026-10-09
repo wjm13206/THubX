@@ -47,9 +47,9 @@ local function flashPresents()
 end
 
 function Gifts.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Games, Gifts.Title, { Icon = "timer" })
 	local WindUI = ctx.WindUI
-	local settings = ctx.FeatureSettings("South Expedition")
-	settings:Slider({
+	folder:Slider({
 		Title = "停留时间(秒)",
 		Icon = "timer",
 		Step = 1,
@@ -58,7 +58,7 @@ function Gifts.Init(Tabs, ctx)
 			duration = v / 10
 		end,
 	})
-	Tabs.Games:Button({
+	folder:Button({
 		Title = "礼物闪现到脚下",
 		Icon = "gift",
 		Callback = function()

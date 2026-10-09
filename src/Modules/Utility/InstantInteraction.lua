@@ -42,8 +42,9 @@ end
 Unload.OnUnload(disable)
 
 function M.Init(Tabs, ctx)
+	local folder = ctx.Folder(Tabs.Interact, M.Title, { Icon = "zap" })
 
-	Tabs.Interact:Toggle({
+	folder:Toggle({
 		Title = "长按交互改为秒按",
 		Icon = "zap",
 		Value = false,

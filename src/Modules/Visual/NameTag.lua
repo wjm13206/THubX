@@ -449,8 +449,8 @@ local M = {}
 M.Title = "模型标签"
 
 function M.Init(Tabs, ctx)
-    local settings = ctx.FeatureSettings("模型标签")
-    Tabs.ESP:Input({
+	local folder = ctx.Folder(Tabs.ESP, M.Title, { Icon = "tag" })
+    folder:Input({
         Title = "标签目标",
         Icon = "tag",
         Placeholder = "输入模型名称",
@@ -458,7 +458,7 @@ function M.Init(Tabs, ctx)
             currentTarget = v or ""
         end,
     })
-    settings:Dropdown({
+    folder:Dropdown({
         Title = "匹配模式",
         Icon = "list",
         Values = { "fuzzy", "only" },
@@ -467,7 +467,7 @@ function M.Init(Tabs, ctx)
             currentMode = v or "fuzzy"
         end,
     })
-    Tabs.ESP:Toggle({
+    folder:Toggle({
         Title = "显示距离",
         Icon = "ruler",
         Value = false,
@@ -475,7 +475,7 @@ function M.Init(Tabs, ctx)
             showDistance = state
         end,
     })
-    Tabs.ESP:Button({
+    folder:Button({
         Title = "开始标记",
         Icon = "play",
         Callback = function()
@@ -483,7 +483,7 @@ function M.Init(Tabs, ctx)
             Engine.new(currentTarget, currentMode, nil, showDistance, nil).enable()
         end,
     })
-    Tabs.ESP:Button({
+    folder:Button({
         Title = "清除标记",
         Icon = "trash-2",
         Callback = function()

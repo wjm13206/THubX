@@ -280,7 +280,8 @@ Unload.OnUnload(function()
 end)
 
 function M.Init(Tabs, ctx)
-	Tabs.Visual:Toggle({
+	local folder = ctx.Folder(Tabs.Visual, M.Title, { Icon = "moon" })
+	folder:Toggle({
 		Title = "夜视",
 		Icon = "moon",
 		Value = false,
@@ -288,7 +289,7 @@ function M.Init(Tabs, ctx)
 			setNightVision(state)
 		end,
 	})
-	Tabs.Visual:Toggle({
+	folder:Toggle({
 		Title = "超级夜视",
 		Icon = "sun",
 		Value = false,
@@ -296,7 +297,7 @@ function M.Init(Tabs, ctx)
 			setSuperNightVision(state)
 		end,
 	})
-	Tabs.Visual:Toggle({
+	folder:Toggle({
 		Title = "随身灯笼",
 		Icon = "lamp",
 		Value = false,
@@ -308,7 +309,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Visual:Toggle({
+	folder:Toggle({
 		Title = "超级光明",
 		Icon = "lightbulb",
 		Value = false,
@@ -320,7 +321,7 @@ function M.Init(Tabs, ctx)
 			end
 		end,
 	})
-	Tabs.Visual:Toggle({
+	folder:Toggle({
 		Title = "X光",
 		Icon = "scan",
 		Value = false,
@@ -328,7 +329,7 @@ function M.Init(Tabs, ctx)
 			setXray(state)
 		end,
 	})
-	Tabs.Visual:Toggle({
+	folder:Toggle({
 		Title = "显示隐藏部件",
 		Icon = "eye",
 		Value = false,
@@ -336,7 +337,7 @@ function M.Init(Tabs, ctx)
 			setShowHidden(state)
 		end,
 	})
-	Tabs.Visual:Toggle({
+	folder:Toggle({
 		Title = "禁用雾效",
 		Icon = "cloud-off",
 		Value = false,
